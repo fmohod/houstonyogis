@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Houston Yogis</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-symbol">
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="15" cy="15" r="4"/>
+          <path d="M15 2v6M15 22v6M2 15h6M22 15h6M6 6l4 4M20 20l4 4M6 24l4-4M20 10l4-4"/>
+        </svg>
+      </div>
+      <h1 class="masthead-title"><a href="index.html">Houston Yogis</a></h1>
+      <p class="masthead-tagline">A Journal of Movement, Nature &amp; Community</p>
+      <p class="masthead-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a> &middot; Houston, Texas</p>
+      <div class="masthead-rule"></div>
+      <nav class="masthead-nav">
+        <a href="index.html">Explore</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="guides.html">Guides</a>
+        <a href="journal/index.html">Journal</a>
+        <a href="join.html">Join the Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-wrap">
+      <p class="page-kicker" id="reg-kicker">Register</p>
+      <h2 class="page-title" id="reg-title">Tell Us About You</h2>
+      <p class="lede" style="text-align:center;" id="reg-lede">A few details help us follow up with the right next step — no account, no login required.</p>
+
+      <form
+        class="register-form"
+        id="register-form"
+        action="https://api.web3forms.com/submit"
+        method="POST"
+      >
+        <!--
+          Web3Forms integration — access key not set up yet (per project decision,
+          2026-07-06). Replace ACCESS_KEY below once a Web3Forms account exists;
+          the JS guard further down will otherwise politely decline to submit.
+        -->
+        <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" id="reg-form-subject" value="Houston Yogis registration">
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+
+        <div>
+          <label for="role">I'm here as a&hellip;</label>
+          <select name="role" id="role" required>
+            <option value="Teacher / Instructor">Teacher / Instructor</option>
+            <option value="Musician / Performer">Musician / Performer</option>
+            <option value="Business / Vendor">Business / Vendor</option>
+            <option value="Organization / Partner">Organization / Partner</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required>
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required>
+        </div>
+
+        <div>
+          <label for="phone">Phone</label>
+          <input type="tel" name="phone" id="phone">
+        </div>
+
+        <div>
+          <label for="instagram">Instagram</label>
+          <input type="text" name="instagram" id="instagram" placeholder="@handle">
+        </div>
+
+        <div>
+          <label for="website">Website</label>
+          <input type="url" name="website" id="website" placeholder="https://">
+        </div>
+
+        <div>
+          <label for="city">City</label>
+          <input type="text" name="city" id="city" value="Houston, TX">
+        </div>
+
+        <div>
+          <label for="practice">Practice / Business Name</label>
+          <input type="text" name="practice" id="practice" placeholder="e.g. Vinyasa yoga, sound bath, a studio name">
+        </div>
+
+        <div>
+          <label for="bio">Tell Us About You</label>
+          <textarea name="bio" id="bio" placeholder="A short bio, or what you're hoping to do with Houston Yogis"></textarea>
+        </div>
+
+        <div>
+          <label for="availability">Availability</label>
+          <input type="text" name="availability" id="availability" placeholder="Days/times that generally work">
+        </div>
+
+        <button type="submit" class="cta-button solid">
+          <span id="reg-submit-label">Submit</span>
+        </button>
+      </form>
+
+      <div id="form-message" class="form-message" style="display:none;"></div>
+
+      <p class="register-note">No account or login required &mdash; we'll follow up by email.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-wordmark">Houston Yogis</span>
+      <p class="footer-mission">Houston Yogis documents Houston's wellness community through journalism, photography, education, and public events.</p>
+      <nav class="footer-links">
+        <a href="about.html">About</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <p class="footer-legal">Self-hosted. No trackers. Just words.&nbsp;&nbsp;&middot;&nbsp;&nbsp;&copy; 2026 Houston Yogis. All Rights Reserved.</p>
+      <p class="footer-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Pre-fill from ?role= query param (linked from join.html) ──
+    const ROLE_MAP = {
+      teacher:  { label: 'Teacher / Instructor', kicker: 'For Instructors & Facilitators', title: 'Register as a Teacher',
+                  lede: "Tell us about your practice and we'll help you reach new students through our calendar, journal, and growing network." },
+      performer:{ label: 'Musician / Performer', kicker: 'For Musicians & Performers', title: 'Register as a Musician',
+                  lede: "Tell us about your work and we'll help you find your next stage — classes, festivals, markets, and retreats." },
+      business: { label: 'Business / Vendor', kicker: 'For Vendors & Advertisers', title: 'Tell Us About Your Business',
+                  lede: "Reach wellness-minded Houstonians through our journal, event coverage, and growing print presence. We'll follow up with details." },
+      partner:  { label: 'Organization / Partner', kicker: 'For Organizations & Partners', title: "Let's Talk Partnership",
+                  lede: "Studios, hotels, markets, parks, festivals, nonprofits — tell us what you're building and we'll follow up." },
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const role = params.get('role');
+    if (role && ROLE_MAP[role]) {
+      const r = ROLE_MAP[role];
+      document.getElementById('reg-kicker').textContent = r.kicker;
+      document.getElementById('reg-title').textContent = r.title;
+      document.getElementById('reg-lede').textContent = r.lede;
+      document.getElementById('reg-form-subject').value = `Houston Yogis registration — ${r.label}`;
+      document.getElementById('reg-submit-label').textContent = r.title;
+      const roleSelect = document.getElementById('role');
+      for (const opt of roleSelect.options) {
+        if (opt.value === r.label) { opt.selected = true; break; }
+      }
+    }
+
+    // ── Submission handling ──
+    const form = document.getElementById('register-form');
+    const messageEl = document.getElementById('form-message');
+    const ACCESS_KEY = form.querySelector('[name="access_key"]').value;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (ACCESS_KEY === 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY') {
+        messageEl.textContent = "This form isn't connected yet — Web3Forms hasn't been set up. Reach out directly for now, or check back soon.";
+        messageEl.className = 'form-message';
+        messageEl.style.display = 'block';
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            form.style.display = 'none';
+            messageEl.textContent = "Thank you — we've received your details and will follow up soon.";
+            messageEl.className = 'form-message success';
+          } else {
+            messageEl.textContent = 'Something went wrong submitting the form. Please try again.';
+            messageEl.className = 'form-message';
+          }
+          messageEl.style.display = 'block';
+        })
+        .catch(() => {
+          messageEl.textContent = 'Something went wrong submitting the form. Please try again.';
+          messageEl.className = 'form-message';
+          messageEl.style.display = 'block';
+        })
+        .finally(() => { submitBtn.disabled = false; });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Journal | Houston Yogis</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-symbol">
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="15" cy="15" r="4"/>
+          <path d="M15 2v6M15 22v6M2 15h6M22 15h6M6 6l4 4M20 20l4 4M6 24l4-4M20 10l4-4"/>
+        </svg>
+      </div>
+      <h1 class="masthead-title"><a href="../index.html">Houston Yogis</a></h1>
+      <p class="masthead-tagline">A Journal of Movement, Nature &amp; Community</p>
+      <p class="masthead-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a> &middot; Houston, Texas</p>
+      <div class="masthead-rule"></div>
+      <nav class="masthead-nav">
+        <a href="../index.html">Explore</a>
+        <a href="../calendar.html">Calendar</a>
+        <a href="../guides.html">Guides</a>
+        <a href="index.html" class="active">Journal</a>
+        <a href="../join.html">Join the Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="journal-main">
+    <div class="journal-header">
+      <p class="section-kicker">The Journal</p>
+      <h2 class="section-heading" style="margin-bottom:0;">Every Story</h2>
+      <p class="journal-subtitle" id="journal-subtitle">Loading&hellip;</p>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search the journal&hellip;" autocomplete="off">
+    </div>
+
+    <div class="article-list" id="article-list">
+      <div class="list-skeleton"></div>
+      <div class="list-skeleton"></div>
+      <div class="list-skeleton"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-wordmark">Houston Yogis</span>
+      <p class="footer-mission">Houston Yogis documents Houston's wellness community through journalism, photography, education, and public events.</p>
+      <nav class="footer-links">
+        <a href="../about.html">About</a>
+        <a href="../support.html">Support</a>
+      </nav>
+      <p class="footer-legal">Self-hosted. No trackers. Just words.&nbsp;&nbsp;&middot;&nbsp;&nbsp;&copy; 2026 Houston Yogis. All Rights Reserved.</p>
+      <p class="footer-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const GITHUB_USER = 'fmohod';
+    const GITHUB_REPO = 'houstonyogis';
+    const BASE_URL = 'https://houstonyogis.net';
+    const API_BASE = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`;
+
+    let allArticles = [];
+
+    async function getArticleFolders() {
+      const res = await fetch(API_BASE);
+      if (!res.ok) throw new Error('GitHub API fetch failed');
+      const contents = await res.json();
+      return contents
+        .filter(f => f.type === 'dir' && /^\d{4}$/.test(f.name))
+        .sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    async function getArticleMeta(folder) {
+      const url = `${BASE_URL}/${folder}/`;
+      try {
+        const res  = await fetch(url);
+        const html = await res.text();
+        const doc  = new DOMParser().parseFromString(html, 'text/html');
+
+        const title = doc.querySelector('title')?.textContent?.trim()
+                   || doc.querySelector('h1')?.textContent?.trim()
+                   || `Article ${folder}`;
+        const desc  = doc.querySelector('meta[name="description"]')?.content
+                   || doc.querySelector('p')?.textContent?.trim().slice(0, 120) + '…'
+                   || '';
+        const date  = doc.querySelector('meta[name="date"]')?.content || '';
+
+        return { folder, title, desc, date, url };
+      } catch {
+        return { folder, title: `Article ${folder}`, desc: '', date: '', url: `${BASE_URL}/${folder}/` };
+      }
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      try {
+        return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US',
+          { year: 'numeric', month: 'short', day: 'numeric' });
+      } catch { return dateStr; }
+    }
+
+    function renderList(articles) {
+      const list = document.getElementById('article-list');
+      if (articles.length === 0) {
+        list.innerHTML = `<div class="no-results">No stories published yet &mdash; check back soon.</div>`;
+        return;
+      }
+      list.innerHTML = articles.map((a) => `
+        <a href="${a.url}" class="list-item">
+          <div class="list-body">
+            <h3>${a.title}</h3>
+            ${a.desc ? `<p>${a.desc}</p>` : ''}
+          </div>
+          <div class="list-right">${a.date ? formatDate(a.date) : a.folder}</div>
+        </a>
+      `).join('');
+    }
+
+    document.getElementById('search-input').addEventListener('input', e => {
+      const q = e.target.value.toLowerCase().trim();
+      if (!q) { renderList(allArticles); return; }
+      renderList(allArticles.filter(a =>
+        a.title.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q)
+      ));
+    });
+
+    async function init() {
+      const list = document.getElementById('article-list');
+      try {
+        const folders = await getArticleFolders();
+        document.getElementById('journal-subtitle').textContent =
+          `${folders.length} ${folders.length === 1 ? 'story' : 'stories'} published`;
+
+        if (folders.length === 0) {
+          list.innerHTML = `<div class="no-results">No stories published yet &mdash; check back soon.</div>`;
+          return;
+        }
+
+        const metas = [];
+        for (let i = 0; i < folders.length; i += 5) {
+          const batch   = folders.slice(i, i + 5);
+          const results = await Promise.all(batch.map(f => getArticleMeta(f.name)));
+          metas.push(...results);
+          allArticles = metas;
+          renderList(metas);
+        }
+        allArticles.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+        renderList(allArticles);
+      } catch (err) {
+        list.innerHTML = `<div class="error-state"><p>&#9888; Could not load stories. Check GITHUB_USER/GITHUB_REPO config.</p></div>`;
+        console.error(err);
+      }
+    }
+
+    init();
+  </script>
+
+</body>
+</html>

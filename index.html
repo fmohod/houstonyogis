@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Houston Yogis is a journal of movement, nature, and community — documenting Houston's yoga, meditation, and holistic wellness scene through photography and stories.">
+  <title>Houston Yogis | A Journal of Movement, Nature &amp; Community</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MASTHEAD — quiet, editorial. No stat blocks, no rules-and-lines
+       newspaper treatment. Swap :root fonts/colors in style.css to
+       re-skin this template for the next Cadenza Network publication.
+  ═══════════════════════════════════════════════════════ -->
+  <header class="masthead">
+    <div class="masthead-inner">
+
+      <div class="masthead-symbol">
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="15" cy="15" r="4"/>
+          <path d="M15 2v6M15 22v6M2 15h6M22 15h6M6 6l4 4M20 20l4 4M6 24l4-4M20 10l4-4"/>
+        </svg>
+      </div>
+
+      <h1 class="masthead-title"><a href="index.html">Houston Yogis</a></h1>
+      <p class="masthead-tagline">A Journal of Movement, Nature &amp; Community</p>
+      <p class="masthead-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a> &middot; Houston, Texas</p>
+
+      <div class="masthead-rule"></div>
+
+      <nav class="masthead-nav">
+        <a href="index.html" class="active">Explore</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="guides.html">Guides</a>
+        <a href="journal/index.html">Journal</a>
+        <a href="join.html">Join the Community</a>
+        <a href="journal/index.html" class="masthead-search" aria-label="Search the Journal" title="Search the Journal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════════════════════ -->
+  <main>
+
+    <!-- Hero — always mirrors the most recently published feature -->
+    <section class="hero" id="hero">
+      <div class="hero-image" id="hero-image">
+        <span class="placeholder-label">Houston Yogis is just getting started &mdash; the first feature will appear here.</span>
+      </div>
+      <p class="hero-kicker" id="hero-kicker">From the Journal</p>
+      <h2 class="hero-headline" id="hero-headline">Houston's Wellness Community, Documented</h2>
+      <p class="hero-excerpt" id="hero-excerpt">Stories, photography, and profiles from Houston's yoga, meditation, and holistic wellness scene &mdash; a journal, not a directory.</p>
+      <a href="about.html" class="cta-button solid" id="hero-cta">
+        <span>About This Journal</span>
+      </a>
+    </section>
+
+    <!-- From the Community -->
+    <section class="home-section">
+      <p class="section-kicker">From the Community</p>
+      <h2 class="section-heading">Recent Stories</h2>
+      <div class="cards-grid" id="cards-grid">
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+        <div class="card skeleton"></div>
+      </div>
+      <div class="all-articles-cta">
+        <a href="journal/index.html" class="cta-button">
+          <span>Read the Journal</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Explore tiles: Calendar / Guides / Places -->
+    <section class="home-section">
+      <p class="section-kicker">Find Your Way In</p>
+      <h2 class="section-heading">Explore the Community</h2>
+      <div class="explore-grid">
+        <a href="calendar.html" class="explore-tile">
+          <div class="tile-wash"></div>
+          <div class="tile-overlay"></div>
+          <div class="tile-text">
+            <p class="tile-kicker">Calendar</p>
+            <h3>Gather</h3>
+            <p>Classes, workshops, and community gatherings across the city.</p>
+          </div>
+        </a>
+        <a href="guides.html" class="explore-tile">
+          <div class="tile-wash"></div>
+          <div class="tile-overlay"></div>
+          <div class="tile-text">
+            <p class="tile-kicker">Guides</p>
+            <h3>Learn</h3>
+            <p>The teachers shaping Houston's practice, in their own words.</p>
+          </div>
+        </a>
+        <a href="places.html" class="explore-tile">
+          <div class="tile-wash"></div>
+          <div class="tile-overlay"></div>
+          <div class="tile-text">
+            <p class="tile-kicker">Places</p>
+            <h3>Wander</h3>
+            <p>Studios, gardens, and spaces holding the community together.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Membership -->
+    <section class="home-section">
+      <div class="membership-block">
+        <p class="section-kicker">Membership</p>
+        <blockquote>&ldquo;Support keeps this journal independent, and keeps it free for everyone to read.&rdquo;</blockquote>
+        <p class="membership-sub">Membership funds coverage of Houston's teachers, studios, and events &mdash; and comes with early access, member gatherings, and the quiet satisfaction of keeping something good going.</p>
+        <a href="join.html#panel-support" class="cta-button on-dark">
+          <span>Support the Network</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="home-section" id="newsletter" style="margin-bottom:0;">
+      <div class="newsletter-block">
+        <h2>Stay in the Loop</h2>
+        <p>New stories and events, delivered occasionally, never spam.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Newsletter signup is a placeholder — wire this up to your email provider of choice.');">
+          <input type="email" placeholder="you@email.com" required aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-wordmark">Houston Yogis</span>
+      <p class="footer-mission">Houston Yogis documents Houston's wellness community through journalism, photography, education, and public events.</p>
+      <nav class="footer-links">
+        <a href="about.html">About</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <p class="footer-legal">Self-hosted. No trackers. Just words.&nbsp;&nbsp;&middot;&nbsp;&nbsp;&copy; 2026 Houston Yogis. All Rights Reserved.</p>
+      <p class="footer-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       JAVASCRIPT — backend/fetch logic unchanged from Build 1.
+       Only the rendering (renderCard, hero population) changed.
+  ═══════════════════════════════════════════════════════ -->
+  <script>
+    const GITHUB_USER = 'fmohod';
+    const GITHUB_REPO = 'houstonyogis';
+    const BASE_URL   = 'https://houstonyogis.net';
+    const API_BASE   = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`;
+
+    async function getArticleFolders() {
+      const res = await fetch(API_BASE);
+      if (!res.ok) throw new Error('GitHub API fetch failed');
+      const contents = await res.json();
+      return contents
+        .filter(f => f.type === 'dir' && /^\d{4}$/.test(f.name))
+        .sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    async function getArticleMeta(folder) {
+      const url = `${BASE_URL}/${folder}/`;
+      try {
+        const res  = await fetch(url);
+        const html = await res.text();
+        const doc  = new DOMParser().parseFromString(html, 'text/html');
+
+        const title = doc.querySelector('title')?.textContent?.trim()
+                   || doc.querySelector('h1')?.textContent?.trim()
+                   || `Article ${folder}`;
+        const desc  = doc.querySelector('meta[name="description"]')?.content
+                   || doc.querySelector('p')?.textContent?.trim().slice(0, 140) + '…'
+                   || '';
+        const date  = doc.querySelector('meta[name="date"]')?.content || '';
+
+        let thumb = null;
+        try {
+          const tj = await fetch(`${BASE_URL}/${folder}/thumb.jpg`, { method: 'HEAD' });
+          if (tj.ok) { thumb = `${BASE_URL}/${folder}/thumb.jpg`; }
+        } catch {}
+        if (!thumb) {
+          try {
+            const tp = await fetch(`${BASE_URL}/${folder}/thumb.png`, { method: 'HEAD' });
+            if (tp.ok) { thumb = `${BASE_URL}/${folder}/thumb.png`; }
+          } catch {}
+        }
+
+        return { folder, title, desc, date, thumb, url };
+      } catch {
+        return { folder, title: `Article ${folder}`, desc: '', date: '', thumb: null, url: `${BASE_URL}/${folder}/` };
+      }
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      try {
+        return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US',
+          { year: 'numeric', month: 'long', day: 'numeric' });
+      } catch { return dateStr; }
+    }
+
+    function renderCard(meta) {
+      const imageInner = meta.thumb
+        ? `<img src="${meta.thumb}" alt="${meta.title}" loading="lazy">`
+        : `<span class="placeholder-label">Photo placeholder</span>`;
+      return `
+        <article class="card">
+          <a href="${meta.url}" class="card-image-link">
+            <div class="card-image">${imageInner}</div>
+          </a>
+          <div class="card-body">
+            ${meta.date ? `<time>${formatDate(meta.date)}</time>` : ''}
+            <h2><a href="${meta.url}">${meta.title}</a></h2>
+            ${meta.desc ? `<p>${meta.desc}</p>` : ''}
+            <a href="${meta.url}" class="read-link">Read the Story &rarr;</a>
+          </div>
+        </article>`;
+    }
+
+    function populateHero(meta) {
+      const imageEl = document.getElementById('hero-image');
+      if (meta.thumb) {
+        imageEl.innerHTML = `<img src="${meta.thumb}" alt="${meta.title}">`;
+      }
+      document.getElementById('hero-kicker').textContent = meta.date ? `From the Journal · ${formatDate(meta.date)}` : 'From the Journal';
+      document.getElementById('hero-headline').textContent = meta.title;
+      if (meta.desc) document.getElementById('hero-excerpt').textContent = meta.desc;
+      const cta = document.getElementById('hero-cta');
+      cta.href = meta.url;
+      cta.querySelector('span').textContent = 'Read the Story';
+    }
+
+    async function init() {
+      const grid = document.getElementById('cards-grid');
+      try {
+        const folders = await getArticleFolders();
+
+        if (folders.length === 0) {
+          grid.innerHTML = `<div class="no-results">No stories published yet &mdash; check back soon.</div>`;
+          return;
+        }
+
+        const metas = await Promise.all(folders.map(f => getArticleMeta(f.name)));
+        metas.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+        populateHero(metas[0]);
+        grid.innerHTML = metas.slice(1, 4).length
+          ? metas.slice(1, 4).map(renderCard).join('')
+          : metas.slice(0, 3).map(renderCard).join('');
+      } catch (err) {
+        grid.innerHTML = `
+          <div class="error-state">
+            <p>&#9888; Could not load stories.</p>
+            <p class="error-detail">Make sure GITHUB_USER and GITHUB_REPO are set correctly in index.html, and that GitHub Pages is enabled on your repo.</p>
+          </div>`;
+        console.error(err);
+      }
+    }
+
+    init();
+  </script>
+
+</body>
+</html>
