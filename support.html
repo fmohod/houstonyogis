@@ -8,6 +8,28 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Billing period toggle (scoped to support page) */
+    .sup-billing { display: flex; justify-content: center; margin: 4px 0 10px; }
+    .sup-billing-toggle {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px; background: var(--color-surface);
+      border: 1px solid var(--color-rule); border-radius: 999px;
+    }
+    .sup-toggle-btn {
+      font-family: var(--font-meta); font-size: 0.74rem; font-weight: 500;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--color-text-soft); background: transparent; border: 0;
+      border-radius: 999px; padding: 9px 22px; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .sup-toggle-btn:hover { color: var(--color-primary); }
+    .sup-toggle-btn.is-active { background: var(--color-primary); color: #fff; }
+    .sup-billing-hint {
+      text-align: center; font-family: var(--font-meta); font-size: 0.72rem;
+      letter-spacing: 0.05em; color: var(--color-secondary); margin: 0 0 30px;
+    }
+  </style>
 </head>
 <body>
 
@@ -40,12 +62,20 @@
         <p class="sup-kicker">Membership</p>
         <h2 class="sup-title">Support Houston Yogis</h2>
         <p class="sup-lede">Houston Yogis keeps Houston's wellness community on the record &mdash; teacher profiles, event coverage, and photography built to outlast the feed. The journal stays free for everyone. Members are the reason it can.</p>
-        <p class="sup-sub">Payment processing isn't connected yet &mdash; the buttons below are placeholders until checkout is wired up.</p>
+        <p class="sup-sub">Secure checkout is powered by Square. Choose monthly or annual &mdash; cancel anytime.</p>
       </div>
     </section>
 
     <section class="sup-wrap" aria-labelledby="sup-tiers-heading">
       <h2 id="sup-tiers-heading" class="sup-sr-only">Membership tiers</h2>
+
+      <div class="sup-billing">
+        <div class="sup-billing-toggle" role="group" aria-label="Choose billing period">
+          <button type="button" class="sup-toggle-btn is-active" data-period="monthly" aria-pressed="true">Monthly</button>
+          <button type="button" class="sup-toggle-btn" data-period="annual" aria-pressed="false">Annual</button>
+        </div>
+      </div>
+      <p class="sup-billing-hint" data-monthly="Billed monthly &middot; cancel anytime" data-annual="Billed yearly &middot; two months free &middot; cancel anytime">Billed monthly &middot; cancel anytime</p>
 
       <div class="sup-tiers">
 
@@ -53,15 +83,15 @@
           <h3>Friend</h3>
           <p class="sup-tagline">Keep independent wellness documentation alive.</p>
           <div class="sup-price">
-            <span class="amount">$5</span>
-            <span class="period">/ month</span>
+            <span class="amount" data-monthly="$5" data-annual="$50">$5</span>
+            <span class="period" data-monthly="/ month" data-annual="/ year">/ month</span>
           </div>
           <ul>
             <li>Support independent documentation of Houston's wellness community</li>
             <li>Monthly members' dispatch by email</li>
             <li>Early access to new stories</li>
           </ul>
-          <a class="sup-cta" href="#" data-plan="friend" onclick="event.preventDefault(); alert('Checkout isn\'t connected yet — wire this up once payment processing is set up.');">Join as Friend</a>
+          <a class="sup-cta" data-plan="friend" data-href-monthly="https://square.link/u/TyXsKvne" data-href-annual="https://square.link/u/d5RbZ3yV" href="https://square.link/u/TyXsKvne" target="_blank" rel="noopener">Join as Friend</a>
         </article>
 
         <article class="sup-tier featured">
@@ -69,30 +99,30 @@
           <h3>Patron</h3>
           <p class="sup-tagline">For readers who want the deeper archive.</p>
           <div class="sup-price">
-            <span class="amount">$15</span>
-            <span class="period">/ month</span>
+            <span class="amount" data-monthly="$15" data-annual="$150">$15</span>
+            <span class="period" data-monthly="/ month" data-annual="/ year">/ month</span>
           </div>
           <ul>
             <li>Everything in Friend</li>
             <li>Members-only features &amp; extended photo sets</li>
             <li>Members-only event invitations</li>
           </ul>
-          <a class="sup-cta" href="#" data-plan="patron" onclick="event.preventDefault(); alert('Checkout isn\'t connected yet — wire this up once payment processing is set up.');">Become a Patron</a>
+          <a class="sup-cta" data-plan="patron" data-href-monthly="https://square.link/u/t2rGNDDS" data-href-annual="https://square.link/u/QcV36qm7" href="https://square.link/u/t2rGNDDS" target="_blank" rel="noopener">Become a Patron</a>
         </article>
 
         <article class="sup-tier">
           <h3>Benefactor</h3>
           <p class="sup-tagline">Underwrite the work at its fullest.</p>
           <div class="sup-price">
-            <span class="amount">$50</span>
-            <span class="period">/ month</span>
+            <span class="amount" data-monthly="$50" data-annual="$500">$50</span>
+            <span class="period" data-monthly="/ month" data-annual="/ year">/ month</span>
           </div>
           <ul>
             <li>Everything in Patron</li>
             <li>Your name on the Supporters page</li>
             <li>Invitation to community gatherings</li>
           </ul>
-          <a class="sup-cta" href="#" data-plan="benefactor" onclick="event.preventDefault(); alert('Checkout isn\'t connected yet — wire this up once payment processing is set up.');">Become a Benefactor</a>
+          <a class="sup-cta" data-plan="benefactor" data-href-monthly="https://square.link/u/mD7d2fmW" data-href-annual="https://square.link/u/544WrZgm" href="https://square.link/u/mD7d2fmW" target="_blank" rel="noopener">Become a Benefactor</a>
         </article>
 
       </div>
@@ -134,6 +164,34 @@
       <p class="footer-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var wrap = document.querySelector('.sup-billing-toggle');
+      if (!wrap) return;
+      var buttons = wrap.querySelectorAll('.sup-toggle-btn');
+      var hint = document.querySelector('.sup-billing-hint');
+      function apply(period) {
+        buttons.forEach(function (b) {
+          var on = b.getAttribute('data-period') === period;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        document.querySelectorAll('.sup-tier').forEach(function (tier) {
+          var amount = tier.querySelector('.amount');
+          var period_el = tier.querySelector('.period');
+          var cta = tier.querySelector('.sup-cta');
+          if (amount) amount.textContent = amount.getAttribute('data-' + period);
+          if (period_el) period_el.textContent = period_el.getAttribute('data-' + period);
+          if (cta) cta.setAttribute('href', cta.getAttribute('data-href-' + period));
+        });
+        if (hint) hint.innerHTML = hint.getAttribute('data-' + period);
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { apply(b.getAttribute('data-period')); });
+      });
+    })();
+  </script>
 
 </body>
 </html>
