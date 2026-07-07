@@ -135,10 +135,16 @@
       <div class="newsletter-block">
         <h2>Stay in the Loop</h2>
         <p>New stories and events, delivered occasionally, never spam.</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Newsletter signup is a placeholder — wire this up to your email provider of choice.');">
-          <input type="email" placeholder="you@email.com" required aria-label="Email address">
+        <form class="newsletter-form" id="newsletter-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="5dc0d589-7995-41de-9f4a-32031f98948e">
+          <input type="hidden" name="subject" value="Houston Yogis — Newsletter Signup">
+          <input type="hidden" name="from_name" value="Houston Yogis Newsletter">
+          <input type="hidden" name="redirect" value="thank-you.html">
+          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+          <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
           <button type="submit">Subscribe</button>
         </form>
+        <div id="newsletter-message" class="form-message" style="display:none;"></div>
       </div>
     </section>
 
@@ -279,6 +285,45 @@
     }
 
     init();
+  </script>
+
+  <!-- Newsletter form — Web3Forms AJAX submit (redirect field above is the no-JS fallback) -->
+  <script>
+    (function () {
+      const form = document.getElementById('newsletter-form');
+      const messageEl = document.getElementById('newsletter-message');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form),
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              form.style.display = 'none';
+              messageEl.textContent = "You're on the list — thanks for subscribing.";
+              messageEl.className = 'form-message success';
+            } else {
+              messageEl.textContent = 'Something went wrong. Please try again.';
+              messageEl.className = 'form-message';
+            }
+            messageEl.style.display = 'block';
+          })
+          .catch(() => {
+            messageEl.textContent = 'Something went wrong. Please try again.';
+            messageEl.className = 'form-message';
+            messageEl.style.display = 'block';
+          })
+          .finally(() => { submitBtn.disabled = false; });
+      });
+    })();
   </script>
 
 </body>

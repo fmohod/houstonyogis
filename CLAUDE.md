@@ -90,13 +90,20 @@ for the full back-and-forth that produced this. The question it leads with is
   **one shared form**, `register.html?role=teacher|performer|business|partner`,
   which pre-fills the heading/copy/role field from the query param. Don't
   build four separate forms — extend `ROLE_MAP` in `register.html` instead.
-- `register.html` is wired for **Web3Forms**, but the `access_key` is still
-  the literal placeholder string `REPLACE_WITH_WEB3FORMS_ACCESS_KEY` — no
-  account exists yet (deliberate, per project decision). The form's JS
-  checks for that placeholder and shows a polite "not connected yet" message
-  instead of submitting. Once a real Web3Forms account/key exists, drop the
-  key into the hidden `access_key` input and the guard clause becomes a
-  no-op automatically — no other code changes needed.
+- `register.html` and the homepage newsletter form (`index.html`) are both
+  wired to **Web3Forms** with a live access key (added 2026-07-06):
+  `5dc0d589-7995-41de-9f4a-32031f98948e`. **The recipient inbox is configured
+  on the Web3Forms dashboard side, not in this repo's code** — the intent is
+  everything routes to `info@houstonyogis.net`, but that's set by whichever
+  email the key/form was created against in the Web3Forms dashboard. If
+  submissions aren't landing at info@houstonyogis.net, fix it there, not in
+  the HTML. Both forms submit via `fetch()` (AJAX, in-page success/error
+  message, no page reload) and also carry a `redirect` hidden field pointing
+  at `thank-you.html` as the no-JS fallback — if JavaScript fails, the
+  browser does a normal POST and lands on that page instead of showing raw
+  JSON. Adding a fifth `register.html` role, or a new form elsewhere, should
+  follow the same pattern: `access_key` + `subject` + `from_name` + `redirect`
+  + a hidden `botcheck` honeypot.
 - `membership.html` is superseded and is now a meta-refresh stub → `join.html`
   (same pattern as the Build 2 stale-page cleanup below).
 - The "print presence" language in the Teach and Promote Your Business copy

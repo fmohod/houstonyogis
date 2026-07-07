@@ -44,13 +44,13 @@
         action="https://api.web3forms.com/submit"
         method="POST"
       >
-        <!--
-          Web3Forms integration — access key not set up yet (per project decision,
-          2026-07-06). Replace ACCESS_KEY below once a Web3Forms account exists;
-          the JS guard further down will otherwise politely decline to submit.
-        -->
-        <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+        <!-- Web3Forms integration — live access key, set up 2026-07-06. Recipient
+             inbox (info@houstonyogis.net) is configured on the Web3Forms
+             dashboard side for this key, not here — see CLAUDE.md "Build 3". -->
+        <input type="hidden" name="access_key" value="5dc0d589-7995-41de-9f4a-32031f98948e">
         <input type="hidden" name="subject" id="reg-form-subject" value="Houston Yogis registration">
+        <input type="hidden" name="from_name" value="Houston Yogis — Join the Community">
+        <input type="hidden" name="redirect" value="thank-you.html">
         <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
 
         <div>
@@ -164,17 +164,9 @@
     // ── Submission handling ──
     const form = document.getElementById('register-form');
     const messageEl = document.getElementById('form-message');
-    const ACCESS_KEY = form.querySelector('[name="access_key"]').value;
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-
-      if (ACCESS_KEY === 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY') {
-        messageEl.textContent = "This form isn't connected yet — Web3Forms hasn't been set up. Reach out directly for now, or check back soon.";
-        messageEl.className = 'form-message';
-        messageEl.style.display = 'block';
-        return;
-      }
 
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
