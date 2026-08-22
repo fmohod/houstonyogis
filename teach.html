@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Teach with Houston Yogis. Keep posting on Instagram — we give your classes a home, take prepaid reservations, and handle the admin so you can teach. See the pricing and run your own numbers.">
+  <title>Teach with Houston Yogis | Houston Yogis</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── teach page — scoped, built on the site's own tokens ── */
+    .teach-hero-sub { color: var(--color-text-soft); font-family: var(--font-meta); font-size: 0.95rem; letter-spacing: 0.02em; margin-top: 8px; }
+    .teach-section { max-width: 860px; margin: 0 auto; padding: 46px 24px; border-top: 1px solid var(--color-rule); }
+    .teach-section:first-of-type { border-top: 0; }
+    .teach-eyebrow { font-family: var(--font-meta); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); font-weight: 700; margin: 0 0 12px; }
+    .teach-section h2 { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.7rem; line-height: 1.15; margin: 0 0 10px; }
+    .teach-section > p { font-family: var(--font-body); font-size: 1.06rem; line-height: 1.7; color: var(--color-text); margin: 0 0 8px; }
+
+    /* problem contrast */
+    .contrast { width: 100%; border-collapse: collapse; margin-top: 20px; font-family: var(--font-meta); font-size: 0.98rem; }
+    .contrast td { padding: 13px 14px; border-top: 1px solid var(--color-rule); vertical-align: top; }
+    .contrast tr:first-child td { border-top: 0; }
+    .contrast td.a { color: var(--color-text-soft); width: 48%; }
+    .contrast td.b { color: var(--color-text); font-weight: 500; }
+    .contrast td.b::before { content: "→"; color: var(--color-accent); font-weight: 700; margin-right: 9px; }
+    @media (max-width: 600px){ .contrast, .contrast tbody, .contrast tr, .contrast td { display:block; width:auto; } .contrast td{ border-top:0; padding:2px 0; } .contrast tr{ padding:12px 0; border-top:1px solid var(--color-rule); } .contrast tr:first-child{ border-top:0; } }
+
+    /* two options */
+    .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
+    @media (max-width: 680px){ .opt-grid { grid-template-columns: 1fr; } }
+    .opt { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 14px; padding: 24px 26px; }
+    .opt.a { border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary); }
+    .opt .lbl { font-family: var(--font-meta); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+    .opt h3 { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.25rem; margin: 6px 0 6px; }
+    .pricepill { display:inline-block; font-family: var(--font-meta); font-size: 0.72rem; font-weight: 700; padding: 4px 11px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+    .pricepill.free { background: var(--color-primary); color: var(--color-bg); }
+    .pricepill.fee { background: #F0E4D6; color: var(--color-accent); }
+    .opt p { font-family: var(--font-body); color: var(--color-text-soft); font-size: 0.98rem; margin: 0; }
+    .opt ul { margin: 14px 0 0; padding-left: 18px; font-family: var(--font-meta); font-size: 0.92rem; color: var(--color-text); }
+    .opt li { margin: 7px 0; }
+
+    /* calculator */
+    .calc { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 16px; padding: 24px 26px; margin-top: 22px; }
+    .calc .ctrl { margin: 0 0 20px; }
+    .calc .lab { display:flex; justify-content: space-between; align-items: baseline; font-family: var(--font-meta); margin-bottom: 8px; }
+    .calc .lab span { font-weight: 700; color: var(--color-text); font-size: 0.95rem; }
+    .calc .lab output { font-family: var(--font-display); font-size: 1.4rem; color: var(--color-primary); font-weight: 600; }
+    .calc input[type=range]{ width:100%; -webkit-appearance:none; appearance:none; height:6px; border-radius:6px; background: linear-gradient(var(--color-secondary),var(--color-secondary)) no-repeat, var(--color-rule); background-size: var(--fill,50%) 100%; outline:none; }
+    .calc input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:var(--color-primary); border:3px solid var(--color-surface); box-shadow:0 1px 4px rgba(0,0,0,.25); cursor:pointer; }
+    .calc input[type=range]::-moz-range-thumb{ width:22px; height:22px; border-radius:50%; background:var(--color-primary); border:3px solid var(--color-surface); cursor:pointer; }
+    .headline { background: var(--color-primary); color: var(--color-bg); border-radius: 14px; padding: 26px; margin-top: 20px; text-align: center; }
+    .headline .big { font-family: var(--font-display); font-size: clamp(2.1rem,7vw,3rem); font-weight: 600; line-height: 1; margin: 6px 0; font-variant-numeric: tabular-nums; }
+    .headline .s { font-family: var(--font-meta); font-size: 0.98rem; color: #CBD6C2; }
+    .headline .pct { color: #EBD9C4; font-weight: 700; }
+    .headline .proj { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(247,243,236,.2); font-family: var(--font-meta); font-size: 0.92rem; color: #DCE1D3; display:flex; gap: 24px; justify-content:center; flex-wrap: wrap; }
+    .headline .proj b { color: var(--color-bg); }
+    .cmpwrap { overflow-x: auto; margin-top: 18px; }
+    .cmp { width: 100%; min-width: 500px; border-collapse: collapse; font-family: var(--font-meta); }
+    .cmp th, .cmp td { padding: 13px 16px; text-align: right; border-bottom: 1px solid var(--color-rule); }
+    .cmp th:first-child, .cmp td:first-child { text-align: left; }
+    .cmp thead th { font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text-soft); font-weight: 700; }
+    .cmp thead th.hy { color: var(--color-primary); }
+    .cmp .rl { color: var(--color-text-soft); }
+    .cmp .val { font-variant-numeric: tabular-nums; }
+    .cmp .val.hy { color: var(--color-primary); font-weight: 700; }
+    .cmp tr.keep td { background: #E7EBE2; }
+    .cmp tr.keep .rl { color: var(--color-primary); font-weight: 700; }
+    .calc .fine { font-family: var(--font-meta); font-size: 0.78rem; color: var(--color-text-soft); margin-top: 14px; line-height: 1.5; }
+
+    /* what-if */
+    .whatif { width: 100%; border-collapse: collapse; margin-top: 20px; font-family: var(--font-meta); font-size: 0.96rem; }
+    .whatif td { padding: 13px 14px; border-top: 1px solid var(--color-rule); vertical-align: top; }
+    .whatif tr:first-child td { border-top: 0; }
+    .whatif td.s { color: var(--color-text-soft); width: 42%; font-weight: 500; }
+    @media (max-width: 600px){ .whatif, .whatif tbody, .whatif tr, .whatif td{ display:block; width:auto; } .whatif td{ border-top:0; padding:1px 0; } .whatif tr{ padding:12px 0; border-top:1px solid var(--color-rule);} .whatif tr:first-child{border-top:0;} }
+
+    /* closing band */
+    .teach-cta { background: var(--color-primary); color: var(--color-bg); border-radius: 16px; padding: 34px 30px; margin: 10px auto 0; max-width: 860px; text-align: center; }
+    .teach-cta h2 { font-family: var(--font-display); color: var(--color-bg); font-size: 1.6rem; margin: 0 0 8px; font-weight: 500; }
+    .teach-cta p { font-family: var(--font-meta); color: #CBD6C2; max-width: 50ch; margin: 0 auto 22px; }
+    .teach-cta .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-symbol">
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="15" cy="15" r="4"/>
+          <path d="M15 2v6M15 22v6M2 15h6M22 15h6M6 6l4 4M20 20l4 4M6 24l4-4M20 10l4-4"/>
+        </svg>
+      </div>
+      <h1 class="masthead-title"><a href="index.html">Houston Yogis</a></h1>
+      <p class="masthead-tagline">A Journal of Movement, Nature &amp; Community</p>
+      <p class="masthead-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a> &middot; Houston, Texas</p>
+      <div class="masthead-rule"></div>
+      <nav class="masthead-nav">
+        <a href="index.html">Explore</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="guides.html">Guides</a>
+        <a href="journal/index.html">Journal</a>
+        <a href="join.html">Join the Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-wrap" style="padding-bottom:0;">
+      <p class="page-kicker">For Teachers &amp; Instructors</p>
+      <h2 class="page-title">Keep posting on Instagram. We'll give your classes a home.</h2>
+      <p class="lede" style="text-align:center;">You don't need to build a website. Partner with Houston Yogis: get your classes found, let people reserve and pay in advance, and keep a real record of who's coming &mdash; so you're not collecting money at the door while you're trying to teach.</p>
+      <p class="teach-hero-sub" style="text-align:center;">You stay on Instagram. We become the storefront your posts point to.</p>
+    </div>
+
+    <!-- problem -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">The problem</p>
+      <h2>Your class lives and dies in the feed</h2>
+      <p>Instagram is great for announcing. It's terrible for everything after.</p>
+      <table class="contrast"><tbody>
+        <tr><td class="a">Your post disappears down the feed in a day</td><td class="b">A permanent listing people can find any time</td></tr>
+        <tr><td class="a">Only your own followers ever see it</td><td class="b">Discovery by everyone browsing Houston's wellness calendar</td></tr>
+        <tr><td class="a">"DM me to reserve," then you lose track</td><td class="b">People reserve and pay in advance, in one place</td></tr>
+        <tr><td class="a">Chasing Venmo or cash on class day</td><td class="b">Prepaid reservations, handled before you arrive</td></tr>
+        <tr><td class="a">No idea who's actually coming</td><td class="b">A real record of who reserved</td></tr>
+      </tbody></table>
+    </section>
+
+    <!-- two options -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">Two ways to partner</p>
+      <h2>Pick what fits how you already work</h2>
+      <p>You don't have to change your ticketing to be on the calendar. Want us to handle it? Free to list. Love your own tools? Keep them.</p>
+      <div class="opt-grid">
+        <div class="opt a">
+          <span class="lbl">Option A · easiest</span><span class="pricepill free">Free to list</span>
+          <h3>We run your tickets</h3>
+          <p>You just teach.</p>
+          <ul>
+            <li>People reserve &amp; pay in advance (secure Square checkout)</li>
+            <li>Each person gets a QR ticket by email</li>
+            <li>You get a record of who's coming</li>
+            <li>Refunds handled through us</li>
+            <li>Paid out twice a month by direct deposit</li>
+            <li><b>No fee to be on the calendar</b></li>
+          </ul>
+        </div>
+        <div class="opt">
+          <span class="lbl">Option B · bring your own</span><span class="pricepill fee">Listing fee</span>
+          <h3>Keep your own ticket link</h3>
+          <p>Already on Eventbrite or Partiful? Keep it.</p>
+          <ul>
+            <li>Your listing's button goes to <b>your</b> platform</li>
+            <li>You keep your existing setup</li>
+            <li>You still get the full Houston Yogis audience</li>
+            <li>A simple flat listing fee per event</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- calculator -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">Run your numbers</p>
+      <h2>See what you keep versus doing it yourself</h2>
+      <p>Move the sliders to your real class. This compares letting us run the tickets against selling them yourself on Eventbrite.</p>
+      <div class="calc">
+        <div class="ctrl">
+          <div class="lab"><span>Ticket price</span><output id="oPrice">$15</output></div>
+          <input type="range" id="price" min="5" max="120" step="1" value="15">
+        </div>
+        <div class="ctrl">
+          <div class="lab"><span>People per class</span><output id="oQty">20</output></div>
+          <input type="range" id="qty" min="1" max="80" step="1" value="20">
+        </div>
+        <div class="ctrl">
+          <div class="lab"><span>Classes per month</span><output id="oFreq">4</output></div>
+          <input type="range" id="freq" min="1" max="30" step="1" value="4">
+        </div>
+
+        <div class="headline">
+          <div class="s">With Houston Yogis running your tickets, you keep</div>
+          <div class="big" id="saveClass">$26</div>
+          <div class="s">more per class than Eventbrite &mdash; <span class="pct" id="savePct">47% less in fees</span></div>
+          <div class="proj">
+            <div><b id="saveMonth">$104</b> more per month</div>
+            <div><b id="saveYear">$1,248</b> more per year</div>
+          </div>
+        </div>
+
+        <div class="cmpwrap"><table class="cmp">
+          <thead><tr><th>Per ticket</th><th class="hy">Houston Yogis</th><th>Eventbrite (DIY)</th></tr></thead>
+          <tbody>
+            <tr><td class="rl">Ticket price</td><td class="val" id="pHY">$15.00</td><td class="val" id="pEB">$15.00</td></tr>
+            <tr><td class="rl">Card processing</td><td class="val" id="procHY">–$0.74</td><td class="val" id="procEB">–$0.44</td></tr>
+            <tr><td class="rl">Platform / service fee</td><td class="val" id="svcHY">–$0.75</td><td class="val" id="svcEB">–$2.34</td></tr>
+            <tr class="keep"><td class="rl">You keep, per ticket</td><td class="val hy" id="keepHY">$13.51</td><td class="val" id="keepEB">$12.22</td></tr>
+          </tbody>
+        </table></div>
+        <p class="fine">Houston Yogis: Square processing (2.9% + $0.30) plus a 5% service fee. Eventbrite: 3.7% + $1.79 service plus 2.9% processing per ticket &mdash; its flat $1.79 is what makes it costly on lower-priced classes. US figures, verified Aug 2026; estimates for comparison, not quotes.</p>
+      </div>
+    </section>
+
+    <!-- what if -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">What happens when things change</p>
+      <h2>The honest "what if?"</h2>
+      <p>No surprises on class day.</p>
+      <table class="whatif"><tbody>
+        <tr><td class="s">You cancel your class</td><td>Give 24h+ notice &mdash; we tell everyone who reserved and refund them in full</td></tr>
+        <tr><td class="s">Weather kills an outdoor class</td><td>You make the call by a set time; everyone's refunded</td></tr>
+        <tr><td class="s">Someone cancels their spot</td><td>Full refund up to 24h before; none after &mdash; and we'll work with real hardship</td></tr>
+        <tr><td class="s">Someone doesn't show up</td><td>Their reservation stands, no refund &mdash; you already got paid</td></tr>
+        <tr><td class="s">Someone loses their ticket email</td><td>We resend it</td></tr>
+        <tr><td class="s">Your class sells out</td><td>Reservations close at the capacity you set</td></tr>
+        <tr><td class="s">Your class barely sells</td><td>You decide whether to run it &mdash; we bring the audience, not a guarantee</td></tr>
+        <tr><td class="s">A buyer disputes a charge</td><td>Square handles the dispute; Houston Yogis absorbs it &mdash; not your problem</td></tr>
+        <tr><td class="s">No internet at the venue</td><td>Check people in by phone; an offline option once it's field-tested</td></tr>
+        <tr><td class="s">You decide to leave</td><td>Future listings come down; you keep a full copy of your records</td></tr>
+      </tbody></table>
+    </section>
+
+    <!-- faq teaser -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">Still have questions?</p>
+      <h2>The full teacher FAQ</h2>
+      <p>Who sets the price, when you get paid, who owns your customer list, what you actually have to do &mdash; answered plainly.</p>
+      <div class="cta-row" style="margin-top:18px;">
+        <a href="teach-faq.html" class="cta-button">Read the full FAQ</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="teach-cta">
+    <h2>Ready to get a class on the calendar?</h2>
+    <p>Bring one upcoming class. We'll set up your listing and your prepaid reservations, and point your Instagram bio somewhere that finally sticks.</p>
+    <div class="cta-row">
+      <a href="register.html?role=teacher" class="cta-button on-dark">Register as a teacher</a>
+      <a href="register.html?role=teacher" class="cta-button on-dark">Just list my event</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-wordmark">Houston Yogis</span>
+      <p class="footer-mission">Houston Yogis documents Houston's wellness community through journalism, photography, education, and public events.</p>
+      <nav class="footer-links">
+        <a href="about.html">About</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <p class="footer-legal">Self-hosted. No trackers. Just words.&nbsp;&nbsp;&middot;&nbsp;&nbsp;&copy; 2026 Houston Yogis. All Rights Reserved.</p>
+      <p class="footer-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var $ = function(id){ return document.getElementById(id); };
+      var money = function(n){ return (n<0?"–$":"$") + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); };
+      var money0 = function(n){ return "$" + Math.round(n).toLocaleString('en-US'); };
+      // constants (US, verified Aug 2026)
+      var HY_SVC=0.05, SQ_PCT=0.029, SQ_FIX=0.30;
+      var EB_PCT=0.037, EB_FIX=1.79, EB_PROC=0.029;
+      function fill(el){ var min=+el.min,max=+el.max,v=+el.value; el.style.setProperty('--fill',((v-min)/(max-min)*100)+'%'); }
+      function calc(){
+        var price=+$('price').value, qty=+$('qty').value, freq=+$('freq').value;
+        var procHY=price*SQ_PCT+SQ_FIX, svcHY=price*HY_SVC, keepHY=price-procHY-svcHY;
+        var procEB=price*EB_PROC, svcEB=price*EB_PCT+EB_FIX, keepEB=price-procEB-svcEB;
+        var save=keepHY-keepEB;
+        var feeHY=procHY+svcHY, feeEB=procEB+svcEB;
+        var pct=feeEB>0?(1-feeHY/feeEB)*100:0;
+        $('oPrice').textContent=money0(price); $('oQty').textContent=qty; $('oFreq').textContent=freq;
+        $('pHY').textContent=money(price); $('pEB').textContent=money(price);
+        $('procHY').textContent=money(-procHY); $('procEB').textContent=money(-procEB);
+        $('svcHY').textContent=money(-svcHY); $('svcEB').textContent=money(-svcEB);
+        $('keepHY').textContent=money(keepHY); $('keepEB').textContent=money(keepEB);
+        var sc=save*qty;
+        $('saveClass').textContent=money0(sc);
+        $('saveMonth').textContent=money0(sc*freq);
+        $('saveYear').textContent=money0(sc*freq*12);
+        $('savePct').textContent=(pct>=0?Math.round(pct)+"% less in fees":"check pricing");
+      }
+      ['price','qty','freq'].forEach(function(id){ var el=$(id); el.addEventListener('input',function(){fill(el);calc();}); fill(el); });
+      calc();
+    })();
+  </script>
+
+</body>
+</html>
