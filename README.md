@@ -17,7 +17,7 @@ This site reuses the CSS architecture, HTML structure, and client-side publishin
 - Design fixes and pattern improvements can be ported between publications by hand.
 - A future shared/config-driven template (see "Future Work" below) can be extracted with minimal rework.
 
-Do not assume Hugo, a build step, or any templating engine is involved — like Cadenza, this is vanilla HTML/CSS/JS, deployed via GitHub Pages, with articles and metadata read at runtime via the GitHub Contents API. See `CLAUDE.md` and `PUBLISHING.md` for the conventions.
+Do not assume Hugo, a build step, or any templating engine is involved — like Cadenza Arthouse, this is vanilla HTML/CSS/JS, deployed via GitHub Pages, with articles and metadata read at runtime via the GitHub Contents API. See `CLAUDE.md` and `PUBLISHING.md` for the conventions.
 
 ## Project Structure
 
@@ -37,7 +37,7 @@ Build 1 was a direct reskin of Cadenza Arthouse's newspaper identity. Build 2 (2
 
 ## Future Work
 
-- Extract a true config-driven template (single config: brand name, tagline, nav, colors, GitHub repo) shared between Cadenza Arthouse, Houston Yogis, and future Cadenza Network publications — without requiring changes to the live `CadenzaFeed` repo until that pattern is proven here first.
+- Extract a true config-driven template (single config: brand name, tagline, nav, colors, GitHub repo) shared between Cadenza Arthouse, Houston Yogis, and future Cadenza Arthouse Network publications — without requiring changes to the live `CadenzaFeed` repo until that pattern is proven here first.
 - Wire up real payment processing for membership tiers.
 - Add a logo mark and photography once available.
 - Populate real articles, events, teachers, and organizations.
