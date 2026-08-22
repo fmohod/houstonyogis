@@ -13,7 +13,7 @@ config-driven template is ever extracted (see the README's "Future Work"), that
 is a separate, explicitly-scoped task — not something to do incidentally while
 working on Houston Yogis.
 
-## Architecture (same as Cadenza)
+## Architecture (same as Cadenza Arthouse)
 
 - No build step, no npm, no framework. Vanilla HTML/CSS/JS.
 - Articles are sequential numbered folders (`0001/`, `0002/`, …) at the repo
@@ -34,7 +34,7 @@ working on Houston Yogis.
 
 Build 1 was a direct reskin of Cadenza Arthouse's newspaper look (Bebas Neue,
 IBM Plex Mono, Established/date/count masthead, 8-item nav, card grid). That
-was deliberately reversed: Cadenza is the "Apollo" publication (order,
+was deliberately reversed: Cadenza Arthouse is the "Apollo" publication (order,
 documentation, newspaper); Houston Yogis is the "Artemis" publication
 (nature, movement, breath — editorial journal, think Kinfolk/Cherry Bombe,
 not the NYT). Same engine, different personality — see `README.md` and the
@@ -133,4 +133,4 @@ for the full back-and-forth that produced this. The question it leads with is
 
 Follow the numbered-folder pattern from `PUBLISHING.md` — no CLAUDE.md
 Game Meta Block here (Houston Yogis has no game layer; that is
-Cadenza-specific and out of scope for this repo unless explicitly requested).
+Cadenza Arthouse-specific and out of scope for this repo unless explicitly requested).
