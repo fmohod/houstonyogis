@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A Houston Yogis teacher — their story, their classes, and how to join or support their practice.">
+  <title>Teacher | Houston Yogis</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .prof { max-width: 720px; margin: 0 auto; }
+    .prof-hero { text-align: center; }
+    .prof-avatar { width: 148px; height: 148px; border-radius: 50%; margin: 0 auto 22px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 3.4rem; color: #F7F3EC; overflow: hidden; }
+    .prof-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .prof-name { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.05; margin: 0 0 6px; }
+    .prof-desc { font-family: var(--font-meta); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); font-weight: 700; margin: 0 0 12px; }
+    .prof-place { font-family: var(--font-meta); font-size: 0.85rem; color: var(--color-text-soft); margin: 0; }
+    .prof-focus { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 20px 0 0; }
+    .prof-focus span { font-family: var(--font-meta); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 6px 13px; border-radius: 999px; background: #E7EBE2; color: var(--color-primary); }
+    .prof-rule { border: 0; border-top: 1px solid var(--color-rule); max-width: 120px; margin: 40px auto; }
+    .prof-bio { font-family: var(--font-body); font-size: 1.1rem; line-height: 1.85; color: var(--color-text); }
+    .prof-bio p { margin: 0 0 22px; }
+    .prof-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+    .prof-links a { font-family: var(--font-meta); font-size: 0.85rem; color: var(--color-accent); border-bottom: 1px dotted var(--color-accent); }
+    .prof-h { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.4rem; margin: 0 0 4px; }
+    .prof-teaches { font-family: var(--font-meta); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-soft); text-align: center; margin: 8px 0 0; }
+    .prof-sessions { list-style: none; padding: 0; margin: 16px 0 0; }
+    .prof-sessions li { padding: 15px 0; border-top: 1px solid var(--color-rule); }
+    .prof-sessions li:first-child { border-top: 0; }
+    .prof-sessions .st { font-family: var(--font-display); font-size: 1.15rem; color: var(--color-primary); }
+    .prof-sessions .sw { display: block; font-family: var(--font-meta); font-size: 0.9rem; color: var(--color-text-soft); margin-top: 2px; }
+    .prof-cal { text-align: center; font-family: var(--font-meta); font-size: 0.8rem; margin-top: 18px; }
+    .prof-support { background: var(--color-primary); color: #F7F3EC; border-radius: 16px; padding: 32px; text-align: center; margin-top: 40px; display: none; }
+    .prof-support h3 { color: #F7F3EC; font-family: var(--font-display); font-weight: 500; margin: 0 0 8px; font-size: 1.55rem; }
+    .prof-support p { font-family: var(--font-meta); color: #CBD6C2; margin: 0 auto 22px; max-width: 46ch; }
+    .prof-back { text-align: center; margin-top: 34px; font-family: var(--font-meta); font-size: 0.85rem; }
+    .prof-back a { color: var(--color-accent); }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-symbol">
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="15" cy="15" r="4"/>
+          <path d="M15 2v6M15 22v6M2 15h6M22 15h6M6 6l4 4M20 20l4 4M6 24l4-4M20 10l4-4"/>
+        </svg>
+      </div>
+      <h1 class="masthead-title"><a href="index.html">Houston Yogis</a></h1>
+      <p class="masthead-tagline">A Journal of Movement, Nature &amp; Community</p>
+      <div class="masthead-rule"></div>
+      <nav class="masthead-nav">
+        <a href="index.html">Explore</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="guides.html" class="active">Guides</a>
+        <a href="journal/index.html">Journal</a>
+        <a href="join.html">Join the Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-wrap" style="padding-top:56px;">
+      <div class="prof" id="prof">
+        <div class="no-results" id="loading">Loading…</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  /* Houston Yogis — single teacher profile.
+   * Reads ?id=<slug> and renders that teacher from guides.json (CAMT-generated
+   * from the archive). Never hand-edit guides.json; enrich the archive instead.
+   * The support link is auto-detected: donate-<firstname>.html if it exists. */
+  (function () {
+    var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var ACCENTS = ['#22402C', '#B5723A', '#1B2B1F', '#8CA084'];
+
+    function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+    function wallTime(iso){ var m=/T(\d{2}):(\d{2})/.exec(iso||''); if(!m) return ''; var h=parseInt(m[1],10),s=h>=12?'PM':'AM'; return (h%12===0?12:h%12)+':'+m[2]+' '+s; }
+    function shortDate(iso){ var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso||''); return m?MONTHS[+m[2]-1]+' '+(+m[3]):''; }
+    function paragraphs(bio){ return String(bio||'').split(/\n{2,}/).filter(Boolean).map(function(p){return '<p>'+esc(p)+'</p>';}).join(''); }
+    function hash(s){ var h=0,i; for(i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; } return h; }
+    function getParam(n){ var m=new RegExp('[?&]'+n+'=([^&]+)').exec(window.location.search); return m?decodeURIComponent(m[1]):''; }
+
+    function notFound(){
+      document.getElementById('prof').innerHTML =
+        '<p class="page-kicker" style="text-align:center;">Guides</p>' +
+        '<h2 class="page-title">Teacher not found</h2>' +
+        '<p class="lede" style="text-align:center;">We couldn\'t find that teacher. ' +
+        '<a href="guides.html">Browse all guides</a>.</p>';
+    }
+
+    function render(g){
+      var first = (g.name||'').split(/\s+/)[0].toLowerCase().replace(/[^a-z]/g,'');
+      var accent = ACCENTS[hash(g.id||g.name) % ACCENTS.length];
+      var avatar = g.hero
+        ? '<img src="'+esc(g.hero)+'" alt="'+esc(g.name)+'">'
+        : esc((g.name||'?').charAt(0).toUpperCase());
+
+      var meta = [];
+      if (g.based_in) meta.push(esc(g.based_in));
+      (g.organizations||[]).forEach(function(o){ meta.push(esc(o)); });
+
+      var focus = (g.focus||[]).map(function(f){ return '<span>'+esc(f)+'</span>'; }).join('');
+
+      var linkNames = { website:'Website', instagram:'Instagram', ig:'Instagram', tiktok:'TikTok', facebook:'Facebook', youtube:'YouTube', email:'Email' };
+      var links = Object.keys(g.links||{}).map(function(k){
+        var url = g.links[k]; if(!url) return '';
+        return '<a href="'+esc(url)+'" target="_blank" rel="noopener">'+esc(linkNames[k]||k)+'</a>';
+      }).filter(Boolean).join('');
+
+      var next = (g.next_sessions||[]).map(function(s){
+        var precise = s.precision==='minute'||s.precision==='second'||s.precision==='hour';
+        var when = shortDate(s.date) + (precise ? ', '+wallTime(s.start) : '');
+        return '<li><span class="st">'+esc(s.title||'Class')+'</span>' +
+               '<span class="sw">'+esc(when) + (s.venue?' &middot; '+esc(s.venue):'') + '</span></li>';
+      }).join('');
+
+      document.title = g.name + ' | Houston Yogis';
+
+      var html =
+        '<div class="prof-hero">' +
+          '<div class="prof-avatar" style="background:'+accent+';">'+avatar+'</div>' +
+          '<h1 class="prof-name">'+esc(g.name)+'</h1>' +
+          (g.descriptor ? '<p class="prof-desc">'+esc(g.descriptor)+'</p>' : '') +
+          (meta.length ? '<p class="prof-place">'+meta.join(' &middot; ')+'</p>' : '') +
+          (focus ? '<div class="prof-focus">'+focus+'</div>' : '') +
+        '</div>' +
+        '<hr class="prof-rule">' +
+        '<div class="prof-bio">'+paragraphs(g.bio)+'</div>' +
+        (links ? '<div class="prof-links">'+links+'</div>' : '') +
+        ((g.venues||[]).length ? '<p class="prof-teaches">Teaches at &middot; '+g.venues.map(esc).join(' &middot; ')+'</p>' : '') +
+        (next ?
+          '<hr class="prof-rule">' +
+          '<h2 class="prof-h" style="text-align:center;">Upcoming classes</h2>' +
+          '<ul class="prof-sessions">'+next+'</ul>' +
+          '<p class="prof-cal"><a href="calendar.html">See the full calendar &rarr;</a></p>' : '') +
+        '<div class="prof-support" id="support">' +
+          '<h3>Support '+esc((g.name||'').split(/\s+/)[0])+'</h3>' +
+          '<p>Give what feels right toward '+esc((g.name||'').split(/\s+/)[0])+'’s teaching — tap an amount, donate securely by card.</p>' +
+          '<a class="cta-button on-dark" id="support-link" href="#">Support this teacher</a>' +
+        '</div>' +
+        '<p class="prof-back"><a href="guides.html">&larr; All Houston Yogis teachers</a></p>';
+
+      document.getElementById('prof').innerHTML = html;
+
+      // auto-detect a donation page for this teacher
+      if (first) {
+        var donateUrl = 'donate-' + first + '.html';
+        fetch(donateUrl, { method:'HEAD' }).then(function(r){
+          if (r.ok) {
+            document.getElementById('support-link').setAttribute('href', donateUrl);
+            document.getElementById('support').style.display = 'block';
+          }
+        }).catch(function(){});
+      }
+    }
+
+    var id = getParam('id');
+    if (!id) { notFound(); return; }
+    fetch('guides.json', { cache:'no-cache' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        var g = d && d.guides && d.guides.filter(function(x){ return x.id === id; })[0];
+        if (g) render(g); else notFound();
+      })
+      .catch(notFound);
+  })();
+  </script>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-wordmark">Houston Yogis</span>
+      <p class="footer-mission">Houston Yogis documents Houston's wellness community through journalism, photography, education, and public events.</p>
+      <nav class="footer-links">
+        <a href="about.html">About</a>
+        <a href="teach.html">Teach with Us</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <p class="footer-legal">Self-hosted. No trackers. Just words.&nbsp;&nbsp;&middot;&nbsp;&nbsp;&copy; 2026 Houston Yogis. All Rights Reserved.</p>
+      <p class="footer-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
