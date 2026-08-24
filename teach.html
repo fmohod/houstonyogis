@@ -30,7 +30,9 @@
     .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
     @media (max-width: 680px){ .opt-grid { grid-template-columns: 1fr; } }
     .opt { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 14px; padding: 24px 26px; }
-    .opt.a { border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary); }
+    /* A is recommended, not "selected": gentle tint + a badge, matched border weight so it never reads as a chosen radio option. */
+    .opt.a { background: color-mix(in srgb, var(--color-primary) 4%, var(--color-surface)); border-color: color-mix(in srgb, var(--color-secondary) 70%, var(--color-rule)); }
+    .opt .rec { display:inline-block; font-family: var(--font-meta); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--color-bg); background: var(--color-accent); padding: 3px 11px; border-radius: 999px; margin: 0 0 12px; }
     .opt .lbl { font-family: var(--font-meta); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
     .opt h3 { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.25rem; margin: 6px 0 6px; }
     .pricepill { display:inline-block; font-family: var(--font-meta); font-size: 0.72rem; font-weight: 700; padding: 4px 11px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
@@ -39,6 +41,14 @@
     .opt p { font-family: var(--font-body); color: var(--color-text-soft); font-size: 0.98rem; margin: 0; }
     .opt ul { margin: 14px 0 0; padding-left: 18px; font-family: var(--font-meta); font-size: 0.92rem; color: var(--color-text); }
     .opt li { margin: 7px 0; }
+
+    /* type-in boxes paired with the sliders (keyboard + no-touch friendly) */
+    .numwrap { display:inline-flex; align-items:center; gap:1px; background: var(--color-bg); border:1px solid var(--color-rule); border-radius:9px; padding:2px 8px; }
+    .numwrap:focus-within { border-color: var(--color-primary); box-shadow:0 0 0 2px color-mix(in srgb, var(--color-primary) 22%, transparent); }
+    .numwrap .pfx { font-family: var(--font-display); font-size:1.15rem; color: var(--color-primary); font-weight:600; }
+    .numbox { font-family: var(--font-display); font-size:1.4rem; color: var(--color-primary); font-weight:600; border:0; background:transparent; width:2.8ch; text-align:right; padding:0; outline:none; font-variant-numeric: tabular-nums; -moz-appearance: textfield; }
+    .numbox.wide { width:3.6ch; }
+    .numbox::-webkit-outer-spin-button, .numbox::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
 
     /* calculator */
     .calc { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 16px; padding: 24px 26px; margin-top: 22px; }
@@ -127,10 +137,9 @@
         </svg>
       </div>
       <h1 class="masthead-title"><a href="index.html">Houston Yogis</a></h1>
-      <p class="masthead-tagline">A Journal of Movement, Nature &amp; Community</p>
+      <p class="masthead-tagline">A Journal of Movement, Nature, &amp; Community</p>
       <div class="masthead-rule"></div>
       <nav class="masthead-nav">
-        <a href="index.html">Explore</a>
         <a href="calendar.html">Calendar</a>
         <a href="guides.html">Guides</a>
         <a href="journal/index.html">Journal</a>
@@ -171,6 +180,7 @@
       <p>You don't have to change your ticketing to be on the calendar. Want us to handle it? Free to list. Love your own tools? Keep them.</p>
       <div class="opt-grid">
         <div class="opt a">
+          <div><span class="rec">Most teachers start here</span></div>
           <span class="lbl">Option A · easiest</span><span class="pricepill free">Free to list</span>
           <h3>We run your tickets</h3>
           <p>You just teach.</p>
@@ -180,7 +190,7 @@
             <li>Each person gets a QR ticket by email</li>
             <li>You get a record of who's coming</li>
             <li>Refunds handled through us</li>
-            <li>Paid out twice a month by direct deposit</li>
+            <li>Paid out twice a month on a set schedule</li>
             <li><b>No fee to be on the calendar</b></li>
           </ul>
         </div>
@@ -205,15 +215,18 @@
       <p>Enter your class, then pick a pricing model. If the <em>other</em> model would keep you more, we'll tell you — and either way you'll see how it beats running it yourself on Eventbrite.</p>
       <div class="calc">
         <div class="ctrl">
-          <div class="lab"><span>Ticket price</span><output id="oPrice">$20</output></div>
+          <div class="lab"><span>Ticket price</span>
+            <span class="numwrap"><span class="pfx">$</span><input type="number" class="numbox" id="nPrice" min="5" max="120" step="1" value="20" inputmode="numeric" aria-label="Ticket price in dollars"></span></div>
           <input type="range" id="price" min="5" max="120" step="1" value="20">
         </div>
         <div class="ctrl">
-          <div class="lab"><span>People per class</span><output id="oQty">20</output></div>
+          <div class="lab"><span>People per class</span>
+            <span class="numwrap"><input type="number" class="numbox" id="nQty" min="1" max="80" step="1" value="20" inputmode="numeric" aria-label="People per class"></span></div>
           <input type="range" id="qty" min="1" max="80" step="1" value="20">
         </div>
         <div class="ctrl">
-          <div class="lab"><span>Classes per month</span><output id="oFreq">4</output></div>
+          <div class="lab"><span>Classes per month</span>
+            <span class="numwrap"><input type="number" class="numbox" id="nFreq" min="1" max="30" step="1" value="4" inputmode="numeric" aria-label="Classes per month"></span></div>
           <input type="range" id="freq" min="1" max="30" step="1" value="4">
         </div>
 
@@ -265,6 +278,7 @@
           <input type="range" id="days" min="1" max="7" step="1" value="3">
         </div>
         <p class="rdays">Count each of those as a whole day gone. Hand it off and that's about <span class="amt" id="daysYr">156</span> <b>full days a year</b> back — roughly <b id="daysMo">13</b> a month for people, rest, and the things that matter.</p>
+        <p class="opp"><b>And a day isn't just time — every day carries overhead, whether you do one hour of admin or ten.</b> The rent on the place you sit to do it. The light bill and utilities. The Canva subscription for the flyers. The coffee and the grocery run that got you to the desk. You pay a full day's overhead just to open the laptop. So read the days above as money, not only time: that's <b id="daysYrCost">156</b> days a year you'd stop funding overhead just to do admin — and reclaiming even one day a week is close to <b>two months of rent</b> back in your pocket, on top of the hours.</p>
         <p>When Houston Yogis handles the posting, reservations, and payments, that time comes back. And honestly — whether or not you ever work with us — we hope this makes one thing plain: <b>your time is precious.</b> The best thing any of us can do is invest it in people and experiences that enrich our lives: our communities, the people we love, our animals and our homes, and real rest. If this helps you do more of that, we're glad.</p>
       </div>
     </section>
@@ -278,13 +292,13 @@
         <tr><td class="s">You cancel your class</td><td>Give 24h+ notice &mdash; we tell everyone who reserved and refund them in full</td></tr>
         <tr><td class="s">Weather kills an outdoor class</td><td>You make the call by a set time; everyone's refunded</td></tr>
         <tr><td class="s">Someone cancels their spot</td><td>Full refund up to 24h before; none after &mdash; and we'll work with real hardship</td></tr>
-        <tr><td class="s">Someone doesn't show up</td><td>Their reservation stands, no refund &mdash; you already got paid</td></tr>
+        <tr><td class="s">Someone doesn't show up</td><td>No one's penalized — their prepaid spot can be honored at a future session; we sort it out case by case</td></tr>
         <tr><td class="s">Someone loses their ticket email</td><td>We resend it</td></tr>
         <tr><td class="s">Your class sells out</td><td>Reservations close at the capacity you set</td></tr>
         <tr><td class="s">Your class barely sells</td><td>You decide whether to run it &mdash; we bring the audience, not a guarantee</td></tr>
         <tr><td class="s">A buyer disputes a charge</td><td>Square handles the dispute; Houston Yogis absorbs it &mdash; not your problem</td></tr>
         <tr><td class="s">No internet at the venue</td><td>Check people in by phone; an offline option once it's field-tested</td></tr>
-        <tr><td class="s">You decide to leave</td><td>Future listings come down; you keep a full copy of your records</td></tr>
+        <tr><td class="s">You decide to leave</td><td>Future listings come down; the records you were already given stay yours. No lock-in</td></tr>
       </tbody></table>
     </section>
 
@@ -348,7 +362,6 @@
         var hy5=price*HY_PCT, keep5=price-sq-hy5;
         var hyF=HY_FLAT, keepF=price-sq-hyF;
         var procEB=price*EB_PROC, svcEB=price*EB_PCT+EB_FIX, keepEB=price-procEB-svcEB;
-        $('oPrice').textContent=money0(price); $('oQty').textContent=qty; $('oFreq').textContent=freq;
         // table (both models + EB)
         $('p5').textContent=money(price); $('pF').textContent=money(price); $('pEB').textContent=money(price);
         $('proc5').textContent=money(-sq); $('procF').textContent=money(-sq); $('procEB').textContent=money(-procEB);
@@ -387,7 +400,16 @@
         for(var i=0;i<btns.length;i++){ btns[i].classList.toggle('active', btns[i].getAttribute('data-model')===m); }
         calc();
       }
-      ['price','qty','freq'].forEach(function(id){ var el=$(id); el.addEventListener('input',function(){fill(el);calc();}); fill(el); });
+      // two-way bind each slider with its type-in box; typed values clamp to the slider range
+      function bind(sliderId, numId){
+        var s=$(sliderId), n=$(numId), mn=+s.min, mx=+s.max;
+        var clamp=function(v){ return isNaN(v)?null:Math.min(mx,Math.max(mn,v)); };
+        s.addEventListener('input', function(){ n.value=s.value; fill(s); calc(); });
+        n.addEventListener('input', function(){ var c=clamp(parseInt(n.value,10)); if(c===null) return; s.value=c; fill(s); calc(); });
+        n.addEventListener('change', function(){ var c=clamp(parseInt(n.value,10)); n.value=(c===null?s.value:c); s.value=n.value; fill(s); calc(); });
+        fill(s);
+      }
+      bind('price','nPrice'); bind('qty','nQty'); bind('freq','nFreq');
       var mbtns=document.querySelectorAll('.mbtn');
       for(var i=0;i<mbtns.length;i++){ mbtns[i].addEventListener('click', function(){ setModel(this.getAttribute('data-model')); }); }
       document.addEventListener('click', function(e){ if(e.target && e.target.classList && e.target.classList.contains('sw')){ setModel(e.target.getAttribute('data-model')); } });
@@ -423,6 +445,7 @@
           $('oDays').textContent=v;
           $('daysYr').textContent=Math.round(v*52);
           $('daysMo').textContent=Math.round(v*4.33);
+          $('daysYrCost').textContent=Math.round(v*52);
         };
         d.addEventListener('input',function(){fillBar(d);calcD();});
         fillBar(d);calcD();
