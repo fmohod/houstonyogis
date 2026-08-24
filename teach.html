@@ -75,6 +75,17 @@
     .whatif td.s { color: var(--color-text-soft); width: 42%; font-weight: 500; }
     @media (max-width: 600px){ .whatif, .whatif tbody, .whatif tr, .whatif td{ display:block; width:auto; } .whatif td{ border-top:0; padding:1px 0; } .whatif tr{ padding:12px 0; border-top:1px solid var(--color-rule);} .whatif tr:first-child{border-top:0;} }
 
+    /* reclaim-time panel */
+    .reclaim { background: #F0E4D6; border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent); border-radius: 16px; padding: 28px 30px; margin-top: 8px; }
+    .reclaim p { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.72; color: var(--color-text); margin: 0 0 14px; }
+    .reclaim p:last-child { margin-bottom: 0; }
+    .reclaim .amt { font-family: var(--font-display); color: var(--color-accent); font-weight: 700; }
+
+    /* founder note */
+    .founder { background: var(--color-surface); border: 1px solid var(--color-rule); border-left: 4px solid var(--color-accent); border-radius: 0 14px 14px 0; padding: 26px 30px; margin-top: 8px; }
+    .founder p { font-family: var(--font-body); font-style: italic; font-size: 1.12rem; line-height: 1.75; color: var(--color-text); margin: 0 0 14px; }
+    .founder .sig { font-family: var(--font-meta); font-style: normal; font-weight: 700; color: var(--color-primary); font-size: 0.95rem; margin: 0; }
+
     /* closing band */
     .teach-cta { background: var(--color-primary); color: var(--color-bg); border-radius: 16px; padding: 34px 30px; margin: 10px auto 0; max-width: 860px; text-align: center; }
     .teach-cta h2 { font-family: var(--font-display); color: var(--color-bg); font-size: 1.6rem; margin: 0 0 8px; font-weight: 500; }
@@ -203,6 +214,16 @@
       </div>
     </section>
 
+    <!-- reclaim time -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">Reclaim your time</p>
+      <h2>The bigger number isn't fees — it's your time</h2>
+      <div class="reclaim">
+        <p>Fees are the small number. The big one is the time you lose to admin. One teacher told us she spends about <b>three working days a week</b> just posting schedules, chasing RSVPs, and collecting payments. When Houston Yogis handles that, she gets roughly <b>two of those days back</b>.</p>
+        <p>Two days is room for <b>four to six more classes a week</b> — on the order of <span class="amt">$10,000–$15,000 a year</span> in teaching income you <em>could</em> earn. But it's your time: spend it teaching, or on family, travel, or rest. Either way, it's yours again.</p>
+      </div>
+    </section>
+
     <!-- what if -->
     <section class="teach-section">
       <p class="teach-eyebrow">What happens when things change</p>
@@ -229,6 +250,15 @@
       <p>Who sets the price, when you get paid, who owns your customer list, what you actually have to do &mdash; answered plainly.</p>
       <div class="cta-row" style="margin-top:18px;">
         <a href="teach-faq.html" class="cta-button">Read the full FAQ</a>
+      </div>
+    </section>
+
+    <!-- founder note -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">A note from the founder</p>
+      <div class="founder">
+        <p>I hate working on computers and doing administrative work — which is exactly why I built this. I want teachers to focus on the thing they love, teaching, not on managing calendars, chasing payments, and posting schedules. My goal is simple: give you your time back, to spend on whatever makes you happy.</p>
+        <p class="sig">— Frankie, Houston Yogis</p>
       </div>
     </section>
 
