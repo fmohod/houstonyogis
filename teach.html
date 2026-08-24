@@ -67,6 +67,16 @@
     .cmp tr.keep td { background: #E7EBE2; }
     .cmp tr.keep .rl { color: var(--color-primary); font-weight: 700; }
     .calc .fine { font-family: var(--font-meta); font-size: 0.78rem; color: var(--color-text-soft); margin-top: 14px; line-height: 1.5; }
+    .modelpick { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:6px 0 2px; }
+    .modelpick .mplab { font-family: var(--font-meta); font-size:.85rem; font-weight:700; color: var(--color-text); }
+    .mbtn { font-family: var(--font-meta); font-size:.86rem; font-weight:700; padding:8px 16px; border-radius:999px; border:1px solid var(--color-rule); background: var(--color-surface); color: var(--color-text-soft); cursor:pointer; transition:all .12s; }
+    .mbtn.active { background: var(--color-primary); color: var(--color-bg); border-color: var(--color-primary); }
+    .nudge { font-family: var(--font-meta); font-size:.95rem; border-radius:10px; padding:13px 16px; margin-top:16px; line-height:1.5; }
+    .nudge.better { background:#F0E4D6; border:1px solid var(--color-accent); color: var(--color-text); }
+    .nudge.best { background:#E7EBE2; border:1px solid var(--color-secondary); color: var(--color-primary); }
+    .nudge .sw { color: var(--color-accent); font-weight:700; cursor:pointer; text-decoration:underline; }
+    .cmp th.best, .cmp td.bestcol { background: rgba(140,160,132,.14); }
+    .cmp th.best { color: var(--color-primary); }
 
     /* what-if */
     .whatif { width: 100%; border-collapse: collapse; margin-top: 20px; font-family: var(--font-meta); font-size: 0.96rem; }
@@ -192,7 +202,7 @@
     <section class="teach-section">
       <p class="teach-eyebrow">Run your numbers</p>
       <h2>See what you keep versus doing it yourself</h2>
-      <p>Move the sliders to your real class. This compares letting us run the tickets against selling them yourself on Eventbrite.</p>
+      <p>Enter your class, then pick a pricing model. If the <em>other</em> model would keep you more, we'll tell you — and either way you'll see how it beats running it yourself on Eventbrite.</p>
       <div class="calc">
         <div class="ctrl">
           <div class="lab"><span>Ticket price</span><output id="oPrice">$20</output></div>
@@ -207,26 +217,34 @@
           <input type="range" id="freq" min="1" max="30" step="1" value="4">
         </div>
 
+        <div class="modelpick">
+          <span class="mplab">Your pricing model:</span>
+          <button type="button" class="mbtn active" data-model="pct">5% of the ticket</button>
+          <button type="button" class="mbtn" data-model="flat">$1 per ticket</button>
+        </div>
+
         <div class="headline">
-          <div class="s">With Houston Yogis running your tickets, you keep</div>
-          <div class="big" id="saveClass">$26</div>
-          <div class="s">more per class than Eventbrite &mdash; <span class="pct" id="savePct">47% less in fees</span></div>
+          <div class="s">With the <b id="modelName">5%</b> model, you keep</div>
+          <div class="big" id="saveClass">$25</div>
+          <div class="s">more per class than Eventbrite &mdash; <span class="pct" id="savePct">40% less in fees</span></div>
           <div class="proj">
-            <div><b id="saveMonth">$104</b> more per month</div>
-            <div><b id="saveYear">$1,248</b> more per year</div>
+            <div><b id="saveMonth">$100</b> more per month</div>
+            <div><b id="saveYear">$1,200</b> more per year</div>
           </div>
         </div>
 
+        <div class="nudge best" id="nudge">—</div>
+
         <div class="cmpwrap"><table class="cmp">
-          <thead><tr><th>Per ticket</th><th class="hy">Houston Yogis</th><th>Eventbrite (DIY)</th></tr></thead>
+          <thead><tr><th>Per ticket</th><th class="hy" id="h5">HY · 5%</th><th class="hy" id="hF">HY · $1 flat</th><th>Eventbrite</th></tr></thead>
           <tbody>
-            <tr><td class="rl">Ticket price</td><td class="val" id="pHY">$15.00</td><td class="val" id="pEB">$15.00</td></tr>
-            <tr><td class="rl">Card processing</td><td class="val" id="procHY">–$0.74</td><td class="val" id="procEB">–$0.44</td></tr>
-            <tr><td class="rl">Platform / service fee</td><td class="val" id="svcHY">–$0.75</td><td class="val" id="svcEB">–$2.34</td></tr>
-            <tr class="keep"><td class="rl">You keep, per ticket</td><td class="val hy" id="keepHY">$13.51</td><td class="val" id="keepEB">$12.22</td></tr>
+            <tr><td class="rl">Ticket price</td><td class="val" id="p5">$20.00</td><td class="val" id="pF">$20.00</td><td class="val" id="pEB">$20.00</td></tr>
+            <tr><td class="rl">Card processing</td><td class="val" id="proc5">–$0.88</td><td class="val" id="procF">–$0.88</td><td class="val" id="procEB">–$0.58</td></tr>
+            <tr><td class="rl">Service fee</td><td class="val" id="svc5">–$1.00</td><td class="val" id="svcF">–$1.00</td><td class="val" id="svcEB">–$2.53</td></tr>
+            <tr class="keep"><td class="rl">You keep</td><td class="val" id="keep5">$18.12</td><td class="val" id="keepF">$18.12</td><td class="val" id="keepEB">$16.89</td></tr>
           </tbody>
         </table></div>
-        <p class="fine">Houston Yogis: Square processing (2.9% + $0.30) plus a 5% service fee. Eventbrite: 3.7% + $1.79 service plus 2.9% processing per ticket &mdash; its flat $1.79 is what makes it costly on lower-priced classes. The average U.S. drop-in class runs ~$21 (2026); a yoga instructor's hour is worth ~$25–37. US figures, verified Aug 2026; estimates for comparison, not quotes.</p>
+        <p class="fine">Two Houston Yogis models — you pick one: <b>5% of the ticket</b> (cheaper on lower-priced classes) or <b>$1 flat per ticket</b> (cheaper on higher-priced classes); they're equal at $20. Both include Square processing (2.9% + $0.30), and both beat Eventbrite (3.7% + $1.79 + 2.9%) at real class prices. US figures, Aug 2026; estimates, not quotes.</p>
       </div>
     </section>
 
@@ -320,28 +338,59 @@
       var money = function(n){ return (n<0?"–$":"$") + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); };
       var money0 = function(n){ return "$" + Math.round(n).toLocaleString('en-US'); };
       // constants (US, verified Aug 2026)
-      var HY_SVC=0.05, SQ_PCT=0.029, SQ_FIX=0.30;
+      var HY_PCT=0.05, HY_FLAT=1.00, SQ_PCT=0.029, SQ_FIX=0.30;
       var EB_PCT=0.037, EB_FIX=1.79, EB_PROC=0.029;
+      var model='pct';
       function fill(el){ var min=+el.min,max=+el.max,v=+el.value; el.style.setProperty('--fill',((v-min)/(max-min)*100)+'%'); }
       function calc(){
         var price=+$('price').value, qty=+$('qty').value, freq=+$('freq').value;
-        var procHY=price*SQ_PCT+SQ_FIX, svcHY=price*HY_SVC, keepHY=price-procHY-svcHY;
+        var sq=price*SQ_PCT+SQ_FIX;
+        var hy5=price*HY_PCT, keep5=price-sq-hy5;
+        var hyF=HY_FLAT, keepF=price-sq-hyF;
         var procEB=price*EB_PROC, svcEB=price*EB_PCT+EB_FIX, keepEB=price-procEB-svcEB;
-        var save=keepHY-keepEB;
-        var feeHY=procHY+svcHY, feeEB=procEB+svcEB;
-        var pct=feeEB>0?(1-feeHY/feeEB)*100:0;
         $('oPrice').textContent=money0(price); $('oQty').textContent=qty; $('oFreq').textContent=freq;
-        $('pHY').textContent=money(price); $('pEB').textContent=money(price);
-        $('procHY').textContent=money(-procHY); $('procEB').textContent=money(-procEB);
-        $('svcHY').textContent=money(-svcHY); $('svcEB').textContent=money(-svcEB);
-        $('keepHY').textContent=money(keepHY); $('keepEB').textContent=money(keepEB);
-        var sc=save*qty;
+        // table (both models + EB)
+        $('p5').textContent=money(price); $('pF').textContent=money(price); $('pEB').textContent=money(price);
+        $('proc5').textContent=money(-sq); $('procF').textContent=money(-sq); $('procEB').textContent=money(-procEB);
+        $('svc5').textContent=money(-hy5); $('svcF').textContent=money(-hyF); $('svcEB').textContent=money(-svcEB);
+        $('keep5').textContent=money(keep5); $('keepF').textContent=money(keepF); $('keepEB').textContent=money(keepEB);
+        // which HY model is best for this price
+        var bestModel = keep5>=keepF ? 'pct' : 'flat';
+        var bestKeep  = Math.max(keep5,keepF);
+        // mark best column
+        $('h5').className='hy'+(bestModel==='pct'?' best':''); $('hF').className='hy'+(bestModel==='flat'?' best':'');
+        $('keep5').className='val'+(bestModel==='pct'?' bestcol':''); $('keepF').className='val'+(bestModel==='flat'?' bestcol':'');
+        // selected model vs Eventbrite
+        var selKeep = model==='pct'?keep5:keepF;
+        var selFee  = sq + (model==='pct'?hy5:hyF), ebFee=procEB+svcEB;
+        var pctLess = ebFee>0?(1-selFee/ebFee)*100:0;
+        var sc=(selKeep-keepEB)*qty;
+        $('modelName').textContent = model==='pct'?'5%':'$1-per-ticket';
         $('saveClass').textContent=money0(sc);
         $('saveMonth').textContent=money0(sc*freq);
         $('saveYear').textContent=money0(sc*freq*12);
-        $('savePct').textContent=(pct>=0?Math.round(pct)+"% less in fees":"check pricing");
+        $('savePct').textContent=(pctLess>=0?Math.round(pctLess)+"% less in fees":"check pricing");
+        // the nudge
+        var nudge=$('nudge');
+        if(model!==bestModel){
+          var diff=bestKeep-selKeep;
+          nudge.className='nudge better';
+          nudge.innerHTML="💡 At $"+price+", the <b>"+(bestModel==='pct'?'5%':'$1 flat')+"</b> model keeps you <b>"+money(diff)+" more per ticket</b> ("+money(diff*qty)+"/class). <span class=\"sw\" data-model=\""+bestModel+"\">Switch →</span>";
+        } else {
+          nudge.className='nudge best';
+          nudge.innerHTML="✓ You picked the better model for a $"+price+" ticket. Both Houston Yogis models beat Eventbrite.";
+        }
+      }
+      function setModel(m){
+        model=m;
+        var btns=document.querySelectorAll('.mbtn');
+        for(var i=0;i<btns.length;i++){ btns[i].classList.toggle('active', btns[i].getAttribute('data-model')===m); }
+        calc();
       }
       ['price','qty','freq'].forEach(function(id){ var el=$(id); el.addEventListener('input',function(){fill(el);calc();}); fill(el); });
+      var mbtns=document.querySelectorAll('.mbtn');
+      for(var i=0;i<mbtns.length;i++){ mbtns[i].addEventListener('click', function(){ setModel(this.getAttribute('data-model')); }); }
+      document.addEventListener('click', function(e){ if(e.target && e.target.classList && e.target.classList.contains('sw')){ setModel(e.target.getAttribute('data-model')); } });
       calc();
     })();
   </script>
