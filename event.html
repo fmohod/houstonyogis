@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reserve your spot for a Houston Yogis class — free reservations and prepaid tickets, with a QR ticket by email.">
+  <title>Reserve | Houston Yogis</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── event page — scoped, built on the site's own tokens ── */
+    .ev-wrap { max-width: 640px; margin: 0 auto; padding: 0 24px 48px; }
+    .ev-kicker { font-family: var(--font-meta); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); font-weight: 700; margin: 0 0 10px; }
+    .ev-title { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.1; margin: 0 0 14px; text-wrap: balance; }
+    .ev-meta { font-family: var(--font-meta); font-size: 1rem; color: var(--color-text); line-height: 1.7; margin: 0 0 6px; }
+    .ev-meta .lbl { display:inline-block; width: 84px; color: var(--color-text-soft); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; vertical-align: baseline; }
+    .ev-desc { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.72; color: var(--color-text); margin: 20px 0 0; }
+    .ev-rule { height:1px; background: var(--color-rule); border:0; margin: 30px 0; }
+
+    .reserve { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 16px; padding: 26px 28px; }
+    .reserve h2 { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.4rem; margin: 0 0 6px; }
+    .reserve .sub { font-family: var(--font-meta); font-size: 0.92rem; color: var(--color-text-soft); margin: 0 0 18px; line-height: 1.55; }
+    .reserve label { display:block; font-family: var(--font-meta); font-weight: 700; font-size: 0.82rem; color: var(--color-text); margin: 0 0 5px; }
+    .reserve input[type=text], .reserve input[type=email], .reserve select { width: 100%; font-family: var(--font-body); font-size: 1rem; color: var(--color-text); background: var(--color-bg); border: 1px solid var(--color-rule); border-radius: 9px; padding: 11px 13px; margin: 0 0 16px; }
+    .reserve input:focus, .reserve select:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent); }
+    .reserve button { font-family: var(--font-meta); font-weight: 700; font-size: 1rem; color: var(--color-bg); background: var(--color-primary); border: 0; border-radius: 999px; padding: 13px 28px; cursor: pointer; width: 100%; }
+    .reserve button:disabled { opacity: 0.6; cursor: default; }
+    .reserve .fine { font-family: var(--font-meta); font-size: 0.74rem; color: var(--color-text-soft); margin: 14px 0 0; line-height: 1.5; }
+    .ev-msg { border-radius: 12px; padding: 22px 24px; font-family: var(--font-body); font-size: 1.05rem; line-height: 1.6; }
+    .ev-msg.ok { background: var(--color-primary-soft); color: var(--color-primary); border: 1px solid var(--color-secondary); }
+    .ev-msg.bad { background: #F0E4D6; color: var(--color-text); border: 1px solid var(--color-accent); }
+    .ev-back { font-family: var(--font-meta); font-size: 0.8rem; margin: 26px 0 0; }
+    .ev-paid { font-family: var(--font-meta); font-size: 0.95rem; color: var(--color-text-soft); }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-symbol">
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="15" cy="15" r="4"/>
+          <path d="M15 2v6M15 22v6M2 15h6M22 15h6M6 6l4 4M20 20l4 4M6 24l4-4M20 10l4-4"/>
+        </svg>
+      </div>
+      <h1 class="masthead-title"><a href="index.html">Houston Yogis</a></h1>
+      <p class="masthead-tagline">A Journal of Movement, Nature, &amp; Community</p>
+      <div class="masthead-rule"></div>
+      <nav class="masthead-nav">
+        <a href="calendar.html">Calendar</a>
+        <a href="guides.html">Guides</a>
+        <a href="journal/index.html">Journal</a>
+        <a href="join.html">Join the Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="ev-wrap" style="padding-top:52px;">
+      <!-- No-JS / not-found / loading state; the script replaces it. -->
+      <div id="event-root">
+        <p class="ev-kicker">Reserve</p>
+        <h2 class="ev-title">Loading&hellip;</h2>
+        <p class="ev-meta">If this doesn&rsquo;t load, head back to the <a href="calendar.html">calendar</a> and pick your class there.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  /* Houston Yogis — single event / reservation page.
+   *
+   * Reads calendar.json (GENERATED by CAMT from the archive — never hand-edited)
+   * and renders the one event named by ?id=<entity_id>. The stable entity_id is
+   * emitted beside the display slug per ADR-0002, so a reservation link keyed to
+   * it survives a reschedule/retitle. A FREE / donation / RSVP event shows a
+   * reservation form; a paid event with its own registration link points there.
+   *
+   * The reservation posts to Web3Forms with a distinct subject line and the
+   * hidden event_id — that is the data contract CAMT's reservation intake reads
+   * to issue a $0 ticket + QR. Keep the field names in sync with that ingest.
+   */
+  (function () {
+    var MONTHS = ['January','February','March','April','May','June','July',
+                  'August','September','October','November','December'];
+    var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var WEB3FORMS_KEY = '5dc0d589-7995-41de-9f4a-32031f98948e';
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
+    }
+    function getParam(k) {
+      var m = new RegExp('[?&]' + k + '=([^&]*)').exec(location.search || '');
+      return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : '';
+    }
+    /* Venue wall time, never the viewer's — a 10am Houston class reads 10am to
+     * everyone. Do NOT convert to the visitor's zone. (Matches calendar.html.) */
+    function wallTime(iso) {
+      var m = /T(\d{2}):(\d{2})/.exec(iso || '');
+      if (!m) return '';
+      var h = parseInt(m[1], 10), suffix = h >= 12 ? 'PM' : 'AM';
+      return (h % 12 === 0 ? 12 : h % 12) + ':' + m[2] + ' ' + suffix;
+    }
+    function longDate(iso) {
+      var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+      if (!m) return '';
+      var d = new Date(+m[1], +m[2] - 1, +m[3]);
+      return DAYS[d.getDay()] + ', ' + MONTHS[+m[2] - 1] + ' ' + (+m[3]) + ', ' + m[1];
+    }
+    function isPast(dateStr) {
+      var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(dateStr || '');
+      if (!m) return false;
+      var d = new Date(+m[1], +m[2] - 1, +m[3]); d.setHours(0,0,0,0);
+      var today = new Date(); today.setHours(0,0,0,0);
+      return d < today;
+    }
+    /* Free-to-reserve when nobody has to pay to get in: explicit free/rsvp, or a
+     * donation class (entry is free, giving is optional), or simply no cost set. */
+    function isFree(e) {
+      var a = (e.admission || '').toLowerCase();
+      if (a === 'free' || a === 'rsvp' || a === 'donation') return true;
+      if (a === 'paid' || a === 'ticketed') return false;
+      return !e.cost;
+    }
+
+    var root = document.getElementById('event-root');
+
+    function notFound() {
+      root.innerHTML =
+        '<p class="ev-kicker">Reserve</p>' +
+        '<h2 class="ev-title">We couldn&rsquo;t find that class</h2>' +
+        '<p class="ev-meta">It may have already happened or been moved. See what&rsquo;s coming up on the <a href="calendar.html">calendar</a>.</p>';
+    }
+
+    function render(e) {
+      var precise = e.precision === 'minute' || e.precision === 'second' || e.precision === 'hour';
+      var time = precise ? wallTime(e.start) : '';
+      var who = (e.instructors && e.instructors.length) ? e.instructors.join(', ') : '';
+      var cancelled = e.status === 'cancelled';
+
+      var head =
+        '<p class="ev-kicker">' + (cancelled ? 'Cancelled' : 'Reserve your spot') + '</p>' +
+        '<h1 class="ev-title">' + esc(e.title) + '</h1>' +
+        '<p class="ev-meta"><span class="lbl">When</span>' + esc(longDate(e.date)) +
+          (time ? ' &middot; ' + esc(time) : '') + '</p>' +
+        (e.venue ? '<p class="ev-meta"><span class="lbl">Where</span>' + esc(e.venue) + '</p>' : '') +
+        (who ? '<p class="ev-meta"><span class="lbl">With</span>' + esc(who) + '</p>' : '') +
+        (e.cost ? '<p class="ev-meta"><span class="lbl">Cost</span>' + esc(e.cost) + '</p>' : '') +
+        (e.description ? '<p class="ev-desc">' + esc(e.description) + '</p>' : '') +
+        (e.arrival_notes ? '<p class="ev-desc">' + esc(e.arrival_notes) + '</p>' : '') +
+        '<hr class="ev-rule">';
+
+      var body;
+      if (cancelled) {
+        body = '<div class="ev-msg bad">This class has been cancelled' +
+               (e.reason ? ' &mdash; ' + esc(e.reason) : '') +
+               '. If you reserved, you&rsquo;ll hear from us. Sorry for the change of plans.</div>';
+      } else if (isPast(e.date)) {
+        body = '<div class="ev-msg bad">This class has already happened. Catch the next one on the <a href="calendar.html">calendar</a>.</div>';
+      } else if (e.registration_url) {
+        body = '<div class="reserve"><h2>Reserve on the class page</h2>' +
+               '<p class="sub">This class takes reservations through its own page.</p>' +
+               '<a class="cta-button solid" href="' + esc(e.registration_url) + '" target="_blank" rel="noopener"><span>Reserve your spot</span></a></div>';
+      } else if (isFree(e)) {
+        body = reserveForm(e);
+      } else {
+        body = '<div class="reserve"><h2>Reservations opening soon</h2>' +
+               '<p class="sub ev-paid">Tickets for this class aren&rsquo;t open online yet. Check the <a href="calendar.html">calendar</a> or reach out via <a href="support.html">Support</a> and we&rsquo;ll get you a spot.</p></div>';
+      }
+
+      root.innerHTML = head + body +
+        '<p class="ev-back"><a href="calendar.html">&larr; Back to the calendar</a></p>';
+
+      var form = document.getElementById('reserve-form');
+      if (form) wireForm(form, e);
+    }
+
+    function reserveForm(e) {
+      var donation = (e.admission || '').toLowerCase() === 'donation';
+      return '' +
+      '<div class="reserve" id="reserve-box">' +
+        '<h2>Reserve your free spot</h2>' +
+        '<p class="sub">' +
+          (donation
+            ? 'Entry is free &mdash; give what you like at the class, only if you want to. Reserve below and we&rsquo;ll email your QR ticket so you can just show up.'
+            : 'Free to reserve. We&rsquo;ll email you a QR ticket &mdash; show it at the door, no cash, no line.') +
+          ' Limited to <b>2 per person</b> so spots stay open for everyone &mdash; a bigger group? Have each person reserve their own.' +
+        '</p>' +
+        '<form id="reserve-form" action="https://api.web3forms.com/submit" method="POST">' +
+          '<input type="hidden" name="access_key" value="' + WEB3FORMS_KEY + '">' +
+          '<input type="hidden" name="subject" value="Houston Yogis — Reservation">' +
+          '<input type="hidden" name="from_name" value="Houston Yogis Reservation">' +
+          '<input type="hidden" name="redirect" value="thank-you.html">' +
+          '<input type="hidden" name="event_id" value="' + esc(e.entity_id || e.id || '') + '">' +
+          '<input type="hidden" name="event_title" value="' + esc(e.title || '') + '">' +
+          '<input type="hidden" name="event_date" value="' + esc(e.date || '') + '">' +
+          '<input type="hidden" name="event_start" value="' + esc(e.start || '') + '">' +
+          '<input type="hidden" name="event_venue" value="' + esc(e.venue || '') + '">' +
+          '<input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">' +
+          '<label for="r-name">Your name</label>' +
+          '<input id="r-name" type="text" name="name" autocomplete="name" required>' +
+          '<label for="r-email">Email <span style="font-weight:400;color:var(--color-text-soft)">(where your ticket goes)</span></label>' +
+          '<input id="r-email" type="email" name="email" autocomplete="email" required>' +
+          '<label for="r-party">How many spots?</label>' +
+          '<select id="r-party" name="party_size">' +
+            '<option value="1">Just me</option>' +
+            '<option value="2">2 (me + a guest)</option>' +
+          '</select>' +
+          '<button type="submit">Reserve my spot</button>' +
+          '<p class="fine">We use your email only to send your ticket and class updates. We don&rsquo;t sell your data. One QR per person; show it at the door.</p>' +
+        '</form>' +
+      '</div>';
+    }
+
+    function wireForm(form, e) {
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var btn = form.querySelector('button[type=submit]');
+        var email = (form.querySelector('input[name=email]') || {}).value || '';
+        btn.disabled = true; btn.textContent = 'Reserving…';
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var box = document.getElementById('reserve-box');
+            if (data && data.success) {
+              box.innerHTML =
+                '<div class="ev-msg ok"><strong>You&rsquo;re reserved.</strong><br>' +
+                'We&rsquo;ll email your QR ticket to <strong>' + esc(email) + '</strong> &mdash; ' +
+                'keep an eye on your inbox, then just show it at the door. See you at ' +
+                esc(e.title) + '.</div>';
+            } else {
+              box.querySelector('.fine').innerHTML =
+                'Something went wrong sending that. Please try again, or reach us via <a href="support.html">Support</a>.';
+              btn.disabled = false; btn.textContent = 'Reserve my spot';
+            }
+          })
+          .catch(function () {
+            btn.disabled = false; btn.textContent = 'Reserve my spot';
+            form.querySelector('.fine').innerHTML =
+              'Something went wrong sending that. Please try again, or reach us via <a href="support.html">Support</a>.';
+          });
+      });
+    }
+
+    var wantId = getParam('id');
+    if (!wantId) { notFound(); return; }
+
+    fetch('calendar.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data || !Array.isArray(data.events)) { notFound(); return; }
+        var hit = null;
+        for (var i = 0; i < data.events.length; i++) {
+          var e = data.events[i];
+          if (e.entity_id === wantId || e.id === wantId) { hit = e; break; }
+        }
+        hit ? render(hit) : notFound();
+      })
+      .catch(function () { notFound(); });
+  })();
+  </script>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-wordmark">Houston Yogis</span>
+      <p class="footer-mission">Houston Yogis documents Houston's wellness community through journalism, photography, education, and public events.</p>
+      <nav class="footer-links">
+        <a href="about.html">About</a>
+        <a href="teach.html">Teach with Us</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <p class="footer-legal">Self-hosted. No trackers. Just words.&nbsp;&nbsp;&middot;&nbsp;&nbsp;&copy; 2026 Houston Yogis. All Rights Reserved.</p>
+      <p class="footer-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
