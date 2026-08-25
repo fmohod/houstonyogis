@@ -92,7 +92,12 @@
         if (g.based_in) meta.push(esc(g.based_in));
         (g.organizations || []).forEach(function (o) { meta.push(esc(o)); });
 
-        var next = (g.next_sessions || []).map(function (s) {
+        var today = new Date(); today.setHours(0, 0, 0, 0);
+        var next = (g.next_sessions || []).filter(function (s) {
+          // drop sessions already past -- generated data can lag a day between publishes
+          var dm = /^(\d{4})-(\d{2})-(\d{2})/.exec(s.date || '');
+          return !dm || new Date(+dm[1], +dm[2] - 1, +dm[3]) >= today;
+        }).map(function (s) {
           var precise = s.precision === 'minute' || s.precision === 'second' ||
                         s.precision === 'hour';
           var when = shortDate(s.date) + (precise ? ', ' + wallTime(s.start) : '');

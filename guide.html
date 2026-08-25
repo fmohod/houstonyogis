@@ -111,7 +111,15 @@
         return '<a href="'+esc(url)+'" target="_blank" rel="noopener">'+esc(linkNames[k]||k)+'</a>';
       }).filter(Boolean).join('');
 
-      var next = (g.next_sessions||[]).map(function(s){
+      // Drop sessions already in the past. next_sessions is pre-filtered at
+      // generation, but generated data can be a day stale between publishes, so a
+      // yesterday-upcoming class must not still read as upcoming today. (Same rule
+      // calendar.html applies -- render only what is genuinely still ahead.)
+      var today = new Date(); today.setHours(0,0,0,0);
+      var next = (g.next_sessions||[]).filter(function(s){
+        var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s.date||'');
+        return !m || new Date(+m[1],+m[2]-1,+m[3]) >= today;
+      }).map(function(s){
         var precise = s.precision==='minute'||s.precision==='second'||s.precision==='hour';
         var when = shortDate(s.date) + (precise ? ', '+wallTime(s.start) : '');
         return '<li><span class="st">'+esc(s.title||'Class')+'</span>' +
