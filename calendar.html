@@ -136,7 +136,15 @@
                     (detail.length ? '<p>' + detail.join(' &middot; ') + '</p>' : '') +
                     (notes.length ? '<p>' + notes.join(' ') + '</p>' : '') +
                     (e.registration_url && !cancelled
-                      ? '<p><a href="' + esc(e.registration_url) + '">Register</a></p>' : '') +
+                      ? '<p><a href="' + esc(e.registration_url) + '">Register</a></p>'
+                      : (e.instructor_url && !cancelled
+                        /* No ticket link for this class. Send the reader to the
+                           best page we hold for the teacher rather than nowhere
+                           (owner ruling 2026-08-26). Worded so it never reads as
+                           a booking link, because it is not one. */
+                        ? '<p><a href="' + esc(e.instructor_url) + '" rel="noopener">'
+                          + 'More from ' + esc((e.instructors && e.instructors[0]) || 'the instructor')
+                          + '</a></p>' : '')) +
                   '</div>' +
                   '<div class="list-right">' +
                     DAYS[d.getDay()].slice(0, 3).toUpperCase() + ' ' + d.getDate() +
