@@ -233,7 +233,7 @@
         <div class="modelpick">
           <span class="mplab">Your pricing model:</span>
           <button type="button" class="mbtn active" data-model="pct">5% of the ticket</button>
-          <button type="button" class="mbtn" data-model="flat">$1 per ticket</button>
+          <button type="button" class="mbtn" data-model="flat">$1.50 per ticket</button>
         </div>
 
         <div class="headline">
@@ -249,15 +249,15 @@
         <div class="nudge best" id="nudge">—</div>
 
         <div class="cmpwrap"><table class="cmp">
-          <thead><tr><th>Per ticket</th><th class="hy" id="h5">HY · 5%</th><th class="hy" id="hF">HY · $1 flat</th><th>Eventbrite</th></tr></thead>
+          <thead><tr><th>Per ticket</th><th class="hy" id="h5">HY · 5%</th><th class="hy" id="hF">HY · $1.50 flat</th><th>Eventbrite</th></tr></thead>
           <tbody>
             <tr><td class="rl">Ticket price</td><td class="val" id="p5">$20.00</td><td class="val" id="pF">$20.00</td><td class="val" id="pEB">$20.00</td></tr>
             <tr><td class="rl">Card processing</td><td class="val" id="proc5">–$0.88</td><td class="val" id="procF">–$0.88</td><td class="val" id="procEB">–$0.58</td></tr>
-            <tr><td class="rl">Service fee</td><td class="val" id="svc5">–$1.00</td><td class="val" id="svcF">–$1.00</td><td class="val" id="svcEB">–$2.53</td></tr>
-            <tr class="keep"><td class="rl">You keep</td><td class="val" id="keep5">$18.12</td><td class="val" id="keepF">$18.12</td><td class="val" id="keepEB">$16.89</td></tr>
+            <tr><td class="rl">Service fee</td><td class="val" id="svc5">–$1.00</td><td class="val" id="svcF">–$1.50</td><td class="val" id="svcEB">–$2.53</td></tr>
+            <tr class="keep"><td class="rl">You keep</td><td class="val" id="keep5">$18.12</td><td class="val" id="keepF">$17.62</td><td class="val" id="keepEB">$16.89</td></tr>
           </tbody>
         </table></div>
-        <p class="fine">Two Houston Yogis models — you pick one: <b>5% of the ticket</b> (cheaper on lower-priced classes) or <b>$1 flat per ticket</b> (cheaper on higher-priced classes); they're equal at $20. Both include Square processing (2.9% + $0.30), and both beat Eventbrite (3.7% + $1.79 + 2.9%) at real class prices. US figures, Aug 2026; estimates, not quotes.</p>
+        <p class="fine">Two Houston Yogis models — you pick one: <b>5% of the ticket</b> (cheaper on lower-priced classes) or <b>$1.50 flat per ticket</b> (cheaper on higher-priced classes); they're equal at $30. Both include Square processing (2.9% + $0.30), and both beat Eventbrite (3.7% + $1.79 + 2.9%) at real class prices. US figures, Aug 2026; estimates, not quotes.</p>
       </div>
     </section>
 
@@ -352,7 +352,7 @@
       var money = function(n){ return (n<0?"–$":"$") + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); };
       var money0 = function(n){ return "$" + Math.round(n).toLocaleString('en-US'); };
       // constants (US, verified Aug 2026)
-      var HY_PCT=0.05, HY_FLAT=1.00, SQ_PCT=0.029, SQ_FIX=0.30;
+      var HY_PCT=0.05, HY_FLAT=1.50, SQ_PCT=0.029, SQ_FIX=0.30;
       var EB_PCT=0.037, EB_FIX=1.79, EB_PROC=0.029;
       var model='pct';
       function fill(el){ var min=+el.min,max=+el.max,v=+el.value; el.style.setProperty('--fill',((v-min)/(max-min)*100)+'%'); }
@@ -378,7 +378,7 @@
         var selFee  = sq + (model==='pct'?hy5:hyF), ebFee=procEB+svcEB;
         var pctLess = ebFee>0?(1-selFee/ebFee)*100:0;
         var sc=(selKeep-keepEB)*qty;
-        $('modelName').textContent = model==='pct'?'5%':'$1-per-ticket';
+        $('modelName').textContent = model==='pct'?'5%':'$1.50-per-ticket';
         $('saveClass').textContent=money0(sc);
         $('saveMonth').textContent=money0(sc*freq);
         $('saveYear').textContent=money0(sc*freq*12);
@@ -388,7 +388,7 @@
         if(model!==bestModel){
           var diff=bestKeep-selKeep;
           nudge.className='nudge better';
-          nudge.innerHTML="💡 At $"+price+", the <b>"+(bestModel==='pct'?'5%':'$1 flat')+"</b> model keeps you <b>"+money(diff)+" more per ticket</b> ("+money(diff*qty)+"/class). <span class=\"sw\" data-model=\""+bestModel+"\">Switch →</span>";
+          nudge.innerHTML="💡 At $"+price+", the <b>"+(bestModel==='pct'?'5%':'$1.50 flat')+"</b> model keeps you <b>"+money(diff)+" more per ticket</b> ("+money(diff*qty)+"/class). <span class=\"sw\" data-model=\""+bestModel+"\">Switch →</span>";
         } else {
           nudge.className='nudge best';
           nudge.innerHTML="✓ You picked the better model for a $"+price+" ticket. Both Houston Yogis models beat Eventbrite.";
