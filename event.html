@@ -233,7 +233,9 @@
                 '<div class="ev-msg ok"><strong>You&rsquo;re reserved.</strong><br>' +
                 'We&rsquo;ll email your QR ticket to <strong>' + esc(email) + '</strong> &mdash; ' +
                 'keep an eye on your inbox, then just show it at the door. See you at ' +
-                esc(e.title) + '.</div>';
+                esc(e.title) + '.' +
+                '<br><span style="font-family:var(--font-meta); font-size:0.85rem;">First time? ' +
+                '<a href="attend.html" style="color:var(--color-primary); font-weight:700;">Here&rsquo;s what to expect &rarr;</a></span></div>';
             } else {
               box.querySelector('.fine').innerHTML =
                 'Something went wrong sending that. Please try again, or reach us via <a href="support.html">Support</a>.';

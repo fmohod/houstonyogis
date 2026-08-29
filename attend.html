@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to attend a Houston Yogis class — reserve your spot, get a QR ticket by email, show it at the door. Free, donation, and prepaid classes, refunds, and what to expect at your first class.">
+  <title>Attend a Class | Houston Yogis</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* three-step "how it works" band */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 820px; margin: 8px auto 40px; padding: 0 24px; }
+    @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } }
+    .step { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 14px; padding: 24px 22px; text-align: center; }
+    .step .n { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary); color: var(--color-bg); font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; margin: 0 0 12px; }
+    .step h3 { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.15rem; margin: 0 0 6px; }
+    .step p { font-family: var(--font-body); font-size: 0.95rem; color: var(--color-text-soft); margin: 0; line-height: 1.55; }
+    .step p b { color: var(--color-text); font-weight: 600; }
+
+    /* FAQ accordions — same instrument as the teacher FAQ */
+    .faq-wrap { max-width: 780px; margin: 0 auto; padding: 0 24px 40px; }
+    .faq-group { margin: 0 0 32px; }
+    .faq-group > h2 { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.35rem; margin: 0 0 4px; }
+    .faq-group > .gsub { font-family: var(--font-meta); font-size: 0.85rem; color: var(--color-text-soft); margin: 0 0 12px; }
+    details { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 12px; margin: 10px 0; overflow: hidden; }
+    details[open] { border-color: var(--color-secondary); }
+    summary { list-style: none; cursor: pointer; padding: 16px 20px; font-family: var(--font-meta); font-weight: 700; font-size: 1rem; color: var(--color-text); display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+    summary::-webkit-details-marker { display: none; }
+    summary .chev { flex: none; width: 16px; height: 16px; border-right: 2px solid var(--color-accent); border-bottom: 2px solid var(--color-accent); transform: rotate(45deg); transition: transform .18s; }
+    details[open] summary .chev { transform: rotate(-135deg); }
+    .ans { padding: 0 20px 18px; font-family: var(--font-body); font-size: 1rem; color: var(--color-text); line-height: 1.65; }
+    .ans p { margin: 0 0 12px; } .ans p:last-child { margin-bottom: 0; }
+    .ans a { color: var(--color-accent); }
+    .faq-cta { background: var(--color-primary); color: var(--color-bg); border-radius: 16px; padding: 30px; margin: 6px 0 40px; text-align: center; }
+    .faq-cta h2 { font-family: var(--font-display); color: var(--color-bg); font-weight: 500; margin: 0 0 8px; font-size: 1.5rem; }
+    .faq-cta p { font-family: var(--font-meta); color: #CBD6C2; max-width: 46ch; margin: 0 auto 20px; }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-symbol">
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="15" cy="15" r="4"/>
+          <path d="M15 2v6M15 22v6M2 15h6M22 15h6M6 6l4 4M20 20l4 4M6 24l4-4M20 10l4-4"/>
+        </svg>
+      </div>
+      <h1 class="masthead-title"><a href="index.html">Houston Yogis</a></h1>
+      <p class="masthead-tagline">A Journal of Movement, Nature, &amp; Community</p>
+      <div class="masthead-rule"></div>
+      <nav class="masthead-nav">
+        <a href="calendar.html">Calendar</a>
+        <a href="guides.html">Guides</a>
+        <a href="journal/index.html">Journal</a>
+        <a href="join.html">Join the Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-wrap" style="padding-bottom:24px;">
+      <p class="page-kicker">Attend a Class</p>
+      <h2 class="page-title">Reserve, get a QR, show up.</h2>
+      <p class="lede" style="text-align:center;">No app to download, no account to make. Find a class on the calendar, reserve your spot, and we&rsquo;ll email you a QR ticket &mdash; show it at the door and you&rsquo;re in. Here&rsquo;s exactly how it works.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>Find a class</h3>
+        <p>Browse the <a href="calendar.html" style="color:var(--color-accent)">calendar</a> &mdash; classes, workshops, and gatherings across Houston. Open the one you want.</p>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <h3>Reserve your spot</h3>
+        <p>Enter your name and email. <b>Free classes</b> just need a reservation; <b>paid ones</b> check out securely by card.</p>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <h3>Show your QR</h3>
+        <p>We email you a QR ticket. Show it on your phone at the door &mdash; the teacher scans it, and you&rsquo;re checked in.</p>
+      </div>
+    </div>
+
+    <div class="faq-wrap">
+
+      <div class="faq-group">
+        <h2>Reserving</h2>
+        <p class="gsub">Getting a spot, in plain terms.</p>
+        <details open><summary>How do I reserve?<span class="chev"></span></summary>
+          <div class="ans"><p>Open a class on the <a href="calendar.html">calendar</a> and reserve your spot with your name and email. If it&rsquo;s free, that&rsquo;s it &mdash; you&rsquo;re done. If it&rsquo;s a paid class, you check out securely by card first. Either way, your QR ticket lands in your inbox.</p></div></details>
+        <details><summary>Do I need an account or an app?<span class="chev"></span></summary>
+          <div class="ans"><p>No. There&rsquo;s nothing to sign up for and nothing to install &mdash; just your email so we can send your ticket. Your ticket lives in that email.</p></div></details>
+        <details><summary>Free, donation, or paid &mdash; what&rsquo;s the difference?<span class="chev"></span></summary>
+          <div class="ans"><p>Some classes are <b>free</b> to reserve. Some are <b>donation-based</b> &mdash; entry is free and you give what you like, only if you want to. Some are <b>prepaid</b> at a set ticket price. The class page tells you which before you reserve; a reservation just holds your spot.</p></div></details>
+        <details><summary>Why reserve at all if a class is free?<span class="chev"></span></summary>
+          <div class="ans"><p>So the teacher knows you&rsquo;re coming and can plan &mdash; and so nobody has to collect money or take names at the door. Your spot is held, and you walk straight in.</p></div></details>
+      </div>
+
+      <div class="faq-group">
+        <h2>Your QR ticket</h2>
+        <p class="gsub">The thing that gets you in.</p>
+        <details><summary>What is a QR ticket?<span class="chev"></span></summary>
+          <div class="ans"><p>It&rsquo;s a little square code we email you after you reserve. At the class, you show it on your phone screen and the teacher scans it with their camera &mdash; that&rsquo;s your check-in. No paper, no line.</p></div></details>
+        <details><summary>Do I have to print it?<span class="chev"></span></summary>
+          <div class="ans"><p>No &mdash; your phone screen is perfect. You can print it if you&rsquo;d rather, but there&rsquo;s no need.</p></div></details>
+        <details><summary>I didn&rsquo;t get my ticket, or I lost the email.<span class="chev"></span></summary>
+          <div class="ans"><p>Check your spam or promotions folder first &mdash; it arrives from <b>Houston Yogis</b>. Still nothing? Reach out through <a href="support.html">Support</a> and we&rsquo;ll resend it. Nobody gets turned away over a missing QR code.</p></div></details>
+      </div>
+
+      <div class="faq-group">
+        <h2>When plans change</h2>
+        <p class="gsub">Life happens &mdash; here&rsquo;s what we do.</p>
+        <details><summary>What if I can&rsquo;t make it?<span class="chev"></span></summary>
+          <div class="ans"><p>For a <b>free class</b>, just let us know so someone else can take the spot &mdash; no harm done. For a <b>paid class</b>, you get a full refund if you cancel at least 24 hours before it starts. After that we can&rsquo;t refund automatically, but real life happens &mdash; reach out through <a href="support.html">Support</a> and we&rsquo;ll work with you (class credit, or making your spot good for another class). Missing a class you didn&rsquo;t cancel isn&rsquo;t held against you.</p></div></details>
+        <details><summary>The class got cancelled &mdash; weather, or the teacher.<span class="chev"></span></summary>
+          <div class="ans"><p>You&rsquo;re notified and <b>refunded in full, automatically</b>. Nothing for you to chase. For outdoor classes the teacher makes the weather call by a set time before start.</p></div></details>
+        <details><summary>Can I bring a friend?<span class="chev"></span></summary>
+          <div class="ans"><p>Reserve for the two of you if the class page lets you pick more than one spot &mdash; otherwise it&rsquo;s one ticket per person, so have your friend grab their own. Free classes are capped at two per person so spots stay open for everyone.</p></div></details>
+      </div>
+
+      <div class="faq-group">
+        <h2>Safety &amp; privacy</h2>
+        <p class="gsub">The part you shouldn&rsquo;t have to wonder about.</p>
+        <details><summary>Is my payment safe?<span class="chev"></span></summary>
+          <div class="ans"><p>Yes. Paid classes check out through <b>Square</b> &mdash; the same secure processor millions of businesses use. Houston Yogis never sees or stores your card number, and the site runs <b>no trackers</b>.</p></div></details>
+        <details><summary>What do you do with my email?<span class="chev"></span></summary>
+          <div class="ans"><p>We use it to send your ticket and the occasional class update, with a clear way to opt out &mdash; and that&rsquo;s all. <b>We don&rsquo;t sell your data</b>, and we don&rsquo;t use it for anything beyond running Houston Yogis.</p></div></details>
+      </div>
+
+      <div class="faq-group">
+        <h2>At the class</h2>
+        <p class="gsub">Your first time, made easy.</p>
+        <details><summary>What should I bring, and what do I do when I get there?<span class="chev"></span></summary>
+          <div class="ans"><p>Wear something you can move in, bring water, and bring a mat if you have one (many teachers keep spares &mdash; the class page or listing will say). Arrive a few minutes early, have your QR ready on your phone, and the teacher takes it from there.</p></div></details>
+        <details><summary>It&rsquo;s an outdoor class and there&rsquo;s no signal.<span class="chev"></span></summary>
+          <div class="ans"><p>No problem. Your reservation is on the teacher&rsquo;s list, so if a QR won&rsquo;t scan they can check you in by name. You won&rsquo;t be stuck at the gate because a park has no bars.</p></div></details>
+      </div>
+
+      <div class="faq-cta">
+        <h2>Ready to find a class?</h2>
+        <p>Everything happening across Houston&rsquo;s wellness community, in one place.</p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="calendar.html" class="cta-button on-dark">See the calendar</a>
+          <a href="guides.html" class="cta-button on-dark">Meet the teachers</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-wordmark">Houston Yogis</span>
+      <p class="footer-mission">Houston Yogis documents Houston's wellness community through journalism, photography, education, and public events.</p>
+      <nav class="footer-links">
+        <a href="about.html">About</a>
+        <a href="attend.html">Attend a Class</a>
+        <a href="teach.html">Teach with Us</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <p class="footer-legal">Self-hosted. No trackers. Just words.&nbsp;&nbsp;&middot;&nbsp;&nbsp;&copy; 2026 Houston Yogis. All Rights Reserved.</p>
+      <p class="footer-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
