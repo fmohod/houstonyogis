@@ -43,6 +43,7 @@ GitHub Contents API. You don't register new articles anywhere by hand.
 <meta property="og:image" content="https://houstonyogis.net/{{NNNN}}/thumb.jpg">
 <meta property="article:published_time" content="{{YYYY-MM-DD}}T12:00:00-05:00">
 <meta property="article:section" content="{{Community}}">
+<meta name="cadenza:type-of-work" content="{{news}}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{TITLE}}">
@@ -85,10 +86,27 @@ link to it).
 | `description` | yes | 1–2 sentences. Reused for OG/Twitter/JSON-LD. |
 | `article-id` | yes | The 4-digit folder number, e.g. `0001`. |
 | `article:section` | yes | Category: Community / Teachers / Events / etc. |
+| `cadenza:type-of-work` | yes | What KIND of writing this is: `news` · `analysis` · `opinion` · `review` · `sponsored`. |
+
+### Type of work is a different axis from section, and must not be minted from it
+
+**`article:section` says where a piece sits. `cadenza:type-of-work` says what it IS.** A profile
+of a teacher and an opinion piece about teaching can both be `Teachers`; only one of them is the
+paper's opinion. CAS §12.6 requires the distinction and requires that it **not** be derived --
+not from `section`, and not from `story_intent.purpose`. Both describe something else, and a
+guess that happens to be right most of the time is the kind of error nobody catches.
+
+So it is set by hand, per article, and `sponsored` is the value that makes the whole field worth
+having: it is the one a reader is owed and the one an inference would never produce.
+
+> Added on the owner's ruling, Attention Desk `article-type-of-work-field` (2026-08-22):
+> *"Yes if adding the field is going to help us get things going go ahead and add the field and
+> we can fill it in with the appropriate information."*
 
 ## 4. Pre-publish checklist
 
 - [ ] Folder is the next sequential 4-digit number.
 - [ ] `article-id` matches the folder number.
+- [ ] `cadenza:type-of-work` set deliberately -- and `sponsored` if it is.
 - [ ] `thumb.jpg` (or `.png`) present; photos in `images/`.
 - [ ] Prose is inside `<div class="article-body">`.
