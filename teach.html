@@ -197,7 +197,7 @@
         <div class="opt">
           <span class="lbl">Option B · bring your own</span><span class="pricepill fee">Listing fee</span>
           <h3>Keep your own ticket link</h3>
-          <p>Already on Eventbrite or Partiful? Keep it.</p>
+          <p>Already on another ticketing platform? Keep it.</p>
           <ul>
             <li>Your listing's button goes to <b>your</b> platform</li>
             <li>You keep your existing setup</li>
@@ -232,7 +232,7 @@
     <section class="teach-section">
       <p class="teach-eyebrow">Run your numbers</p>
       <h2>See what you keep versus doing it yourself</h2>
-      <p>Enter your class. Houston Yogis' recommended default is a small <b>% of the ticket, taken out of your payout</b> — shown here against the flat-per-ticket option, and against doing it yourself on Eventbrite. At signup you pick from a short menu of fee models; these two are the ones most instructors compare.</p>
+      <p>Enter your class. Houston Yogis' recommended default is a small <b>% of the ticket, taken out of your payout</b> — shown here against the flat-per-ticket option, and against doing it yourself on a major ticket provider. At signup you pick from a short menu of fee models; these two are the ones most instructors compare.</p>
       <div class="calc">
         <div class="ctrl">
           <div class="lab"><span>Ticket price</span>
@@ -259,7 +259,7 @@
         <div class="headline">
           <div class="s">With the <b id="modelName">5%</b> model, you keep</div>
           <div class="big" id="saveClass">$25</div>
-          <div class="s">more per class than Eventbrite &mdash; <span class="pct" id="savePct">40% less in fees</span></div>
+          <div class="s">more per class than a major provider &mdash; <span class="pct" id="savePct">40% less in fees</span></div>
           <div class="proj">
             <div><b id="saveMonth">$100</b> more per month</div>
             <div><b id="saveYear">$1,200</b> more per year</div>
@@ -269,7 +269,7 @@
         <div class="nudge best" id="nudge">—</div>
 
         <div class="cmpwrap"><table class="cmp">
-          <thead><tr><th>Per ticket</th><th class="hy" id="h5">HY · 5%</th><th class="hy" id="hF">HY · $1.50 flat</th><th>Eventbrite</th></tr></thead>
+          <thead><tr><th>Per ticket</th><th class="hy" id="h5">HY · 5%</th><th class="hy" id="hF">HY · $1.50 flat</th><th>Major provider</th></tr></thead>
           <tbody>
             <tr><td class="rl">Ticket price</td><td class="val" id="p5">$20.00</td><td class="val" id="pF">$20.00</td><td class="val" id="pEB">$20.00</td></tr>
             <tr><td class="rl">Card processing</td><td class="val" id="proc5">–$0.88</td><td class="val" id="procF">–$0.88</td><td class="val" id="procEB">–$0.58</td></tr>
@@ -277,7 +277,7 @@
             <tr class="keep"><td class="rl">You keep</td><td class="val" id="keep5">$18.12</td><td class="val" id="keepF">$17.62</td><td class="val" id="keepEB">$16.89</td></tr>
           </tbody>
         </table></div>
-        <p class="fine">Houston Yogis offers a short <b>menu of fee models</b> you choose at signup; the <b>recommended default</b> is a small % of the ticket, absorbed from your payout (shown here at an illustrative 5% — final rates are set with you, and the pilot is currently free). The <b>$1.50 flat per ticket</b> is the alternative shown (the two cross over at $30); other options — a markup added on top, or a flat monthly — are covered at signup. Both models here include Square processing (2.9% + $0.30) and beat Eventbrite (3.7% + $1.79 + 2.9%) at real class prices. US figures, Aug 2026; working estimates, not quotes.</p>
+        <p class="fine">Houston Yogis offers a short <b>menu of fee models</b> you choose at signup; the <b>recommended default</b> is a small % of the ticket, absorbed from your payout (shown here at an illustrative 5% — final rates are set with you, and the pilot is currently free). The <b>$1.50 flat per ticket</b> is the alternative shown (the two cross over at $30); other options — a markup added on top, or a flat monthly — are covered at signup. Both models here include Square processing (2.9% + $0.30) and beat a major ticket provider (3.7% + $1.79 + 2.9%) at real class prices. US figures, Aug 2026; working estimates, not quotes.</p>
       </div>
     </section>
 
@@ -393,7 +393,7 @@
         // mark best column
         $('h5').className='hy'+(bestModel==='pct'?' best':''); $('hF').className='hy'+(bestModel==='flat'?' best':'');
         $('keep5').className='val'+(bestModel==='pct'?' bestcol':''); $('keepF').className='val'+(bestModel==='flat'?' bestcol':'');
-        // selected model vs Eventbrite
+        // selected model vs a major provider
         var selKeep = model==='pct'?keep5:keepF;
         var selFee  = sq + (model==='pct'?hy5:hyF), ebFee=procEB+svcEB;
         var pctLess = ebFee>0?(1-selFee/ebFee)*100:0;
@@ -411,7 +411,7 @@
           nudge.innerHTML="💡 At $"+price+", the <b>"+(bestModel==='pct'?'5%':'$1.50 flat')+"</b> model keeps you <b>"+money(diff)+" more per ticket</b> ("+money(diff*qty)+"/class). <span class=\"sw\" data-model=\""+bestModel+"\">Switch →</span>";
         } else {
           nudge.className='nudge best';
-          nudge.innerHTML="✓ You picked the better model for a $"+price+" ticket. Both Houston Yogis models beat Eventbrite.";
+          nudge.innerHTML="✓ You picked the better model for a $"+price+" ticket. Both Houston Yogis models beat a major provider.";
         }
       }
       function setModel(m){
