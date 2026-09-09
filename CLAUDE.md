@@ -1,9 +1,14 @@
 # CLAUDE.md — Houston Yogis repo
 
-This repository is **Houston Yogis**: a static site (GitHub Pages, no build step)
-intended for houstonyogis.net, structurally modeled on the `CadenzaFeed` repo
+This repository is **Houston Yogis**: a static site (no build step) live at
+houstonyogis.net, structurally modeled on the `CadenzaFeed` repo
 (cadenzaarthouse.com). It is a separate publication and a separate deployment —
-**not** a fork, and not the same GitHub Pages site.
+**not** a fork, and not the same site.
+
+**Hosting: a Cloudflare Worker, not GitHub Pages.** houstonyogis.net is served by the Worker
+`houstonyogis`, deployed by Workers Builds on every push to `main`. cadenzaarthouse.com *is*
+still GitHub Pages, so do not reason from one to the other. Verified 2026-09-09 from live
+response headers. The root `CNAME` is a dead Pages leftover.
 
 ## Relationship to CadenzaFeed
 

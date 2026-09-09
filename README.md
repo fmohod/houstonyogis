@@ -1,6 +1,6 @@
 # Houston Yogis
 
-**Official Website:** https://houstonyogis.net (once DNS/Pages are configured)
+**Official Website:** https://houstonyogis.net — live, served by the Cloudflare Worker `houstonyogis`
 
 > **Important:** This README is a high-level overview only. The live website always takes precedence over planning documents.
 
@@ -12,12 +12,19 @@ Houston Yogis documents Houston's wellness community through journalism, photogr
 
 ## Relationship to Cadenza Arthouse
 
-This site reuses the CSS architecture, HTML structure, and client-side publishing pattern from [cadenzaarthouse.com](https://cadenzaarthouse.com) (source: the `CadenzaFeed` repo). It is a separate repository and a separate GitHub Pages deployment — not a fork — but intentionally kept structurally identical so that:
+This site reuses the CSS architecture, HTML structure, and client-side publishing pattern from [cadenzaarthouse.com](https://cadenzaarthouse.com) (source: the `CadenzaFeed` repo). It is a separate repository and a separate deployment — not a fork — but intentionally kept structurally identical so that:
 
 - Design fixes and pattern improvements can be ported between publications by hand.
 - A future shared/config-driven template (see "Future Work" below) can be extracted with minimal rework.
 
-Do not assume Hugo, a build step, or any templating engine is involved — like Cadenza Arthouse, this is vanilla HTML/CSS/JS, deployed via GitHub Pages, with articles and metadata read at runtime via the GitHub Contents API. See `CLAUDE.md` and `PUBLISHING.md` for the conventions.
+Do not assume Hugo, a build step, or any templating engine is involved — like Cadenza Arthouse, this is vanilla HTML/CSS/JS, with articles and metadata read at runtime via the GitHub Contents API. See `CLAUDE.md` and `PUBLISHING.md` for the conventions.
+
+**Hosting differs from Cadenza Arthouse, and the difference matters.** cadenzaarthouse.com is
+served by GitHub Pages; **this site is not.** houstonyogis.net is served by the Cloudflare Worker
+`houstonyogis`, deployed by Workers Builds on every push to `main` — verified 2026-09-09 from the
+live response headers (`Server: cloudflare`, a real `CF-RAY`, and none of the `x-github-request-id`
+/ `Via: varnish` headers cadenzaarthouse.com still returns). The root `CNAME` file is a dead
+GitHub Pages leftover. This README said "GitHub Pages" until 2026-09-09 and was wrong.
 
 ## Project Structure
 
