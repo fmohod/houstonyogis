@@ -119,11 +119,21 @@ for the full back-and-forth that produced this. The question it leads with is
 
 ## What's intentionally a placeholder in this v1 pass
 
-- No logo image — the masthead uses a small inline SVG glyph (`.masthead-symbol`)
-  as a neutral placeholder mark, not a real logo. `assets/logo.png` and
-  `assets/founder.jpg` in this repo are literally Cadenza Arthouse's own
-  assets (copied over as folder-structure scaffolding, not Houston Yogis
-  content) — don't reference them from any Houston Yogis page as-is.
+- **The logo is not a placeholder (corrected 2026-09-11).** The masthead shows
+  the Cadenza Arthouse master logo. `.masthead-symbol` in `style.css` uses
+  `assets/logo.png` as a CSS mask filled with `--color-accent`, so the mark
+  takes the Houston Yogis accent color. The old inline SVG sun glyph is still
+  in each page's markup, but `.masthead-symbol svg { display: none; }` hides
+  it. Seventeen pages carry `.masthead-symbol`. This follows the owner's
+  2026-08-24 ruling that every sub-product uses the master logo, styled to match its
+  sub-brand (`F:\Media\logs\20260824-01.md`). It shipped in commit `bf70d15`.
+  `assets/logo.png` is byte-identical to the master at
+  `F:\Apps\Libraries\assets\logo.png`. Verified 2026-09-11 in the repo and in
+  the live `style.css` and `logo.png`. Until then this bullet said there was
+  no logo image and not to reference `assets/logo.png`, which was wrong.
+- `assets/founder.jpg` in this repo is Cadenza Arthouse's own asset, copied
+  over as folder-structure scaffolding, not Houston Yogis content. No page
+  references it. Don't reference it from any Houston Yogis page as-is.
 - No favicon files.
 - No real photography for card/tile imagery — those are CSS gradient
   placeholder boxes with a text label. The hero is the one exception: it's

@@ -40,11 +40,13 @@ GitHub Pages leftover. This README said "GitHub Pages" until 2026-09-09 and was 
 
 ## Current Status (Build 3)
 
-Build 1 was a direct reskin of Cadenza Arthouse's newspaper identity. Build 2 (2026-07-06) gave Houston Yogis its own editorial-journal personality — see `CLAUDE.md` "Build 2 — identity pivot." Build 3 (same day) replaced the "Membership" nav item with "Join the Community," a manifesto-plus-router page — see `CLAUDE.md` "Build 3." It's still a placeholder-content scaffold in several ways: no real photography for card/tile imagery yet (the hero is the exception — it auto-populates from the latest article thumb once one exists), no logo mark, no favicon, no live print edition yet, and `register.html`'s Web3Forms integration has no real account/key behind it. See `CLAUDE.md` for the complete list and why.
+Build 1 was a direct reskin of Cadenza Arthouse's newspaper identity. Build 2 (2026-07-06) gave Houston Yogis its own editorial-journal personality — see `CLAUDE.md` "Build 2 — identity pivot." Build 3 (same day) replaced the "Membership" nav item with "Join the Community," a manifesto-plus-router page — see `CLAUDE.md` "Build 3." It's still a placeholder-content scaffold in several ways: no real photography for card/tile imagery yet (the hero is the exception — it auto-populates from the latest article thumb once one exists), no favicon, no live print edition yet, and `register.html`'s Web3Forms integration has no real account/key behind it. See `CLAUDE.md` for the complete list and why.
+
+**The logo is not a placeholder.** The masthead shows the Cadenza Arthouse master logo, tinted to the Houston Yogis accent color with a CSS mask (`.masthead-symbol` in `style.css`). This follows the owner's 2026-08-24 ruling that every sub-product uses the master logo, styled to match its sub-brand. See `CLAUDE.md` for details. This README said "no logo mark" until 2026-09-11 and was wrong.
 
 ## Future Work
 
 - Extract a true config-driven template (single config: brand name, tagline, nav, colors, GitHub repo) shared between Cadenza Arthouse, Houston Yogis, and future Cadenza Arthouse Network publications — without requiring changes to the live `CadenzaFeed` repo until that pattern is proven here first.
 - Wire up real payment processing for membership tiers.
-- Add a logo mark and photography once available.
+- Add real photography once available. (The logo mark is done; see "Current Status" above.)
 - Populate real articles, events, teachers, and organizations.
