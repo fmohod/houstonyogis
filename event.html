@@ -116,13 +116,22 @@
       var today = new Date(); today.setHours(0,0,0,0);
       return d < today;
     }
-    /* Free-to-reserve when nobody has to pay to get in: explicit free/rsvp, or a
-     * donation class (entry is free, giving is optional), or simply no cost set. */
+    /* Free-to-reserve ONLY when the record says so: explicit free/rsvp, or a
+     * donation class (entry is free, giving is optional).
+     *
+     * This used to end `return !e.cost` -- deriving "free" from a blank price.
+     * EVENT_LIFECYCLE.md 4 forbids exactly that: admission classifies entry,
+     * cost carries the amount, "neither derives from the other", and an absent
+     * admission "means unknown and is never assumed" because "an icon guessed
+     * from a blank is a lie in a smaller typeface". Nothing live had reached
+     * this branch, so the bug was invisible until six screenshot-ingested
+     * events published at once with no admission and no cost -- and the page
+     * offered a free Houston Yogis reservation for a $30 floating sound bath
+     * and two paid tufting workshops that take bookings on the teacher's own
+     * platform. A reservation we cannot honour is worse than no button. */
     function isFree(e) {
       var a = (e.admission || '').toLowerCase();
-      if (a === 'free' || a === 'rsvp' || a === 'donation') return true;
-      if (a === 'paid' || a === 'ticketed') return false;
-      return !e.cost;
+      return a === 'free' || a === 'rsvp' || a === 'donation';
     }
 
     var root = document.getElementById('event-root');
@@ -165,6 +174,24 @@
                '<a class="cta-button solid" href="' + esc(e.registration_url) + '" target="_blank" rel="noopener"><span>Reserve your spot</span></a></div>';
       } else if (isFree(e)) {
         body = reserveForm(e);
+      } else if (e.instructor_url) {
+        /* No ticket page for THIS class, but we hold a page for the teacher.
+           Send the reader there rather than telling them something untrue
+           (owner ruling 2026-08-26; calendar.html already does this in the
+           list view and this page was the dead end it left behind). Worded so
+           it never reads as a booking link, because it is not one -- the
+           previous copy here claimed "tickets aren't open online yet", which
+           was flatly wrong for classes selling on the teacher's own platform
+           right now. */
+        body = '<div class="reserve"><h2>Booked through the teacher</h2>' +
+               '<p class="sub">This class doesn&rsquo;t take reservations here. ' +
+               'Dates and bookings are announced on ' +
+               (who ? esc(who) + '&rsquo;s' : 'the teacher&rsquo;s') +
+               ' own page.</p>' +
+               '<a class="cta-button solid" href="' + esc(e.instructor_url) +
+               '" target="_blank" rel="noopener"><span>More from ' +
+               esc((e.instructors && e.instructors[0]) || 'the teacher') +
+               '</span></a></div>';
       } else {
         body = '<div class="reserve"><h2>Reservations opening soon</h2>' +
                '<p class="sub ev-paid">Tickets for this class aren&rsquo;t open online yet. Check the <a href="calendar.html">calendar</a> or reach out via <a href="support.html">Support</a> and we&rsquo;ll get you a spot.</p></div>';
