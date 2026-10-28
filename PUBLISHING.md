@@ -73,9 +73,16 @@ GitHub Contents API. You don't register new articles anywhere by hand.
 ```
 
 The `<body>` (masthead, `.article-wrap`, `.article-body`, footer) should be
-copied from the most recent folder once one exists, or adapted from
-`CadenzaFeed`'s `000X/index.html` pattern (read-only reference — copy, don't
-link to it).
+copied from the most recent folder (`0001/index.html` now exists: copy its
+masthead and footer, with the `../` paths), or adapted from `CadenzaFeed`'s
+`000X/index.html` pattern (read-only reference — copy, don't link to it).
+
+**The font link in the template above predates Build 2.** The site uses
+Fraunces, Lora and Karla (see `CLAUDE.md` and `0001/index.html`); use that
+`<link>`, not the Bebas Neue one. Two more things `0001/` settled: put the
+article's wordmark in the masthead as a `<p>` so the headline is the page's one
+`<h1>`, and keep any title free of double quotes, because the homepage hero
+writes it into an `alt` attribute.
 
 ## 3. Field reference
 
