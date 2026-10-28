@@ -38,7 +38,7 @@
 .tone-close  { --wash-base: #12271B; --wash-glow: #A9662F; --wash-warm: #E7B07A; }
 /* the one light scene, for rhythm: dark ink on warm paper */
 .tone-paper  { --wash-base: #F3EADB; --wash-glow: #E3B98A; --wash-warm: #D9A06B;
-               --ink: #1B2B1F; --ink-soft: #3A4238; --accent: #8F4F1C; }
+               --ink: #1B2B1F; --ink-soft: #3A4238; --accent: #6B3410; }
 
 
 /* ── PAGE ─────────────────────────────────────────────────── */
@@ -80,7 +80,7 @@ html.js { scroll-snap-type: y proximity; }
 .scene--first { min-height: calc(100vh - 230px); min-height: calc(100svh - 230px); }
 
 /* tone-paper sets --ink etc. itself; keep it after .scene so it wins */
-.tone-paper { --ink: #1B2B1F; --ink-soft: #3A4238; --accent: #8F4F1C; }
+.tone-paper { --ink: #1B2B1F; --ink-soft: #3A4238; --accent: #6B3410; }
 
 .scene-inner {
   position: relative;
