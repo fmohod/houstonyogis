@@ -172,6 +172,7 @@ html.js { scroll-snap-type: y proximity; }
 .scene-btn--ghost:hover, .scene-btn--ghost:focus-visible { background: var(--ink); border-color: var(--ink); color: var(--wash-base); }
 .tone-paper .scene-btn:hover, .tone-paper .scene-btn:focus-visible { color: #fff; }
 .scene a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.scene:focus { outline: none; }                  /* the arrow keys focus a scene (slides.js) so Tab continues from it; it is not a control */
 
 
 /* ── MEDIA: the video, the film slate, the channel card, the plates ── */

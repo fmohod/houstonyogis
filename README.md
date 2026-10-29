@@ -32,7 +32,7 @@ GitHub Pages leftover. This README said "GitHub Pages" until 2026-09-09 and was 
 - `journal/index.html` — full story archive (search + list) — the renamed "Articles" page
 - `calendar.html`, `guides.html`, `places.html` — renamed Events/Teachers/Organizations; placeholder "nothing here yet" content until real data exists
 - `join.html` — **"Join the Community"**, the primary-nav item that replaced Membership: a manifesto + seven-path router (Discover/Attend/Teach/Perform/Promote Your Business/Partner With Us/Support the Network), see `CLAUDE.md` "Build 3"
-- `register.html` — shared registration form (Web3Forms-based, not yet connected to a real account) used by four of the seven `join.html` paths, pre-filled via `?role=`
+- `register.html` — shared registration form (Web3Forms-based; its shared access key delivers, verified by a real submission on 2026-08-28, to a Cadenza Arthouse inbox that CAMT reads and not yet to a Houston Yogis one, see CAMT `FIRST_RESERVATION_INTERVENTION_LOG.md` BL-5) used by four of the seven `join.html` paths, pre-filled via `?role=`
 - `about.html`, `support.html` — editorial and membership-tier pages (About/Support live in the footer, not the primary nav)
 - `NNNN/` — sequential numbered article folders (created as stories are published — none exist yet)
 - `style.css` — shared stylesheet; all site-specific colors and fonts live in `:root` custom properties at the top of the file

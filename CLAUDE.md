@@ -24,12 +24,15 @@ working on Houston Yogis.
 - Articles are sequential numbered folders (`0001/`, `0002/`, …) at the repo
   root, each with an `index.html`, a `thumb.jpg`/`thumb.png`, and an `images/`
   folder. `0001/` ("Coming to Houston Yogis", 2026-10-28) is the first: a
-  full-screen scene walk-through with its own `slides.css` (every color and
-  type choice is a token at the top, so a new look is a values change) and
-  `slides.js` (enhancement only: with scripts off the scenes stack, and the
-  video is a plain link). It is the reference for article body markup. Before
-  it existed the homepage and `articles/index.html` degraded gracefully ("No
-  stories published yet"), and they still do if the folders are ever empty.
+  full-screen scene walk-through with its own `slides.css` (the palette, type
+  and motion are tokens at the top; a few literals sit below them, namely the
+  test card, the play button and the scene dots, so a re-skin should check
+  those) and `slides.js` (enhancement only: with scripts off the scenes stack,
+  and the video is a plain link). Its masthead and footer are the reference for
+  article markup. Before it existed the homepage and `journal/index.html` (the
+  page that lists articles; `articles/index.html` has only been a redirect stub
+  since Build 2) degraded gracefully ("No stories published yet"), and they
+  still do if the folders are ever empty.
 - The homepage, `articles/index.html`, and any future article page all read
   folder/article metadata **at runtime** via the GitHub Contents API
   (`GITHUB_USER` / `GITHUB_REPO` consts at the top of each page's `<script>`).

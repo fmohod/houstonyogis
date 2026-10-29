@@ -68,21 +68,25 @@ GitHub Contents API. You don't register new articles anywhere by hand.
 
 <link rel="stylesheet" href="../style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 ```
 
-The `<body>` (masthead, `.article-wrap`, `.article-body`, footer) should be
-copied from the most recent folder (`0001/index.html` now exists: copy its
-masthead and footer, with the `../` paths), or adapted from `CadenzaFeed`'s
-`000X/index.html` pattern (read-only reference — copy, don't link to it).
+The `<body>` is a masthead, the article, and the footer. Copy the masthead and
+footer from `0001/index.html` (with the `../` paths); the article itself is
+yours to lay out. `style.css` has no article-body classes (there is no
+`.article-wrap` or `.article-body`), so an article that needs its own layout
+ships its own stylesheet in its folder, as `0001/` does with `slides.css`, and
+loads it after `../style.css`. `CadenzaFeed`'s `000X/index.html` is a read-only
+reference for a prose-style article (copy, don't link to it); its classes are
+not defined here.
 
-**The font link in the template above predates Build 2.** The site uses
-Fraunces, Lora and Karla (see `CLAUDE.md` and `0001/index.html`); use that
-`<link>`, not the Bebas Neue one. Two more things `0001/` settled: put the
-article's wordmark in the masthead as a `<p>` so the headline is the page's one
-`<h1>`, and keep any title free of double quotes, because the homepage hero
-writes it into an `alt` attribute.
+Three things `0001/` settled. Put the wordmark in the masthead as a `<p>` so the
+article's headline is the page's one `<h1>`. Keep any title free of double
+quotes, because the homepage hero writes it into an `alt` attribute. And give
+every image real alt text; a link that wraps an image must not carry an
+`aria-label`, which would replace the image's description in what a screen
+reader announces (name the link with visible or visually hidden text instead).
 
 ## 3. Field reference
 
@@ -116,4 +120,4 @@ having: it is the one a reader is owed and the one an inference would never prod
 - [ ] `article-id` matches the folder number.
 - [ ] `cadenza:type-of-work` set deliberately -- and `sponsored` if it is.
 - [ ] `thumb.jpg` (or `.png`) present; photos in `images/`.
-- [ ] Prose is inside `<div class="article-body">`.
+- [ ] One `<h1>`; every image has alt text that describes it; any layout the article needs ships in its own folder.

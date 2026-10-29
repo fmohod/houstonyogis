@@ -65,7 +65,12 @@
   /* ── left / right arrow: previous and next scene ───────── */
   function go(i) {
     i = Math.max(0, Math.min(scenes.length - 1, i));
-    scenes[i].scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' });
+    var s = scenes[i];
+    s.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' });
+    // Move the keyboard's place with the screen, as the scene dots (real fragment links) already do;
+    // otherwise Tab after an arrow key resumes from wherever focus was, off-screen.
+    s.setAttribute('tabindex', '-1');
+    s.focus({ preventScroll: true });
   }
 
   document.addEventListener('keydown', function (ev) {
