@@ -1,0 +1,200 @@
+{
+  "_readme": "The page's own presentation data, keyed by video id. Not the Channel Manager's: it owns channels.json only. Cast and credits name only people who pass the publication gate (verified and public in the registry) or are credited as on the video itself. No biography is written here.",
+  "kicker": "Houston Yogis Original",
+  "featured": "lANqHL2SZIQ",
+  "titles": {
+    "lANqHL2SZIQ": {
+      "slug": "sunday-yoga-in-emancipation-park",
+      "subtitle": "Full class with Aisha K. Shahid",
+      "label": "New",
+      "tone": "earth",
+      "tags": [
+        "Yoga",
+        "Community",
+        "Outdoors"
+      ],
+      "art": {
+        "hero": "art/aisha-hero.jpg",
+        "card": "art/aisha-card.jpg",
+        "backdrop": "art/aisha-backdrop.jpg",
+        "share": "art/aisha-share.jpg"
+      },
+      "alt": {
+        "hero": "Aisha K. Shahid seated against a wooden slat wall, eyes lowered, calm.",
+        "backdrop": "Aisha K. Shahid sitting cross-legged on a blue mat in front of a wooden slat wall, hands resting on her knees."
+      },
+      "cast": [
+        {
+          "name": "Aisha K. Shahid",
+          "role": "Instructor",
+          "initials": "AS"
+        }
+      ],
+      "credits": [
+        [
+          "Flute during the meditation",
+          "Frankie M."
+        ],
+        [
+          "Filmed and edited by",
+          "Cadenza Arthouse"
+        ],
+        [
+          "Presented by",
+          "Houston Yogis"
+        ]
+      ],
+      "chapters": [
+        [
+          0,
+          "Welcome"
+        ],
+        [
+          16,
+          "Alternate nostril breathing"
+        ],
+        [
+          568,
+          "Into the flow: reach up, side bends, forward fold"
+        ],
+        [
+          783,
+          "Shoulder stretch"
+        ],
+        [
+          917,
+          "Shoulder rolls and butterfly"
+        ],
+        [
+          1066,
+          "Wide-legged seated stretch"
+        ],
+        [
+          1278,
+          "Seated forward fold sequence"
+        ],
+        [
+          1705,
+          "The sequence again"
+        ],
+        [
+          2135,
+          "Lower back spinal twist"
+        ],
+        [
+          2265,
+          "Tabletop, cat and cow"
+        ],
+        [
+          2417,
+          "Arrow and bow"
+        ],
+        [
+          2649,
+          "Downward dog and upward dog"
+        ],
+        [
+          2776,
+          "Three-legged dog and pigeon"
+        ],
+        [
+          3070,
+          "Standing forward fold"
+        ],
+        [
+          3151,
+          "Neck rolls, arm circles, hip circles"
+        ],
+        [
+          3335,
+          "Ankle circles and bridge"
+        ],
+        [
+          3509,
+          "Knee to chest and reclined twist"
+        ],
+        [
+          3835,
+          "Knees to chest, rocking on the spine"
+        ],
+        [
+          3884,
+          "Meditation"
+        ],
+        [
+          4643,
+          "Closing words"
+        ]
+      ]
+    },
+    "SO5xQF3sxGM": {
+      "slug": "floating-sound-bath",
+      "subtitle": "Crystal singing bowls and live flute over water",
+      "label": "",
+      "tone": "pool",
+      "tags": [
+        "Sound bath",
+        "Meditation",
+        "Live music"
+      ],
+      "art": {
+        "hero": "art/sound-bath-hero.jpg",
+        "card": "art/sound-bath-card.jpg",
+        "backdrop": "art/sound-bath-hero.jpg",
+        "share": "art/sound-bath-share.jpg"
+      },
+      "alt": {
+        "hero": "A silhouette raises a mallet and holds a slim object upright at the edge of glowing blue water at night, while people float on rafts across it and a candle burns nearby.",
+        "backdrop": "A silhouette raises a mallet and holds a slim object upright at the edge of glowing blue water at night, while people float on rafts across it and a candle burns nearby."
+      },
+      "cast": [
+        {
+          "name": "Nahnah",
+          "role": "Guide and crystal singing bowls",
+          "initials": "N"
+        },
+        {
+          "name": "Frankie M.",
+          "role": "Live flute",
+          "initials": "FM"
+        }
+      ],
+      "credits": [
+        [
+          "Filmed and edited by",
+          "Cadenza Arthouse"
+        ],
+        [
+          "Presented by",
+          "Houston Yogis"
+        ]
+      ],
+      "chapters": [
+        [
+          0,
+          "Settling into the float"
+        ],
+        [
+          112,
+          "Breath and light"
+        ],
+        [
+          168,
+          "Root chakra"
+        ],
+        [
+          307,
+          "Sacral chakra"
+        ],
+        [
+          375,
+          "Crystal bowls and flute, no talking to the end"
+        ]
+      ]
+    }
+  },
+  "soon": [
+    "In-person interviews",
+    "Original productions"
+  ]
+}

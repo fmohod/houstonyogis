@@ -1,0 +1,38 @@
+{
+  "_readme": "Hand-authored for now, in the schema CAMT's Channel Manager (menu 40, ADR-0020) writes for cadenzaarthouse.com and modelauctions.net, so that it can adopt this file without a rewrite. Until it does, this is a placeholder and not a parallel authority: lineup membership, order and the editorial fields (title, location, year, description) are the Channel Manager's to own. The page's presentation fields (cast, chapters, tags, art) live in streaming.json, which the Channel Manager does not own.",
+  "epoch": "2026-10-28T00:00:00-05:00",
+  "guide_window_min": 30,
+  "guide_step_min": 5,
+  "channels": [
+    {
+      "number": 1,
+      "id": "houston-yogis",
+      "name": "Houston Yogis",
+      "tagline": "Movement, breath, community",
+      "playlist": "",
+      "art": "art/sound-bath-card.jpg",
+      "lineup": [
+        "lANqHL2SZIQ",
+        "SO5xQF3sxGM"
+      ]
+    }
+  ],
+  "videos": {
+    "lANqHL2SZIQ": {
+      "title": "Sunday Yoga in Emancipation Park",
+      "duration": "1:19:54",
+      "location": "Emancipation Park, Houston",
+      "year": "2026",
+      "desc": "Aisha K. Shahid's Sunday morning Empowerment Yoga class in Emancipation Park, start to finish. Roll out a mat and follow along: alternate nostril breathing, a seated flow, floor work, standing stretches and a closing meditation.",
+      "yt_title": "Sunday Yoga in Emancipation Park \u2014 Full Class with Aisha K. Shahid"
+    },
+    "SO5xQF3sxGM": {
+      "title": "Floating Sound Bath",
+      "duration": "31:05",
+      "location": "",
+      "year": "2026",
+      "desc": "Crystal singing bowls and live flute over water, recorded live. A guided opening of breath and light leads into twenty-five minutes of unbroken sound.",
+      "yt_title": "Floating Sound Bath \u2014 Crystal Singing Bowls & Live Flute Over Water | [31 Min]"
+    }
+  }
+}

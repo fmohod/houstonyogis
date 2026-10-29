@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+
+<title>Watch | Houston Yogis</title>
+<meta name="description" content="Films from Houston's yoga community: a full Sunday class in Emancipation Park, and a floating sound bath with crystal singing bowls and live flute.">
+<link rel="canonical" href="https://houstonyogis.net/media/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Houston Yogis">
+<meta property="og:title" content="Watch | Houston Yogis">
+<meta property="og:description" content="Films from Houston's yoga community: a full Sunday class in Emancipation Park, and a floating sound bath with crystal singing bowls and live flute.">
+<meta property="og:url" content="https://houstonyogis.net/media/">
+<meta property="og:image" content="https://houstonyogis.net/media/art/aisha-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Watch | Houston Yogis">
+<meta name="twitter:description" content="Films from Houston's yoga community: a full Sunday class in Emancipation Park, and a floating sound bath with crystal singing bowls and live flute.">
+<meta name="twitter:image" content="https://houstonyogis.net/media/art/aisha-share.jpg">
+
+<!-- Set before first paint: watch.css hides the plain-HTML list below only when this class is present, and watch.js shows it again if the page cannot load. -->
+<script>document.documentElement.className += ' js';</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="watch.css">
+</head>
+<body>
+
+  <a class="sv-skip" href="#sv-rows">Skip to the titles</a>
+
+  <div id="sv-page">
+
+    <!-- THE BAR: a way back, the brand, and a Menu (a <details>, so it works without scripts). No site masthead on this page, as on the other media pages. -->
+    <header class="sv-bar" id="sv-bar">
+      <a class="sv-brand" href="../index.html">
+        <span class="sv-brand-mark" aria-hidden="true"></span>
+        <span class="sv-brand-word">Houston Yogis</span>
+        <span class="sv-brand-section">Watch</span>
+      </a>
+      <details class="sv-menu" id="sv-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Houston Yogis">
+          <a href="../calendar.html">Calendar</a>
+          <a href="../guides.html">Guides</a>
+          <a href="../journal/index.html">Journal</a>
+          <a href="../join.html">Join the Community</a>
+          <a href="../about.html">About</a>
+          <a href="../support.html">Support</a>
+        </nav>
+      </details>
+    </header>
+
+    <main id="sv-main">
+
+      <!-- watch.js builds the billboard and the rows from channels.json and streaming.json. -->
+      <div id="sv-hero"></div>
+      <div id="sv-rows"></div>
+
+      <!-- THE PLAIN VERSION: what you get with scripts off, or if the data cannot load. Hidden once the page is built.
+           Keep it in step with channels.json (the title, description and video id of each entry). -->
+      <section class="sv-fallback" aria-labelledby="sv-fb-h">
+        <h1 id="sv-fb-h">Watch</h1>
+        <p class="sv-fb-lede">Films from Houston's yoga community. Each one plays on YouTube.</p>
+        <ul class="sv-fb-list">
+          <li class="sv-fb-item">
+            <img src="art/aisha-card.jpg" width="640" height="360" alt="Aisha K. Shahid seated against a wooden slat wall, eyes lowered, calm.">
+            <div>
+              <h2>Sunday Yoga in Emancipation Park</h2>
+              <p class="sv-fb-meta">2026 &middot; 1 h 20 min</p>
+              <p>Aisha K. Shahid's Sunday morning Empowerment Yoga class in Emancipation Park, start to finish. Roll out a mat and follow along: alternate nostril breathing, a seated flow, floor work, standing stretches and a closing meditation.</p>
+              <p><a class="sv-fb-link" href="https://youtu.be/lANqHL2SZIQ" target="_blank" rel="noopener">Watch on YouTube</a></p>
+            </div>
+          </li>
+          <li class="sv-fb-item">
+            <img src="art/sound-bath-card.jpg" width="640" height="360" alt="A silhouette raises a mallet and holds a slim object upright at the edge of glowing blue water at night, while people float on rafts across it and a candle burns nearby.">
+            <div>
+              <h2>Floating Sound Bath</h2>
+              <p class="sv-fb-meta">2026 &middot; 31 min</p>
+              <p>Crystal singing bowls and live flute over water, recorded live. A guided opening of breath and light leads into twenty-five minutes of unbroken sound.</p>
+              <p><a class="sv-fb-link" href="https://youtu.be/SO5xQF3sxGM" target="_blank" rel="noopener">Watch on YouTube</a></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+
+    <footer class="sv-footer">
+      <div class="sv-footer-inner">
+        <span class="sv-footer-word">Houston Yogis</span>
+        <p class="sv-footer-mission">Houston Yogis documents Houston's wellness community through journalism, photography, education, and public events.</p>
+        <nav class="sv-footer-links" aria-label="More">
+          <a href="../about.html">About</a>
+          <a href="../teach.html">Teach with Us</a>
+          <a href="../support.html">Support</a>
+        </nav>
+        <p class="sv-footer-legal">Self-hosted. Just words.&nbsp;&nbsp;&middot;&nbsp;&nbsp;&copy; 2026 Houston Yogis. All Rights Reserved.</p>
+        <p class="sv-footer-net">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- The title pages and the player open here, above the page. -->
+  <div id="sv-layers"></div>
+
+  <script src="watch.js" defer></script>
+</body>
+</html>
