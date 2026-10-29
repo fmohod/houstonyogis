@@ -175,7 +175,7 @@ html.js { scroll-snap-type: y proximity; }
 .scene:focus { outline: none; }                  /* the arrow keys focus a scene (slides.js) so Tab continues from it; it is not a control */
 
 
-/* ── MEDIA: the video, the film slate, the channel card, the plates ── */
+/* ── MEDIA: the posters, the channel card, the plates ── */
 .scene-media { position: relative; min-width: 0; }
 
 .reel {
@@ -197,23 +197,6 @@ html.js { scroll-snap-type: y proximity; }
   content: ''; margin-left: 6px;
   border-left: 24px solid #061A2C;
   border-top: 15px solid transparent; border-bottom: 15px solid transparent;
-}
-.reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
-.slate {                                         /* the film that is coming: a framed, empty 16:9 */
-  position: relative; aspect-ratio: 16 / 9; border-radius: 18px;
-  display: grid; place-items: center;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--wash-base) 84%, #fff 10%), var(--wash-base));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
-}
-.slate::before, .slate::after { content: ''; position: absolute; width: 38px; height: 38px; border: 2px solid var(--accent); }
-.slate::before { left: 20px; top: 20px; border-right: 0; border-bottom: 0; }
-.slate::after  { right: 20px; bottom: 20px; border-left: 0; border-top: 0; }
-.slate-glyph { width: 78px; height: 78px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; }
-.slate-glyph::before {
-  content: ''; margin-left: 5px;
-  border-left: 20px solid var(--ink);
-  border-top: 13px solid transparent; border-bottom: 13px solid transparent;
 }
 
 .tv {                                            /* the channel: a test card, television first */
@@ -268,11 +251,11 @@ html.js { scroll-snap-type: y proximity; }
 .js .scene.is-in .scene-kicker::after { transform: scaleX(1); }
 /* the media wipes in once (never the words, and not the plates, which carry names). The end shape is
    deliberately larger than the box so it does not clip the box-shadow. */
-.js .scene .reel, .js .scene .slate, .js .scene .tv {
+.js .scene .reel, .js .scene .tv {
   clip-path: inset(0 100% 0 0 round 18px);
   transition: clip-path 0.7s var(--sl-ease) 0.15s;
 }
-.js .scene.is-in .reel, .js .scene.is-in .slate, .js .scene.is-in .tv { clip-path: inset(-90px round 18px); }
+.js .scene.is-in .reel, .js .scene.is-in .tv { clip-path: inset(-90px round 18px); }
 
 
 /* ── SMALL SCREENS ────────────────────────────────────────── */
@@ -291,14 +274,14 @@ html.js { scroll-snap-type: y proximity; }
   .js .scene .scene-wash,
   .js .scene .scene-mark,
   .js .scene .scene-kicker::after,
-  .js .scene .reel, .js .scene .slate, .js .scene .tv,
+  .js .scene .reel, .js .scene .tv,
   .reel-poster img,
   .scene-dots a::before,
   .scene-btn { transition: none; }
   .js .scene .scene-wash { opacity: 1; transform: none; }
   .js .scene .scene-mark { opacity: 0.17; transform: translate3d(0, -50%, 0); }
   .js .scene .scene-kicker::after { transform: none; }
-  .js .scene .reel, .js .scene .slate, .js .scene .tv { clip-path: none; }
+  .js .scene .reel, .js .scene .tv { clip-path: none; }
   .scene-mark { transform: translate3d(0, -50%, 0); }
   .reel-poster:hover img { transform: none; }
 }
@@ -306,7 +289,7 @@ html.js { scroll-snap-type: y proximity; }
 
 /* ── PRINT: the same stack scripts-off gives, in ink on paper (a handout can start here) ── */
 @media print {
-  .scene-dots, .scene-wash, .scene-mark, .reel-play, .slate, .tv, .masthead-nav, .masthead-search { display: none !important; }
+  .scene-dots, .scene-wash, .scene-mark, .reel-play, .tv, .masthead-nav, .masthead-search { display: none !important; }
   .scene {
     --ink: #111; --ink-soft: #333; --accent: #444;
     min-height: 0; padding: 16pt 0; overflow: visible; break-inside: avoid;

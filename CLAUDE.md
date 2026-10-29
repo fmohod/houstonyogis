@@ -27,8 +27,9 @@ working on Houston Yogis.
   full-screen scene walk-through with its own `slides.css` (the palette, type
   and motion are tokens at the top; a few literals sit below them, namely the
   test card, the play button and the scene dots, so a re-skin should check
-  those) and `slides.js` (enhancement only: with scripts off the scenes stack,
-  and the video is a plain link). Its masthead and footer are the reference for
+  those) and `slides.js` (enhancement only: with scripts off the scenes stack;
+  the two film scenes link to the Watch page and the article plays nothing
+  itself, because it is a teaser). Its masthead and footer are the reference for
   article markup. Before it existed the homepage and `journal/index.html` (the
   page that lists articles; `articles/index.html` has only been a redirect stub
   since Build 2) degraded gracefully ("No stories published yet"), and they
@@ -77,6 +78,18 @@ Concretely, as of Build 2:
   only the rendering functions and CSS changed. Keep it that way: the
   fetch/render split is what makes "redesign the skin, freeze the backend"
   possible.
+
+## Build 4 — Watch, the media page (2026-10-28)
+
+`media/` is the Houston Yogis media page, presented as a streaming service (a
+billboard, rows, a title page per film, a player), not a TV channel. It has its
+own README (the files, how to add a title, what it keeps). Its lineup is
+`media/channels.json`, in the schema CAMT's Channel Manager writes for the other
+two sites and hand-authored until that tool adopts it. **"Watch" is in the
+masthead nav of the 18 pages that carry the nav** (`media/` from the root,
+`../media/` from `journal/` and `0001/`); there is no shared include, so a new
+page with a masthead needs the link added by hand. Videos play on `media/` and
+nowhere else: articles link there instead of embedding.
 
 ## Build 3 — "Join the Community" (2026-07-06)
 

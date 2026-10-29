@@ -1,9 +1,9 @@
 /* Houston Yogis — 0001/slides.js
    The scene walk-through, as an enhancement only. The page is complete without
-   this file: the scenes stack, the dots are real links, and the video is a link
-   to YouTube. What this adds: the entrance and the current-scene dot, a slow
-   drift on the logo mark, left/right arrow keys, and a click-to-load video, so
-   nothing is requested from YouTube until a visitor presses play. */
+   this file: the scenes stack, the dots are real links, and the two film scenes
+   link to the Watch page (../media/), which is where the videos play. This
+   article plays nothing itself. What this adds: the entrance and the
+   current-scene dot, a slow drift on the logo mark, and left/right arrow keys. */
 (function () {
   'use strict';
 
@@ -81,36 +81,5 @@
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) { return; }
     ev.preventDefault();
     go(active + dir);
-  });
-
-
-  /* ── the video: a link until it is pressed, then a nocookie iframe ──
-     No YouTube script, no player API, no thumbnail from their servers: the
-     poster is a file in this repo, so the first request to YouTube is the one
-     the visitor asks for. */
-  [].forEach.call(document.querySelectorAll('[data-reel]'), function (reel) {
-    var poster = reel.querySelector('.reel-poster');
-    if (!poster) { return; }
-
-    poster.setAttribute('role', 'button');             // a plain link without scripts; plays in place with them
-    poster.addEventListener('keydown', function (ev) {
-      if (ev.key === ' ') { ev.preventDefault(); poster.click(); }
-    });
-    poster.addEventListener('click', function (ev) {
-      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button > 0) { return; }   // let "open in a new tab" through
-      var id = reel.getAttribute('data-video') || '';
-      if (!/^[A-Za-z0-9_-]{11}$/.test(id)) { return; }                            // never build a URL from anything odd
-      ev.preventDefault();
-
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
-      f.title = reel.getAttribute('data-title') || 'Video';
-      f.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
-      f.setAttribute('allowfullscreen', '');
-      f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-      f.setAttribute('loading', 'lazy');
-      reel.replaceChild(f, poster);
-      f.focus();
-    });
   });
 })();

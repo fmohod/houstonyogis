@@ -34,7 +34,8 @@ GitHub Pages leftover. This README said "GitHub Pages" until 2026-09-09 and was 
 - `join.html` — **"Join the Community"**, the primary-nav item that replaced Membership: a manifesto + seven-path router (Discover/Attend/Teach/Perform/Promote Your Business/Partner With Us/Support the Network), see `CLAUDE.md` "Build 3"
 - `register.html` — shared registration form (Web3Forms-based; its shared access key delivers, verified by a real submission on 2026-08-28, to a Cadenza Arthouse inbox that CAMT reads and not yet to a Houston Yogis one, see CAMT `FIRST_RESERVATION_INTERVENTION_LOG.md` BL-5) used by four of the seven `join.html` paths, pre-filled via `?role=`
 - `about.html`, `support.html` — editorial and membership-tier pages (About/Support live in the footer, not the primary nav)
-- `NNNN/` — sequential numbered article folders (created as stories are published — none exist yet)
+- `NNNN/` — sequential numbered article folders (`0001/` is the first, a scene slideshow that links to the Watch page and plays nothing itself)
+- `media/` — **Watch**, the media page, presented as a streaming service; linked from the masthead nav of every page (see `media/README.md`)
 - `style.css` — shared stylesheet; all site-specific colors and fonts live in `:root` custom properties at the top of the file
 - `events.html`, `teachers.html`, `organizations.html`, `articles/`, `membership.html` — **stale/superseded pages**, now meta-refresh redirects to their renamed or replacement equivalents. Safe to `git rm` once you've confirmed the new nav in a browser.
 

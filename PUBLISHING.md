@@ -88,6 +88,12 @@ every image real alt text; a link that wraps an image must not carry an
 `aria-label`, which would replace the image's description in what a screen
 reader announces (name the link with visible or visually hidden text instead).
 
+An article is a teaser and never plays or embeds video, so it carries no iframe
+and makes no request to YouTube. To point at a film, link to its title page on
+the Watch page, `../media/#slug` (the slugs are in `media/streaming.json`), and
+let that page play it. The masthead you copy from `0001/` already has the Watch
+link.
+
 ## 3. Field reference
 
 | Tag | Required | Notes |
