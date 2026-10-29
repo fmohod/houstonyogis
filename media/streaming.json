@@ -1,5 +1,5 @@
 {
-  "_readme": "The page's own presentation data, keyed by video id. Not the Channel Manager's: it owns channels.json only. Cast and credits name only people who pass the publication gate (verified and public in the registry) or are credited as on the video itself. No biography is written here.",
+  "_readme": "The page's own presentation data, keyed by video id. Not the Channel Manager's: it owns channels.json only. Cast and credits name only people who pass the publication gate (verified and public in the registry) or are credited as on the video itself, and a role is only what the film's own title card or its posted YouTube description says; nobody is paired with an instrument or a job the sources do not pair them with. Chapters are the ones posted on YouTube: a title with no posted chapters has none. No biography is written here. A label (such as New) carries a label_until date after which the page stops showing it.",
   "kicker": "Houston Yogis Original",
   "featured": "lANqHL2SZIQ",
   "titles": {
@@ -7,6 +7,7 @@
       "slug": "sunday-yoga-in-emancipation-park",
       "subtitle": "Full class with Aisha K. Shahid",
       "label": "New",
+      "label_until": "2026-11-30",
       "tone": "earth",
       "tags": [
         "Yoga",
@@ -150,46 +151,20 @@
       "cast": [
         {
           "name": "Nahnah",
-          "role": "Guide and crystal singing bowls",
+          "role": "Interim Flows",
           "initials": "N"
         },
         {
           "name": "Frankie M.",
-          "role": "Live flute",
+          "role": "Flute",
           "initials": "FM"
         }
       ],
-      "credits": [
-        [
-          "Filmed and edited by",
-          "Cadenza Arthouse"
-        ],
-        [
-          "Presented by",
-          "Houston Yogis"
-        ]
-      ],
-      "chapters": [
-        [
-          0,
-          "Settling into the float"
-        ],
-        [
-          112,
-          "Breath and light"
-        ],
-        [
-          168,
-          "Root chakra"
-        ],
-        [
-          307,
-          "Sacral chakra"
-        ],
-        [
-          375,
-          "Crystal bowls and flute, no talking to the end"
-        ]
+      "credits": [],
+      "chapters": [],
+      "notes": [
+        "Headphones are recommended for this recording.",
+        "Sound bowl meditation may not be suitable for people with tinnitus or migraines."
       ]
     }
   },

@@ -64,6 +64,13 @@
     if (lazy) { im.loading = 'lazy'; }
     return im;
   }
+  function labelLive(x) {                                  // a label such as "New" stops showing after its label_until date
+    var until;
+    if (!x.label) { return false; }
+    if (!x.label_until) { return true; }
+    until = Date.parse(x.label_until + 'T23:59:59-06:00');
+    return !isNaN(until) && Date.now() <= until;
+  }
   function getJSON(u) {
     return fetch(u, { credentials: 'same-origin' }).then(function (r) {
       if (!r.ok) { throw new Error(u + ' ' + r.status); }
@@ -88,8 +95,8 @@
       var t = {
         id: id, slug: x.slug, title: v.title || '', sub: x.subtitle || '', year: v.year || '', location: v.location || '',
         desc: v.desc || '', yt: v.yt_title || v.title || '', sec: sec, len: sec ? fmtLen(sec) : (v.duration || ''),
-        label: x.label || '', tone: x.tone || 'green', tags: x.tags || [], art: x.art || {}, alt: x.alt || {},
-        cast: x.cast || [], credits: x.credits || [], chapters: x.chapters || []
+        label: labelLive(x) ? x.label : '', tone: x.tone || 'green', tags: x.tags || [], art: x.art || {}, alt: x.alt || {},
+        cast: x.cast || [], credits: x.credits || [], chapters: x.chapters || [], notes: x.notes || []
       };
       S.titles.push(t);
       S.bySlug[t.slug] = t;
@@ -218,6 +225,12 @@
     if (t.tags.length) {
       list = h('ul', 'sv-tags');
       t.tags.forEach(function (g) { list.appendChild(h('li', 'sv-tag', g)); });
+      main.appendChild(stag(list, i++));
+    }
+    if (t.notes.length) {
+      main.appendChild(stag(h('h3', 'sv-sec-h', 'Good to know'), i++));
+      list = h('ul', 'sv-notes');
+      t.notes.forEach(function (n) { list.appendChild(h('li', '', n)); });
       main.appendChild(stag(list, i++));
     }
     if (t.chapters.length) {

@@ -199,6 +199,9 @@ a.sv-card:hover, a.sv-card:focus-visible { transform: scale(1.07); z-index: 5; b
 .sv-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .sv-tags .sv-tag { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; font: 500 0.88rem/1 var(--font-ui); color: var(--ink-soft); }
 
+.sv-notes { border-top: 1px solid var(--line); }
+.sv-notes li { position: relative; padding: 12px 0 12px 20px; border-bottom: 1px solid var(--line); font: 400 1.05rem/1.5 var(--font-body); color: var(--ink-soft); }
+.sv-notes li::before { content: ''; position: absolute; left: 2px; top: 1.15em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .sv-chapters { border-top: 1px solid var(--line); }
 .sv-chapter {
   display: grid; grid-template-columns: 5.4rem 1fr; gap: 12px; width: 100%; padding: 14px 8px; text-align: left;
