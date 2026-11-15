@@ -167,21 +167,6 @@ figcaption {
   margin: 0;
 }
 
-/* DRAFT ONLY: marks a quote that still needs the owner's ear-check. Remove before publishing. */
-.draft-flag {
-  font-family: var(--font-meta);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: #FFE7A3;
-  color: #5A3E00;
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  margin-left: 0.35rem;
-  vertical-align: 0.15em;
-}
-
 @media (max-width: 600px) {
   .feature { padding-top: 1.5rem; }
   .feature-body p { font-size: 1.08rem; }
