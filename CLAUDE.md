@@ -88,8 +88,47 @@ own README (the files, how to add a title, what it keeps). Its lineup is
 two sites and hand-authored until that tool adopts it. **"Watch" is in the
 masthead nav of the 18 pages that carry the nav** (`media/` from the root,
 `../media/` from `journal/` and `0001/`); there is no shared include, so a new
-page with a masthead needs the link added by hand. Videos play on `media/` and
-nowhere else: articles link there instead of embedding.
+page with a masthead needs the link added by hand. Films play on `media/` and
+nowhere else: articles link there instead of embedding. **[Amended 2026-11-15:
+this sentence used to say "Videos play on `media/` and nowhere else." Silent
+background loops are now allowed in features and teacher pages; see Build 5.]**
+
+## Build 5 — scroll scenes (2026-11-15)
+
+The owner's direction, 2026-11-14 (in summary, not his exact words): a
+visual-only overhaul with scenic, story-like scrolling and short clips from his
+own footage playing in the background of a teacher's page and feature, looking
+great on a phone and on a desktop. He gave the word to build and push on 2026-11-15, once features 0002
+and 0003 were published.
+
+It is a layer, not a rewrite: `scenes.css`, `scenes.js` and `assets/loops/`.
+
+- **An article opts in with two lines** and none of its words change: the
+  `scenes.css` link in the head, and one tag at the end of the body,
+  `<script src="../scenes.js" data-open="CLIP" data-scenes='{"Heading text":"CLIP"}'>`.
+  `data-open` is the clip behind the headline; `data-scenes` maps a section
+  heading's text to a clip. The script wraps the existing headline block and
+  those headings in scenes at load. A heading that is renamed or removed just
+  loses its scene, so text edits to an article never need this file touched.
+  Leave a section out of the map to keep it plain.
+- **`guide.html`** carries a bare tag; the teacher-to-clip table is `GUIDES` at
+  the top of `scenes.js`. `guides.json` is generated and is not touched.
+- **Enhancement only.** With scripts off, reduced motion on, or data saver on,
+  nothing moves: the page is the plain article (reduced motion and data saver
+  show the still). One clip plays at a time, a file is fetched only when its
+  scene reaches the screen, and every scene has a Pause button.
+- **A loop** is `assets/loops/NAME.mp4` plus `NAME.jpg` (its first frame): six
+  seconds, silent, 1280 wide, H.264, metadata stripped, well under 1.1 MB. Each
+  has an entry in `LOOPS` in `scenes.js` giving `focus`, the part of the wide
+  frame an upright phone keeps. Check a new clip at phone width: the default
+  crop can land on the wrong person.
+- **What a loop may show.** Footage from a class in a public park may show the
+  people in it (the owner's rulings of 2026-10-28 and 2026-11-15). Footage from
+  a private place shows nothing that locates it. Naming a person is a separate
+  question and is not decided here.
+- **YouTube** is not embedded by this build. If a feature ever needs one, use a
+  still with a play button that loads `youtube-nocookie.com` only on a tap, so
+  the page makes no request to Google until the reader asks.
 
 ## Build 3 — "Join the Community" (2026-07-06)
 

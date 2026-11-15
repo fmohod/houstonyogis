@@ -1,0 +1,105 @@
+/* ============================================================
+   HOUSTON YOGIS — scenes.css  (scroll scenes, 2026-11-15)
+   A layer over style.css and each article's article.css. It only
+   takes effect when scenes.js has run (html.has-scenes); without
+   the script every page reads exactly as it did before.
+   Uses the tokens style.css defines on :root.
+   ============================================================ */
+
+/* A scene: a picture that holds still on the screen while words pass over it. */
+.scene {
+  position: relative;
+  width: var(--scene-vw, 100vw);
+  margin-left: calc(50% - var(--scene-vw, 100vw) / 2);
+}
+.scene-bg {
+  position: sticky; top: 0;
+  height: 100vh; height: 100svh;
+  overflow: hidden;
+  background: var(--color-dark);
+}
+/* --focus: which part of a wide clip survives the crop on an upright phone (set per clip in scenes.js) */
+.scene-bg video {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: var(--focus, 50% 50%);
+}
+.scene-bg::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(15,24,18,.30), rgba(15,24,18,.62));
+}
+.scene-light .scene-bg::after {
+  background: linear-gradient(180deg, rgba(15,24,18,.12), rgba(15,24,18,.50));
+}
+.scene-body {
+  position: relative;
+  margin-top: -100vh; margin-top: -100svh;
+  padding: 0 20px;
+}
+
+/* The opening scene carries the article's own headline block. */
+.scene-open .scene-body {
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding-bottom: 11vh;
+}
+.has-scenes .scene-open .feature-head { margin: 0 auto; max-width: 46rem; }
+.has-scenes .scene-open .feature-kicker { color: #EBCBA8; }
+.has-scenes .scene-open .feature-title {
+  color: #fff; text-wrap: balance;
+  text-shadow: 0 2px 26px rgba(0,0,0,.5);
+}
+.has-scenes .scene-open .feature-dek,
+.has-scenes .scene-open .feature-byline {
+  color: #F3EEE4; text-shadow: 0 1px 14px rgba(0,0,0,.6);
+}
+.scene-cue {
+  font-family: var(--font-meta); font-size: .72rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase; text-align: center;
+  color: #fff; opacity: .8; margin-top: 1.6rem;
+}
+
+/* A chapter scene carries one section heading. */
+.scene-chapter .scene-body { padding-top: 34vh; padding-bottom: 88vh; }
+.has-scenes .feature-body .scene-chapter h2 {
+  margin: 0 auto; max-width: 14em; text-align: center;
+  font-style: italic; font-size: clamp(2rem, 7.5vw, 3.2rem); line-height: 1.15;
+  color: #fff; text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0,0,0,.6);
+}
+.has-scenes .feature-body .scene-chapter { margin-top: 2.6rem; margin-bottom: 2.4rem; }
+
+/* The band at the top of a teacher's page. */
+.scene-band .scene-bg { position: relative; height: 62vh; height: 62svh; min-height: 320px; }
+.has-scenes .scene-band + .page-wrap { padding-top: 0 !important; }
+.has-scenes .scene-band + .page-wrap .prof-avatar {
+  margin-top: -58px; position: relative;
+  box-shadow: 0 0 0 5px var(--color-bg), 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* Pause control: moving pictures can always be stopped. */
+.scene-pause {
+  position: absolute; right: 12px; bottom: 12px; z-index: 2;
+  font-family: var(--font-meta); font-size: .72rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: #fff; background: rgba(15,24,18,.55);
+  border: 1px solid rgba(255,255,255,.45); border-radius: 999px;
+  padding: 8px 14px; min-height: 36px; cursor: pointer;
+}
+.scene-pause:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* The article opens on the scene, so the paper starts lower. */
+.has-scenes .feature { padding-top: 0; }
+.has-scenes .feature .feature-hero { margin-top: 2.5rem; }
+
+/* Stills and pull quotes rise into place. */
+.has-scenes .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s ease; }
+.has-scenes .reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .has-scenes .reveal { opacity: 1; transform: none; transition: none; }
+}
+@media print {
+  .scene-bg, .scene-cue, .scene-pause { display: none; }
+  .scene-body { margin-top: 0; padding: 0; min-height: 0; }
+  .has-scenes .scene-open .feature-title, .has-scenes .feature-body .scene-chapter h2 { color: #000; text-shadow: none; }
+}

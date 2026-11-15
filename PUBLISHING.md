@@ -88,11 +88,20 @@ every image real alt text; a link that wraps an image must not carry an
 `aria-label`, which would replace the image's description in what a screen
 reader announces (name the link with visible or visually hidden text instead).
 
-An article is a teaser and never plays or embeds video, so it carries no iframe
-and makes no request to YouTube. To point at a film, link to its title page on
-the Watch page, `../media/#slug` (the slugs are in `media/streaming.json`), and
-let that page play it. The masthead you copy from `0001/` already has the Watch
-link.
+An article never plays a film and makes no request to YouTube, so it carries no
+iframe. To point at a film, link to its title page on the Watch page,
+`../media/#slug` (the slugs are in `media/streaming.json`), and let that page
+play it. The masthead you copy from `0001/` already has the Watch link.
+
+**[Amended 2026-11-15.]** Until this date the rule read "an article is a teaser
+and never plays or embeds video." The owner's direction of 2026-11-14 changed
+one part of it (in summary, not his exact words): short clips from his own
+footage playing in the background of a feature and of a teacher's page, with
+scenic, story-like scrolling. So a feature may now carry **scroll scenes**: silent six-second
+loops of his own footage behind the headline and behind section headings. They
+are scenery, not the film: no sound, no player, hosted on this site, and the
+full film still lives on Watch. An article opts in with two lines and changes
+none of its words; see "Build 5" in `CLAUDE.md` for how.
 
 ## 3. Field reference
 
