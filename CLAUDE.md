@@ -152,20 +152,20 @@ Watch page and the moving clips, the tall beige masthead and the dark green and
 beige palette looked cheap and out of place; bring the rest of the site up to
 the Watch page.
 
-- **Palette.** The tokens in   are now the dark of
-  : near-black ground, warm ink, sand accent. 
-  is the heading ink and the fill of a solid button, whose text is .
-  Do not use  as "light text"; on a dark panel use
-  . Highlighted panels use  and .
+- **Palette.** The tokens in `style.css` `:root` are now the dark of
+  `media/watch.css`: near-black ground, warm ink, sand accent. `--color-primary`
+  is the heading ink and the fill of a solid button, whose text is `--color-bg`.
+  Do not use `--color-bg` as "light text"; on a dark panel use
+  `--color-primary`. Highlighted panels use `--tint-warm` and `--tint-sage`.
   A page-level style block must use tokens, never a light hex.
-- **The bar.**  is a fixed bar  tall (64px; 96px under
+- **The bar.** `.masthead` is a fixed bar `--bar-h` tall (64px; 96px under
   860px wide, where the nav is a second line that scrolls sideways). The markup
-  on every page is unchanged; the tagline and rule are not drawn.  has
-  . On a page that opens on a clip the bar floats
-  over the picture and  adds  once the reader scrolls.
-- **Version tag.** Every page loads  too, for the same reason as
-  the scenes files. Raise N on every page when  changes.
--  keeps its own  palette inside the article;  is
+  on every page is unchanged; the tagline and rule are not drawn. `body` has
+  `padding-top: var(--bar-h)`. On a page that opens on a clip the bar floats
+  over the picture and `scenes.js` adds `.is-solid` once the reader scrolls.
+- **Version tag.** Every page loads `style.css?v=N` too, for the same reason as
+  the scenes files. Raise N on every page when `style.css` changes.
+- `0001/` keeps its own `slides.css` palette inside the article; `media/` is
   untouched.
 
 ## Build 3 — "Join the Community" (2026-07-06)
