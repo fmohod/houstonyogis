@@ -105,19 +105,30 @@
   background: linear-gradient(to top, rgba(27,43,31,.86) 0%, rgba(27,43,31,.28) 60%, rgba(27,43,31,.12) 100%);
 }
 
-/* The Journal list: its heading on a band. */
+/* A list or info page (Journal, Calendar, Guides, Join and the rest): its heading on a band. */
 .has-scenes .journal-main { padding-top: 0; }
-.scene-journal .scene-bg { height: max(52vh, 320px); height: max(52svh, 320px); }
-.scene-journal .scene-body {
+.scene-page .scene-bg { height: max(52vh, 320px); height: max(52svh, 320px); }
+.scene-page .scene-body {
   margin-top: calc(-1 * max(52vh, 320px)); margin-top: calc(-1 * max(52svh, 320px));
   min-height: max(52vh, 320px); min-height: max(52svh, 320px);
   display: flex; flex-direction: column; justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 40px; text-align: center;
+  text-shadow: 0 2px 22px rgba(0,0,0,.6);
 }
-.has-scenes .scene-journal .journal-header { margin-bottom: 0; text-shadow: 0 2px 22px rgba(0,0,0,.6); }
-.has-scenes .scene-journal .section-kicker { color: #EBCBA8; }
-.has-scenes .scene-journal .section-heading { color: #fff; font-size: clamp(2.2rem, 8vw, 3.4rem); }
-.has-scenes .scene-journal .journal-subtitle { color: #F3EEE4; }
+/* words sit mid-picture here, so the veil is heavier than on a full-screen scene */
+.scene-page .scene-bg::after { background: linear-gradient(180deg, rgba(15,24,18,.36), rgba(15,24,18,.60)); }
+.has-scenes .scene-page .journal-header { margin-bottom: 0; }
+.has-scenes .scene-page .section-kicker,
+.has-scenes .scene-page .page-kicker { color: #EBCBA8; }
+.has-scenes .scene-page .section-heading,
+.has-scenes .scene-page .page-title {
+  color: #fff; margin-bottom: 0; text-wrap: balance;
+  font-size: clamp(2.2rem, 8vw, 3.4rem); line-height: 1.15;
+}
+.has-scenes .scene-page.scene-long .page-title {
+  font-size: clamp(1.7rem, 6vw, 2.6rem); max-width: 20ch; margin-left: auto; margin-right: auto;
+}
+.has-scenes .scene-page .journal-subtitle { color: #F3EEE4; }
 
 /* Pause control: moving pictures can always be stopped. */
 .scene-pause {

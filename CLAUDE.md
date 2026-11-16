@@ -120,7 +120,14 @@ It is a layer, not a rewrite: `scenes.css`, `scenes.js` and `assets/loops/`.
   a new feature has a clip. `data-quote` is the clip behind the membership
   quote. The three explore tiles carry stills set in `scenes.css`.
   `journal/index.html`: `data-band` is the clip behind the list's heading.
+  `calendar.html`, `guides.html`, `join.html`, `places.html`, `about.html`,
+  `attend.html` and `teach.html` (2026-11-16) take the same `data-band`: the
+  kicker and title of the page's first `.page-wrap` move onto the band and
+  everything else stays where it was.
   The pages' own scripts and data are untouched.
+- **Version tag.** Browsers keep `scenes.css` and `scenes.js` for four hours.
+  The pages load them as `?v=N`; when either file changes in a way a page
+  depends on, raise N on every page that loads them (one search and replace).
 - **Enhancement only.** With scripts off, reduced motion on, or data saver on,
   nothing moves: the page is the plain article (reduced motion and data saver
   show the still). One clip plays at a time, a file is fetched only when its

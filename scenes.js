@@ -13,6 +13,7 @@
  * index.html: data-open (fallback clip behind the hero; the newest feature's clip from
  *   FEATURES replaces it) and data-quote (clip behind the membership quote).
  * journal/index.html: data-band (clip behind the list's heading).
+ * calendar, guides, join, places, about, attend, teach: data-band (clip behind the page title).
  *
  * The clips are silent six-second loops in assets/loops/ (name.mp4 + name.jpg).
  * One plays at a time, a file is fetched only when its scene arrives, and with
@@ -220,13 +221,27 @@
     return scenes.length > 0;
   }
 
-  // The Journal list: its heading sits on a band.
+  // A list or info page: its heading sits on a band. The Journal moves its whole header;
+  // any other page moves the kicker and title of its first .page-wrap, and the rest stays on paper.
   function journal() {
+    var name = tag.getAttribute('data-band');
     var head = document.querySelector('.journal-main .journal-header');
-    var band = head && make(tag.getAttribute('data-band'), 'scene-band scene-journal');
+    var wrap = !head && document.querySelector('main > .page-wrap');
+    var title = wrap && wrap.querySelector('.page-title');
+    if (!name || (!head && !title)) return false;
+    var band = make(name, 'scene-band scene-page' + (head ? ' scene-journal' : ''));
     if (!band) return false;
-    head.parentNode.insertBefore(band, head);
-    band.querySelector('.scene-body').appendChild(head);
+    var body = band.querySelector('.scene-body');
+    if (head) {
+      head.parentNode.insertBefore(band, head);
+      body.appendChild(head);
+    } else {
+      var kicker = wrap.querySelector('.page-kicker');
+      wrap.parentNode.insertBefore(band, wrap);
+      if (kicker) body.appendChild(kicker);
+      body.appendChild(title);
+      if (title.textContent.trim().length > 24) band.classList.add('scene-long');
+    }
     return true;
   }
 
