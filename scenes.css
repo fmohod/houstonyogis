@@ -73,7 +73,7 @@
 .has-scenes .scene-band + .page-wrap { padding-top: 0 !important; }
 .has-scenes .scene-band + .page-wrap .prof-avatar {
   margin-top: -58px; position: relative;
-  box-shadow: 0 0 0 5px var(--color-bg), 0 10px 30px rgba(0,0,0,.25);
+  box-shadow: 0 0 0 5px var(--color-bg), 0 10px 30px rgba(0,0,0,.5);
 }
 
 /* The homepage: the hero's words on a full-screen clip. */
@@ -87,12 +87,12 @@
   text-shadow: 0 2px 26px rgba(0,0,0,.5);
 }
 .has-scenes .scene-home .hero-excerpt { color: #F3EEE4; text-shadow: 0 1px 14px rgba(0,0,0,.6); }
-.has-scenes .scene-home .cta-button.solid { background: #fff; border-color: #fff; color: var(--color-primary); }
-.has-scenes .scene-home .cta-button.solid:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.has-scenes .scene-home .cta-button.solid { background: #fff; border-color: #fff; color: var(--color-bg); }
+.has-scenes .scene-home .cta-button.solid:hover { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-bg); }
 
 /* The membership quote passes over its own clip. */
 .scene-quote .scene-body { padding-top: 30vh; padding-bottom: 70vh; }
-.has-scenes .scene-quote .membership-block { background: transparent; padding: 0 4px; text-shadow: 0 2px 22px rgba(0,0,0,.6); }
+.has-scenes .scene-quote .membership-block { background: transparent; border: 0; color: #fff; padding: 0 4px; text-shadow: 0 2px 22px rgba(0,0,0,.6); }
 .has-scenes .scene-quote .membership-block .section-kicker { color: #EBCBA8; }
 .has-scenes .scene-quote .membership-block .membership-sub { color: #F3EEE4; font-size: .86rem; }
 
@@ -107,12 +107,13 @@
 
 /* A list or info page (Journal, Calendar, Guides, Join and the rest): its heading on a band. */
 .has-scenes .journal-main { padding-top: 0; }
-.scene-page .scene-bg { height: max(52vh, 320px); height: max(52svh, 320px); }
+.scene-page .scene-bg { height: max(60vh, 360px); height: max(60svh, 360px); }
 .scene-page .scene-body {
-  margin-top: calc(-1 * max(52vh, 320px)); margin-top: calc(-1 * max(52svh, 320px));
-  min-height: max(52vh, 320px); min-height: max(52svh, 320px);
+  margin-top: calc(-1 * max(60vh, 360px)); margin-top: calc(-1 * max(60svh, 360px));
+  min-height: max(60vh, 360px); min-height: max(60svh, 360px);
   display: flex; flex-direction: column; justify-content: center;
   margin-bottom: 40px; text-align: center;
+  padding-top: var(--bar-h, 0px);          /* the bar floats over the top of the band */
   text-shadow: 0 2px 22px rgba(0,0,0,.6);
 }
 /* words sit mid-picture here, so the veil is heavier than on a full-screen scene */

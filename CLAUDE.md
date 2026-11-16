@@ -145,6 +145,29 @@ It is a layer, not a rewrite: `scenes.css`, `scenes.js` and `assets/loops/`.
   still with a play button that loads `youtube-nocookie.com` only on a tap, so
   the page makes no request to Google until the reader asks.
 
+## Build 6 — one look with Watch (2026-11-16)
+
+The owner's direction, 2026-11-16 (in summary, not his exact words): next to the
+Watch page and the moving clips, the tall beige masthead and the dark green and
+beige palette looked cheap and out of place; bring the rest of the site up to
+the Watch page.
+
+- **Palette.** The tokens in   are now the dark of
+  : near-black ground, warm ink, sand accent. 
+  is the heading ink and the fill of a solid button, whose text is .
+  Do not use  as "light text"; on a dark panel use
+  . Highlighted panels use  and .
+  A page-level style block must use tokens, never a light hex.
+- **The bar.**  is a fixed bar  tall (64px; 96px under
+  860px wide, where the nav is a second line that scrolls sideways). The markup
+  on every page is unchanged; the tagline and rule are not drawn.  has
+  . On a page that opens on a clip the bar floats
+  over the picture and  adds  once the reader scrolls.
+- **Version tag.** Every page loads  too, for the same reason as
+  the scenes files. Raise N on every page when  changes.
+-  keeps its own  palette inside the article;  is
+  untouched.
+
 ## Build 3 — "Join the Community" (2026-07-06)
 
 The "Membership" nav item became **`join.html`**, a manifesto-plus-router page

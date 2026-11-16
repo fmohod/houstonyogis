@@ -245,7 +245,14 @@
     return true;
   }
 
+  // The bar at the top floats over the opening picture and turns solid once the reader scrolls.
+  var mast = document.querySelector('.masthead');
+  function bar() { if (mast) mast.classList.toggle('is-solid', (window.pageYOffset || 0) > 24); }
+  window.addEventListener('scroll', bar, { passive: true });
+  bar();
+
   window.addEventListener('resize', vw);
+  window.addEventListener('load', vw);          // a scrollbar that appears once the page fills changes the width
   if (feature() || home() || journal()) { root.classList.add('has-scenes'); vw(); watch(); }
   else guide();
 })();
