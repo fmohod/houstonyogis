@@ -76,6 +76,49 @@
   box-shadow: 0 0 0 5px var(--color-bg), 0 10px 30px rgba(0,0,0,.25);
 }
 
+/* The homepage: the hero's words on a full-screen clip. */
+.has-scenes .scene-home { margin-bottom: 88px; }
+.has-scenes .scene-home .hero { padding: 0; }
+.has-scenes .scene-home .hero-image { display: none; }
+.has-scenes .scene-home .hero-kicker { color: #EBCBA8; }
+.has-scenes .scene-home .hero-headline {
+  color: #fff; max-width: 18ch; text-wrap: balance;
+  font-size: clamp(2.3rem, 8vw, 4.2rem);
+  text-shadow: 0 2px 26px rgba(0,0,0,.5);
+}
+.has-scenes .scene-home .hero-excerpt { color: #F3EEE4; text-shadow: 0 1px 14px rgba(0,0,0,.6); }
+.has-scenes .scene-home .cta-button.solid { background: #fff; border-color: #fff; color: var(--color-primary); }
+.has-scenes .scene-home .cta-button.solid:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+
+/* The membership quote passes over its own clip. */
+.scene-quote .scene-body { padding-top: 30vh; padding-bottom: 70vh; }
+.has-scenes .scene-quote .membership-block { background: transparent; padding: 0 4px; text-shadow: 0 2px 22px rgba(0,0,0,.6); }
+.has-scenes .scene-quote .membership-block .section-kicker { color: #EBCBA8; }
+.has-scenes .scene-quote .membership-block .membership-sub { color: #F3EEE4; font-size: .86rem; }
+
+/* The explore tiles carry stills from the same footage. */
+.has-scenes .explore-tile .tile-wash { background-size: cover; background-position: center; }
+.has-scenes .explore-tile:nth-child(1) .tile-wash { background-image: url(assets/loops/aisha-class.jpg); background-position: 92% 50%; }
+.has-scenes .explore-tile:nth-child(2) .tile-wash { background-image: url(assets/loops/nahnah-willow-bowls.jpg); background-position: 17% 50%; }
+.has-scenes .explore-tile:nth-child(3) .tile-wash { background-image: url(assets/loops/aisha-fold.jpg); }
+.has-scenes .explore-tile .tile-overlay {
+  background: linear-gradient(to top, rgba(27,43,31,.86) 0%, rgba(27,43,31,.28) 60%, rgba(27,43,31,.12) 100%);
+}
+
+/* The Journal list: its heading on a band. */
+.has-scenes .journal-main { padding-top: 0; }
+.scene-journal .scene-bg { height: max(52vh, 320px); height: max(52svh, 320px); }
+.scene-journal .scene-body {
+  margin-top: calc(-1 * max(52vh, 320px)); margin-top: calc(-1 * max(52svh, 320px));
+  min-height: max(52vh, 320px); min-height: max(52svh, 320px);
+  display: flex; flex-direction: column; justify-content: center;
+  margin-bottom: 40px;
+}
+.has-scenes .scene-journal .journal-header { margin-bottom: 0; text-shadow: 0 2px 22px rgba(0,0,0,.6); }
+.has-scenes .scene-journal .section-kicker { color: #EBCBA8; }
+.has-scenes .scene-journal .section-heading { color: #fff; font-size: clamp(2.2rem, 8vw, 3.4rem); }
+.has-scenes .scene-journal .journal-subtitle { color: #F3EEE4; }
+
 /* Pause control: moving pictures can always be stopped. */
 .scene-pause {
   position: absolute; right: 12px; bottom: 12px; z-index: 2;

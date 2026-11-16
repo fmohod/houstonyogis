@@ -113,6 +113,14 @@ It is a layer, not a rewrite: `scenes.css`, `scenes.js` and `assets/loops/`.
   Leave a section out of the map to keep it plain.
 - **`guide.html`** carries a bare tag; the teacher-to-clip table is `GUIDES` at
   the top of `scenes.js`. `guides.json` is generated and is not touched.
+- **The homepage and the Journal list (added 2026-11-16)** opt in the same way.
+  `index.html`: `data-open` is the fallback clip behind the hero, and the hero
+  then takes the clip of whichever feature it is showing, from the `FEATURES`
+  table (folder number to clip) at the top of `scenes.js`; add a line there when
+  a new feature has a clip. `data-quote` is the clip behind the membership
+  quote. The three explore tiles carry stills set in `scenes.css`.
+  `journal/index.html`: `data-band` is the clip behind the list's heading.
+  The pages' own scripts and data are untouched.
 - **Enhancement only.** With scripts off, reduced motion on, or data saver on,
   nothing moves: the page is the plain article (reduced motion and data saver
   show the still). One clip plays at a time, a file is fetched only when its
