@@ -247,3 +247,10 @@ for the full back-and-forth that produced this. The question it leads with is
 Follow the numbered-folder pattern from `PUBLISHING.md` — no CLAUDE.md
 Game Meta Block here (Houston Yogis has no game layer; that is
 Cadenza Arthouse-specific and out of scope for this repo unless explicitly requested).
+
+## The sitemap (2026-11-22)
+
+`sitemap.xml` lists final addresses only. The host answers `/calendar.html` with a 308 to `/calendar`, so the
+sitemap names `/calendar`, never the `.html` form; folders end in a slash (`/0003/`, `/journal/`, `/media/`). A new
+article adds its `<url>` in the same push, with `lastmod` the date of its last real change. `.assetsignore` keeps the
+`.md` files and other checkout files off the site where the Worker serves the repo root.

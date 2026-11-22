@@ -1,0 +1,8 @@
+# Not part of the site: keep the checkout's own files from being served.
+.git
+.gitattributes
+.assetsignore
+*.md
+CNAME
+wrangler.jsonc
+wrangler.toml
