@@ -69,6 +69,13 @@
   margin-right: calc(50% - min(50vw, 30rem));
 }
 
+/* A portrait-orientation hero: kept at a readable height, centered, not full-bleed. */
+.feature-hero.feature-hero--tall {
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 figcaption {
   font-family: var(--font-meta);
   font-size: 0.9rem;
