@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="For studio and venue owners in Houston. When a Houston Yogis guide teaches in your space, your studio is on our calendar. See what that means, and the four ways a venue can work with us.">
+  <title>For Studios &amp; Venues | Houston Yogis</title>
+  <link rel="canonical" href="https://houstonyogis.net/venues">
+  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="scenes.css?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500;1,9..144,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── venues page: scoped, built on the site's own tokens (same parts as teach.html) ── */
+    .teach-hero-sub { color: var(--color-text-soft); font-family: var(--font-meta); font-size: 0.95rem; letter-spacing: 0.02em; margin-top: 8px; }
+    .teach-section { max-width: 860px; margin: 0 auto; padding: 46px 24px; border-top: 1px solid var(--color-rule); }
+    .teach-section:first-of-type { border-top: 0; }
+    .teach-eyebrow { font-family: var(--font-meta); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); font-weight: 700; margin: 0 0 12px; }
+    .teach-section h2 { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.7rem; line-height: 1.15; margin: 0 0 10px; }
+    .teach-section > p { font-family: var(--font-body); font-size: 1.06rem; line-height: 1.7; color: var(--color-text); margin: 0 0 12px; }
+    .teach-section > p a, .whatif a, .level a, .fact a { color: var(--color-accent); }
+    .fact a { display: block; margin-top: 8px; font-weight: 700; }
+
+    /* the plain facts row */
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+    @media (max-width: 680px){ .facts { grid-template-columns: 1fr; } }
+    .fact { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 14px; padding: 20px 22px; }
+    .fact b { display: block; font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.15rem; margin-bottom: 6px; }
+    .fact span { font-family: var(--font-meta); font-size: 0.93rem; line-height: 1.55; color: var(--color-text-soft); }
+
+    /* the four levels */
+    .levels { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
+    @media (max-width: 680px){ .levels { grid-template-columns: 1fr; } }
+    .level { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 14px; padding: 24px 26px; }
+    .level.first { background: color-mix(in srgb, var(--color-primary) 4%, var(--color-surface)); border-color: color-mix(in srgb, var(--color-secondary) 70%, var(--color-rule)); }
+    .level .lbl { font-family: var(--font-meta); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+    .pricepill { display:inline-block; font-family: var(--font-meta); font-size: 0.72rem; font-weight: 700; padding: 4px 11px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+    .pricepill.free { background: var(--color-primary); color: var(--color-bg); }
+    .pricepill.fee { background: var(--tint-warm); color: var(--color-accent); }
+    .level h3 { font-family: var(--font-display); font-weight: 500; color: var(--color-primary); font-size: 1.25rem; margin: 8px 0 6px; }
+    .level p { font-family: var(--font-body); color: var(--color-text-soft); font-size: 0.98rem; line-height: 1.6; margin: 0; }
+    .level ul { margin: 14px 0 0; padding-left: 18px; font-family: var(--font-meta); font-size: 0.92rem; color: var(--color-text); }
+    .level li { margin: 7px 0; line-height: 1.5; }
+
+    /* question and answer rows */
+    .whatif { width: 100%; border-collapse: collapse; margin-top: 20px; font-family: var(--font-meta); font-size: 0.96rem; line-height: 1.55; }
+    .whatif td { padding: 13px 14px; border-top: 1px solid var(--color-rule); vertical-align: top; color: var(--color-text); }
+    .whatif tr:first-child td { border-top: 0; }
+    .whatif td.s { color: var(--color-text-soft); width: 40%; font-weight: 500; }
+    @media (max-width: 600px){ .whatif, .whatif tbody, .whatif tr, .whatif td{ display:block; width:auto; } .whatif td{ border-top:0; padding:1px 0; } .whatif tr{ padding:12px 0; border-top:1px solid var(--color-rule);} .whatif tr:first-child{border-top:0;} }
+
+    /* closing band */
+    .teach-cta { background: var(--color-surface); border: 1px solid var(--color-rule); color: var(--color-primary); border-radius: 16px; padding: 34px 30px; margin: 10px auto 0; max-width: 860px; text-align: center; }
+    .teach-cta h2 { font-family: var(--font-display); color: var(--color-primary); font-size: 1.6rem; margin: 0 0 8px; font-weight: 500; }
+    .teach-cta p { font-family: var(--font-meta); color: var(--color-text-soft); max-width: 52ch; margin: 0 auto 22px; line-height: 1.55; }
+    .teach-cta .cta-row, .teach-section .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .teach-section .cta-row { justify-content: flex-start; margin-top: 18px; }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-symbol">
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.1">
+          <circle cx="15" cy="15" r="4"/>
+          <path d="M15 2v6M15 22v6M2 15h6M22 15h6M6 6l4 4M20 20l4 4M6 24l4-4M20 10l4-4"/>
+        </svg>
+      </div>
+      <h1 class="masthead-title"><a href="index.html">Houston Yogis</a></h1>
+      <p class="masthead-tagline">A Journal of Movement, Nature, &amp; Community</p>
+      <div class="masthead-rule"></div>
+      <nav class="masthead-nav">
+        <a href="calendar.html">Calendar</a>
+        <a href="guides.html">Guides</a>
+        <a href="journal/index.html">Journal</a>
+        <a href="media/">Watch</a>
+        <a href="join.html">Join the Community</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-wrap" style="padding-bottom:0;">
+      <p class="page-kicker">For Studios &amp; Venue Owners</p>
+      <h2 class="page-title">Someone who teaches in your space is one of our guides.</h2>
+      <p class="lede" style="text-align:center;">Houston Yogis is a journal, a calendar and a film library for Houston's yoga and wellness community. When one of our guides teaches at your studio, your studio is part of it too. This page says plainly what that means, what we might ask of you, and what you can ask of us.</p>
+      <p class="teach-hero-sub" style="text-align:center;">Nothing here costs you anything unless you decide you want more.</p>
+    </div>
+
+    <!-- who we are -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">Who is asking</p>
+      <h2>A publication, with a camera</h2>
+      <p>Houston Yogis documents the teachers, studios and gatherings that make up wellness in this city. We publish written features, keep a public calendar of our guides' classes, and film classes and sound meditations for our Watch page. It is a publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a>, a Houston photography and media studio.</p>
+      <p>So when a teacher tells you that a photographer would like to come to a class, this is who that is: the people who keep that teacher's page, list the classes and make the films.</p>
+      <div class="facts">
+        <div class="fact"><b>The Calendar</b><span>Every class our guides teach, wherever in Houston they teach it, with the place named. <a href="calendar.html">See the calendar</a></span></div>
+        <div class="fact"><b>The Guides</b><span>A page for each teacher: who they are, what they teach, where to find them next. <a href="guides.html">Meet the guides</a></span></div>
+        <div class="fact"><b>Watch</b><span>Whole classes and sound meditations, filmed and cut by us, free to watch. <a href="media/">See the films</a></span></div>
+      </div>
+    </section>
+
+    <!-- how a venue shows up -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">What happens without you lifting a finger</p>
+      <h2>Your studio is already where people are sent</h2>
+      <p>We keep each guide's full schedule. If a guide teaches four classes a week across the city and one of them is in your room, that one class is listed with your studio's name and address beside it, and the button goes wherever people book it today, which is usually your own booking page.</p>
+      <p>That matters more than it sounds. Plenty of people do not pick a class by the teacher. They pick it because the place is ten minutes from home. A reader who has never heard of your studio finds it because a teacher they follow is there on Thursday.</p>
+      <p>You do not have to sign up for this, and it is free. If we have your name, address or parking details wrong, tell us and we fix it the same day.</p>
+    </section>
+
+    <!-- levels -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">Four ways to work with us</p>
+      <h2>Take the level that suits you, including none</h2>
+      <p>Each one stands by itself. Most studios start at the first and stay there, and that is a fine place to be.</p>
+      <div class="levels">
+        <div class="level first">
+          <span class="lbl">Level 1</span><span class="pricepill free">Free</span>
+          <h3>Named as the place</h3>
+          <p>What already happens when our guide teaches in your space.</p>
+          <ul>
+            <li>The guide's classes at your studio appear on our calendar</li>
+            <li>Your name and address are on each one</li>
+            <li>Bookings go where they go now</li>
+            <li>Nothing for you to do</li>
+          </ul>
+        </div>
+        <div class="level">
+          <span class="lbl">Level 2</span><span class="pricepill free">Free</span>
+          <h3>Let us film a class</h3>
+          <p>We photograph and film our guide teaching in your room.</p>
+          <ul>
+            <li>You choose the class and the time</li>
+            <li>One or two people, small cameras, no lights or stands in the way</li>
+            <li>The class becomes a film on Watch and pictures on the teacher's page</li>
+            <li>Your studio is credited by name, or left unnamed if you prefer</li>
+          </ul>
+        </div>
+        <div class="level">
+          <span class="lbl">Level 3</span><span class="pricepill fee">Priced with you</span>
+          <h3>List your whole schedule</h3>
+          <p>Not only our guide's classes: every class your studio runs, and the people who teach them.</p>
+          <ul>
+            <li>Your full timetable on our calendar, kept current by us</li>
+            <li>A page for your studio, and one for each of your instructors</li>
+            <li>Keep your own booking system, or use our prepaid reservations and QR tickets</li>
+            <li>Send us the schedule once; we do the posting</li>
+          </ul>
+        </div>
+        <div class="level">
+          <span class="lbl">Level 4</span><span class="pricepill fee">Quoted per job</span>
+          <h3>Hire the crew</h3>
+          <p>You need pictures or film of your own, for your own use.</p>
+          <ul>
+            <li>Photography of the space, a class, a workshop or an opening</li>
+            <li>A class or sound meditation filmed start to finish and cut</li>
+            <li>Coverage of an event you are hosting</li>
+            <li>Done on contract by Cadenza Arthouse; the work is yours to use</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- filming -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">If we film in your room</p>
+      <h2>What a filmed class is actually like</h2>
+      <p>The questions a studio owner should ask, answered before you have to ask them.</p>
+      <table class="whatif"><tbody>
+        <tr><td class="s">Who decides whether it happens</td><td>You do. We come only when the studio has said yes, to a class and a time you have agreed.</td></tr>
+        <tr><td class="s">Do your students know</td><td>Yes. People are told before class starts that it is being filmed, and why.</td></tr>
+        <tr><td class="s">A student does not want to be on camera</td><td>They say so and they are left out. We keep a side of the room that the camera does not face, and we cut around anyone who asks afterwards.</td></tr>
+        <tr><td class="s">Does it disturb the class</td><td>It should not. We work from the edges, we do not stop or direct the teacher, and nothing is staged. The class runs as it would any other day.</td></tr>
+        <tr><td class="s">What gets made</td><td>One film of the class, cut from the whole session, with the sound meditation if there is one. A handful of photographs. Sometimes a short silent clip for the teacher's page.</td></tr>
+        <tr><td class="s">Where it is shown</td><td>On our <a href="media/">Watch page</a> and the teacher's page here. There are two full-length films on Watch now if you want to see the standard.</td></tr>
+        <tr><td class="s">Your house rules</td><td>Tell us and we follow them: areas that stay out of frame, signs or members' details that should not be readable, times that are off limits.</td></tr>
+        <tr><td class="s">You change your mind later</td><td>Tell us and the film comes down.</td></tr>
+        <tr><td class="s">What it costs you</td><td>Nothing. We film our guides because that is what the publication does.</td></tr>
+      </tbody></table>
+    </section>
+
+    <!-- whole schedule -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">If you want the whole studio listed</p>
+      <h2>Your tickets or ours, your choice</h2>
+      <p>Listing one guide's classes is something we do for the guide. Listing a studio's entire timetable is a service to the studio, so it is a separate arrangement, agreed in writing before anything goes up. We set the price with you according to how much there is to keep current.</p>
+      <table class="whatif"><tbody>
+        <tr><td class="s">You already have a booking system</td><td>Keep it. Each listing's button goes to your booking page, and your members, prices and passes stay exactly where they are.</td></tr>
+        <tr><td class="s">You would rather not run one</td><td>Use ours: people reserve and pay ahead through Square, get a QR ticket by email, and you get the list of who is coming. <a href="teach.html">How that works, with the numbers</a></td></tr>
+        <tr><td class="s">Your schedule changes</td><td>Email the change. We update the calendar; you do not log in to anything.</td></tr>
+        <tr><td class="s">Your instructors</td><td>Each can have a page here if they want one. Nobody is listed by name without agreeing to it.</td></tr>
+        <tr><td class="s">You stop</td><td>Future listings come down. There is no contract term holding you in.</td></tr>
+      </tbody></table>
+    </section>
+
+    <!-- honest -->
+    <section class="teach-section">
+      <p class="teach-eyebrow">Where we are right now</p>
+      <h2>We are early, and we would rather say so</h2>
+      <p>The calendar, the guide pages, the films, the reservations and the tickets are all built and running. The roster is small on purpose, and the audience is still being built. We will not quote you a reach number we cannot stand behind.</p>
+      <p>What a studio gets by being here early is room to be seen, and a say in how the venue side of this works while it is still being shaped.</p>
+    </section>
+
+  </main>
+
+  <div class="teach-cta">
+    <h2>Tell us about your space</h2>
+    <p>A few lines is enough: the studio, who teaches there, and which of the four levels sounds right. If the answer is "just come film the class," say that.</p>
+    <div class="cta-row">
+      <a href="register.html?role=venue" class="cta-button on-dark">Get in touch about your studio</a>
+      <a href="media/" class="cta-button on-dark">Watch a film first</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-wordmark">Houston Yogis</span>
+      <p class="footer-mission">Houston Yogis documents Houston's wellness community through journalism, photography, education, and public events.</p>
+      <nav class="footer-links">
+        <a href="about.html">About</a>
+        <a href="teach.html">Teach with Us</a>
+        <a href="venues.html">Studios &amp; Venues</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <p class="footer-legal">Self-hosted. Just words.&nbsp;&nbsp;&middot;&nbsp;&nbsp;&copy; 2026 Houston Yogis. All Rights Reserved.</p>
+      <p class="footer-network">A publication of <a href="https://cadenzaarthouse.com" target="_blank" rel="noopener">Cadenza Arthouse</a></p>
+    </div>
+  </footer>
+  <script src="scenes.js?v=4" data-band="aisha-class"></script>
+
+</body>
+</html>

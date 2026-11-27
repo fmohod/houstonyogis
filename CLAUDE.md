@@ -254,3 +254,15 @@ Cadenza Arthouse-specific and out of scope for this repo unless explicitly reque
 sitemap names `/calendar`, never the `.html` form; folders end in a slash (`/0003/`, `/journal/`, `/media/`). A new
 article adds its `<url>` in the same push, with `lastmod` the date of its last real change. `.assetsignore` keeps the
 `.md` files and other checkout files off the site where the Worker serves the repo root.
+
+## Studios and venues (2026-11-27)
+
+`venues.html` is the pitch page for studio and venue owners, the counterpart of `teach.html`, built on the
+owner's dictated direction of 2026-11-27 (in summary: a venue where one of our guides teaches should have a
+page to look at, with levels of involvement the way teachers have options). Four levels: named on the calendar
+(free, automatic), let us film a class (free), list the whole schedule (a paid service, **no price is
+published because none is decided**), hire the crew (contract, Cadenza Arthouse). Its form is
+`register.html?role=venue`. "Studios & Venues" is in the footer of every page that has the footer; there is
+no shared include, so a new page needs the link by hand. The filming promises on it (students told beforehand,
+a side of the room off camera, the film comes down on request) were written by the session and are the
+owner's to confirm or change. The page names no teacher and no studio.
