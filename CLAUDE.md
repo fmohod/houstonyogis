@@ -261,8 +261,8 @@ article adds its `<url>` in the same push, with `lastmod` the date of its last r
 owner's dictated direction of 2026-11-27 (in summary: a venue where one of our guides teaches should have a
 page to look at, with levels of involvement the way teachers have options). Four levels: named on the calendar
 (free, automatic), let us film a class (free), list the whole schedule (a paid service: **a flat monthly fee by timetable
-size, no monthly fee on our tickets**, the owner's choice in chat 2026-11-27 from four options; **no dollar figure
-is published because he has not set one**), hire the crew (contract, Cadenza Arthouse). Its form is
+size, no monthly fee on our tickets**, the owner's choice in chat 2026-11-27 from four options; **$29 a month up to
+ten classes a week, $59 above, free for the first studios**, published on his word in chat the same day), hire the crew (contract, Cadenza Arthouse). Its form is
 `register.html?role=venue`. "Studios & Venues" is in the footer of every page that has the footer; there is
 no shared include, so a new page needs the link by hand. The filming promises on it (students told beforehand,
 a side of the room off camera, the film comes down on request) were written by the session and are the
